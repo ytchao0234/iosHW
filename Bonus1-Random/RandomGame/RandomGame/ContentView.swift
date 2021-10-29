@@ -32,7 +32,7 @@ struct ContentView: View {
                     Spacer()
                     
                     NavigationLink {
-                        GameView()
+                        GameView(atkResult: .defaultResult)
                     } label: {
                         Text("START!")
                             .font(.system(size: 28, design: .monospaced))
