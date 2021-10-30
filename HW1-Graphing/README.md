@@ -1,6 +1,4 @@
-# iOS-HW1
+# HW1-Graphing
 
-cool
-
-![](https://i.imgur.com/QlqxumS.png)
-![](https://i.imgur.com/lBdrXbh.png)
+|![](https://i.imgur.com/QlqxumS.png)|![](https://i.imgur.com/lBdrXbh.png)|
+|--|--|
