@@ -10,11 +10,9 @@ import AVKit
 
 struct MapDetailView: View {
     var map: Map
-    @Binding var player: AVPlayer
+    @Binding var player: AVAudioPlayer?
     
     var body: some View {
-        let playerItem = AVPlayerItem(url: URL(string: map.music)!)
-        
         return List {
             Image(map.name)
                 .resizable()
@@ -23,8 +21,18 @@ struct MapDetailView: View {
             Text(map.intro)
         }
         .onAppear {
-            player.replaceCurrentItem(with: playerItem)
-            player.play()
+            print(map.music)
+            if let sound = Bundle.main.url(forResource: map.music, withExtension: "mp3") {
+                do {
+                    player?.stop()
+                    try self.player = AVAudioPlayer(contentsOf: sound)
+                    self.player?.numberOfLoops = .max
+                    self.player?.play()
+                }
+                catch {
+                    print("error: \(error)")
+                }
+            }
         }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
@@ -35,7 +43,7 @@ struct MapDetailView: View {
 }
 
 struct MapDetailView_Previews: PreviewProvider {
-    @State static var player = AVPlayer(url: URL(string: "./BGM/Bgm_main_theme.ogg")!)
+    @State static var player: AVAudioPlayer?
     
     static var previews: some View {
         MapDetailView(map: Map.defaultMap, player: $player)

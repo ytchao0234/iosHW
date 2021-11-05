@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		036B51A72734A91A002D5A8B /* Bgm_main_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 036B51A62734A919002D5A8B /* Bgm_main_theme.mp3 */; };
+		036B51A92734ACD1002D5A8B /* Bgm_town_baruoky.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 036B51A82734ACD1002D5A8B /* Bgm_town_baruoky.mp3 */; };
 		4B4E2849273281BB0027F88B /* AnotherEdenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E2848273281BB0027F88B /* AnotherEdenApp.swift */; };
 		4B4E284B273281BB0027F88B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E284A273281BB0027F88B /* ContentView.swift */; };
 		4B4E284D273281C50027F88B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B4E284C273281C50027F88B /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		036B51A62734A919002D5A8B /* Bgm_main_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bgm_main_theme.mp3; sourceTree = "<group>"; };
+		036B51A82734ACD1002D5A8B /* Bgm_town_baruoky.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bgm_town_baruoky.mp3; sourceTree = "<group>"; };
 		4B4E2845273281BB0027F88B /* AnotherEden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnotherEden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4E2848273281BB0027F88B /* AnotherEdenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherEdenApp.swift; sourceTree = "<group>"; };
 		4B4E284A273281BB0027F88B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 		4B4E2888273403400027F88B /* BGM */ = {
 			isa = PBXGroup;
 			children = (
+				036B51A82734ACD1002D5A8B /* Bgm_town_baruoky.mp3 */,
+				036B51A62734A919002D5A8B /* Bgm_main_theme.mp3 */,
 			);
 			path = BGM;
 			sourceTree = "<group>";
@@ -179,8 +185,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036B51A72734A91A002D5A8B /* Bgm_main_theme.mp3 in Resources */,
 				4B4E2850273281C50027F88B /* Preview Assets.xcassets in Resources */,
 				4B4E284D273281C50027F88B /* Assets.xcassets in Resources */,
+				036B51A92734ACD1002D5A8B /* Bgm_town_baruoky.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

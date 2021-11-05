@@ -9,7 +9,7 @@ import SwiftUI
 import AVKit
 
 struct AncientMap: View {
-    @Binding var player: AVPlayer
+    @Binding var player: AVAudioPlayer?
     
     var body: some View {
         VStack {
@@ -126,7 +126,7 @@ struct AncientMap: View {
 }
 
 struct AncientMap_Previews: PreviewProvider {
-    @State static var player = AVPlayer(url: URL(string: "./BGM/Bgm_main_theme.ogg")!)
+    @State static var player: AVAudioPlayer?
     
     static var previews: some View {
         NavigationView {

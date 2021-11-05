@@ -9,7 +9,7 @@ import SwiftUI
 import AVKit
 
 struct ModernMap: View {
-    @Binding var player: AVPlayer
+    @Binding var player: AVAudioPlayer?
     
     var body: some View {
         VStack {
@@ -74,7 +74,7 @@ struct ModernMap: View {
                     VStack {
                         HStack {
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "綠色村莊巴路奧其", music: "", intro: "現代安全地圖"), player: $player),
+                                destination: MapDetailView(map: Map(name: "綠色村莊巴路奧其", music: "Bgm_town_baruoky", intro: "現代安全地圖"), player: $player),
                                 label: {
                                     MapBlock(map: Map(name: "綠色村莊巴路奧其", music: "", intro: "現代安全地圖"))
                                 })
@@ -105,7 +105,7 @@ struct ModernMap: View {
 }
 
 struct ModernMap_Previews: PreviewProvider {
-    @State static var player = AVPlayer(url: URL(string: "./BGM/Bgm_main_theme.ogg")!)
+    @State static var player: AVAudioPlayer?
     
     static var previews: some View {
         NavigationView {

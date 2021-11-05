@@ -9,7 +9,7 @@ import SwiftUI
 import AVKit
 
 struct ContentView: View {
-    @State var player = AVPlayer(url: URL(string: "./BGM/Bgm_main_theme.ogg")!)
+    @State var player: AVAudioPlayer?
     
     var body: some View {
         NavigationView {
@@ -28,7 +28,17 @@ struct ContentView: View {
                     }
             }
             .onAppear {
-                player.play()
+                if let sound = Bundle.main.url(forResource: "Bgm_main_theme", withExtension: "mp3") {
+                    do {
+                        self.player?.stop()
+                        try self.player = AVAudioPlayer(contentsOf: sound)
+                        self.player?.numberOfLoops = .max
+                        self.player?.play()
+                    }
+                    catch {
+                        print("error: \(error)")
+                    }
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 import AVKit
 
 struct MapView: View {
-    @Binding var player: AVPlayer
+    @Binding var player: AVAudioPlayer?
     
     var body: some View {
         TabView {
@@ -27,7 +27,7 @@ struct MapView: View {
 }
 
 struct MapView_Previews: PreviewProvider {
-    @State static var player = AVPlayer(url: URL(string: "./BGM/Bgm_main_theme.ogg")!)
+    @State static var player: AVAudioPlayer?
     
     static var previews: some View {
         NavigationView {
@@ -56,5 +56,5 @@ struct Map: Identifiable {
 }
 
 extension Map {
-    static let defaultMap = Map(name: "綠色村莊巴路奧其", music: "./BGM/Bgm_main_theme.ogg", intro: "現代安全地圖")
+    static let defaultMap = Map(name: "綠色村莊巴路奧其", music: "Bgm_town_baruoky", intro: "現代安全地圖")
 }
