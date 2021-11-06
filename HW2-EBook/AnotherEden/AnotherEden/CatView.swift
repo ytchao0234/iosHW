@@ -10,7 +10,7 @@ import SwiftUI
 struct CatView: View {
     let ancientCatCount = 20
     let modernCatCount = 42
-    let futureCatCount = 58
+    let futureCatCount = 57
     
     var body: some View {
         List {

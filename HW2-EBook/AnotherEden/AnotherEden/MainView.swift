@@ -14,7 +14,8 @@ struct MainView: View {
     @State private var timeControlObservation: NSKeyValueObservation?
     
     var body: some View {
-        List {
+        ScrollView(.vertical) {
+            
             Image("AnotherEden")
                 .resizable()
                 .scaledToFit()
@@ -59,7 +60,9 @@ struct MainView: View {
                         Image(systemName: "gearshape.fill")
                             .resizable()
                             .scaledToFit()
+                            .foregroundColor(.black)
                             .frame(height: 30)
+                            .padding()
                 })
                 Link(destination: URL(string: "https://www.apple.com")!, label: {
                     Image("AEicon")
