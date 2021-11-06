@@ -14,58 +14,63 @@ struct ModernMap: View {
     var body: some View {
         VStack {
             VStack {
-                Text("現代")
-                    .padding(0.3)
+                HStack {
+                    Image(systemName: "arrow.backward.circle.fill")
+                    Text("現代")
+                    Image(systemName: "arrow.forward.circle.fill")
+                }
+                .padding(0.3)
                 Text("Another Eden 的美術和音樂都非常精緻，每一張地圖都有不同的場景和音樂。根據任務進度不同，每次和 NPC 對話都有可能聽到不同的內容，也可以到地圖的各個角落尋找隱藏彩蛋哦！")
                     .font(.caption)
             }
             .padding()
             .background(Color.secondary.opacity(0.2))
             .cornerRadius(10)
+            
             VStack {
                 HStack {
                     VStack {
                         HStack {
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "月影之森", music: "", intro: "現代危險地圖"), player: $player),
+                                destination: MapDetailView(map: Map.modern[0], player: $player),
                                 label: {
-                                    MapBlock(map: Map(name: "月影之森", music: "", intro: "現代危險地圖"))
+                                    MapBlock(map: Map.modern[0])
                                 })
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "瑟雷納海岸", music: "", intro: "現代危險地圖"), player: $player),
+                                destination: MapDetailView(map: Map.modern[1], player: $player),
                                 label: {
-                                    MapBlock(map: Map(name: "瑟雷納海岸", music: "", intro: "現代危險地圖"))
+                                    MapBlock(map: Map.modern[1])
                                 })
                         }
                         HStack {
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "瑙亞路平原", music: "", intro: "現代危險地圖"), player: $player),
+                                destination: MapDetailView(map: Map.modern[2], player: $player),
                                 label: {
-                                    MapBlock(map: Map(name: "瑙亞路平原", music: "", intro: "現代危險地圖"))
+                                    MapBlock(map: Map.modern[2])
                                 })
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "米格蘭斯城", music: "", intro: "現代安全地圖"), player: $player),
+                                destination: MapDetailView(map: Map.modern[3], player: $player),
                                 label: {
-                                    MapBlock(map: Map(name: "米格蘭斯城", music: "", intro: "現代安全地圖"))
+                                    MapBlock(map: Map.modern[3])
                                 })
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "海港城鎮臨迪", music: "", intro: "現代安全地圖"), player: $player),
+                                destination: MapDetailView(map: Map.modern[4], player: $player),
                                 label: {
-                                    MapBlock(map: Map(name: "海港城鎮臨迪", music: "", intro: "現代安全地圖"))
+                                    MapBlock(map: Map.modern[4])
                                 })
                         }
                     }
-                    .frame(minWidth: 240, maxWidth: .infinity)
+                    .frame(width: UIScreen.main.bounds.width*0.68)
                     VStack {
                         NavigationLink(
-                            destination: MapDetailView(map: Map(name: "露查那沙漠", music: "", intro: "現代危險地圖"), player: $player),
+                            destination: MapDetailView(map: Map.modern[5], player: $player),
                             label: {
-                                MapBlock(map: Map(name: "露查那沙漠", music: "", intro: "現代危險地圖"))
+                                MapBlock(map: Map.modern[5])
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map(name: "沙漠村莊沙爾博", music: "", intro: "現代安全地圖"), player: $player),
+                            destination: MapDetailView(map: Map.modern[6], player: $player),
                             label: {
-                                MapBlock(map: Map(name: "沙漠村莊沙爾博", music: "", intro: "現代安全地圖"))
+                                MapBlock(map: Map.modern[6])
                             })
                     }
                 }
@@ -74,28 +79,28 @@ struct ModernMap: View {
                     VStack {
                         HStack {
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "綠色村莊巴路奧其", music: "Bgm_town_baruoky", intro: "現代安全地圖"), player: $player),
+                                destination: MapDetailView(map: Map.modern[7], player: $player),
                                 label: {
-                                    MapBlock(map: Map(name: "綠色村莊巴路奧其", music: "", intro: "現代安全地圖"))
+                                    MapBlock(map: Map.modern[7])
                                 })
                             NavigationLink(
-                                destination: MapDetailView(map: Map(name: "王都悠尼岡", music: "", intro: "現代安全地圖"), player: $player),
+                                destination: MapDetailView(map: Map.modern[8], player: $player),
                                 label: {
-                                    MapBlock(map: Map(name: "王都悠尼岡", music: "", intro: "現代安全地圖"))
+                                    MapBlock(map: Map.modern[8])
                                 })
                         }
                         NavigationLink(
-                            destination: MapDetailView(map: Map(name: "卡雷克濕原", music: "", intro: "現代危險地圖"), player: $player),
+                            destination: MapDetailView(map: Map.modern[9], player: $player),
                             label: {
-                                MapBlock(map: Map(name: "卡雷克濕原", music: "", intro: "現代危險地圖"))
+                                MapBlock(map: Map.modern[9])
                             })
                     }
-                    .frame(minWidth: 180, maxWidth: .infinity)
+                    .frame(width: UIScreen.main.bounds.width*0.55)
                     
                     NavigationLink(
-                        destination: MapDetailView(map: Map(name: "魔獸城", music: "", intro: "現代危險地圖"), player: $player),
+                        destination: MapDetailView(map: Map.modern[10], player: $player),
                         label: {
-                            MapBlock(map: Map(name: "魔獸城", music: "", intro: "現代危險地圖"))
+                            MapBlock(map: Map.modern[10])
                         })
                 }
             }

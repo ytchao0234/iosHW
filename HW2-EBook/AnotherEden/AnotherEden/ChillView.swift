@@ -14,16 +14,15 @@ struct ChillView: View {
                 destination: CatView(),
                 label: {
                     Text("貓咪")
+                        .font(.title)
+                        .padding()
                 })
             NavigationLink(
                 destination: FishView(),
                 label: {
                     Text("釣魚")
-                })
-            NavigationLink(
-                destination: DishView(),
-                label: {
-                    Text("料理")
+                        .font(.title)
+                        .padding()
                 })
         }
         .toolbar(content: {

@@ -14,9 +14,14 @@ struct MapDetailView: View {
     
     var body: some View {
         return List {
-            Image(map.name)
-                .resizable()
-                .scaledToFit()
+            TabView {
+                ForEach(map.name, id: \.self) { name in
+                    Image(name)
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
             Text(map.intro)
         }
@@ -36,7 +41,7 @@ struct MapDetailView: View {
         }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
-                Text(map.name)
+                Text(map.name.first!)
             }
         })
     }

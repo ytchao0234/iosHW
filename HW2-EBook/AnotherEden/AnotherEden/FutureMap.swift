@@ -14,67 +14,75 @@ struct FutureMap: View {
     var body: some View {
         VStack {
             VStack {
-                Text("未來")
-                    .padding(0.3)
+                HStack {
+                    Image(systemName: "arrow.backward.circle.fill")
+                    Text("未來")
+                    Image(systemName: "arrow.forward.circle.fill").hidden()
+                }
+                .padding(0.3)
                 Text("Another Eden 的美術和音樂都非常精緻，每一張地圖都有不同的場景和音樂。根據任務進度不同，每次和 NPC 對話都有可能聽到不同的內容，也可以到地圖的各個角落尋找隱藏彩蛋哦！")
                     .font(.caption)
             }
             .padding()
             .background(Color.secondary.opacity(0.2))
             .cornerRadius(10)
+            
             VStack {
-                HStack {
-                    NavigationLink(
-                        destination: MapDetailView(map: Map(name: "浮游街道涅瓦", music: "", intro: "未來安全地圖"), player: $player),
-                        label: {
-                            MapBlock(map: Map(name: "浮游街道涅瓦", music: "", intro: "未來安全地圖"))
-                        })
-                    NavigationLink(
-                        destination: MapDetailView(map: Map(name: "傑諾領域", music: "", intro: "未來危險地圖"), player: $player),
-                        label: {
-                            MapBlock(map: Map(name: "傑諾領域", music: "", intro: "未來危險地圖"))
-                                .frame(minWidth: 130, maxWidth: .infinity)
-                        })
-                    NavigationLink(
-                        destination: MapDetailView(map: Map(name: "邊緣之島", music: "", intro: "未來安全地圖"), player: $player),
-                        label: {
-                            MapBlock(map: Map(name: "邊緣之島", music: "", intro: "未來安全地圖"))
-                        })
+                VStack {
+                    HStack {
+                        NavigationLink(
+                            destination: MapDetailView(map: Map.future[0], player: $player),
+                            label: {
+                                MapBlock(map: Map.future[0])
+                            })
+                        NavigationLink(
+                            destination: MapDetailView(map: Map.future[1], player: $player),
+                            label: {
+                                MapBlock(map: Map.future[1])
+                                    .frame(width: UIScreen.main.bounds.width*0.35)
+                            })
+                        NavigationLink(
+                            destination: MapDetailView(map: Map.future[2], player: $player),
+                            label: {
+                                MapBlock(map: Map.future[2])
+                            })
+                    }
+                    HStack {
+                        NavigationLink(
+                            destination: MapDetailView(map: Map.future[3], player: $player),
+                            label: {
+                                MapBlock(map: Map.future[3])
+                            })
+                        NavigationLink(
+                            destination: MapDetailView(map: Map.future[4], player: $player),
+                            label: {
+                                MapBlock(map: Map.future[4])
+                            })
+                        NavigationLink(
+                            destination: MapDetailView(map: Map.future[5], player: $player),
+                            label: {
+                                MapBlock(map: Map.future[5])
+                                    .frame(width: UIScreen.main.bounds.width*0.32)
+                            })
+                        NavigationLink(
+                            destination: MapDetailView(map: Map.future[6], player: $player),
+                            label: {
+                                MapBlock(map: Map.future[6])
+                            })
+                    }
                 }
+                .frame(height: UIScreen.main.bounds.height*0.4)
                 HStack {
                     NavigationLink(
-                        destination: MapDetailView(map: Map(name: "工業都市廢墟", music: "", intro: "未來危險地圖"), player: $player),
+                        destination: MapDetailView(map: Map.future[7], player: $player),
                         label: {
-                            MapBlock(map: Map(name: "工業都市廢墟", music: "", intro: "未來危險地圖"))
-                        })
-                    NavigationLink(
-                        destination: MapDetailView(map: Map(name: "廢棄公路99", music: "", intro: "未來危險地圖"), player: $player),
-                        label: {
-                            MapBlock(map: Map(name: "廢棄公路99", music: "", intro: "未來危險地圖"))
-                        })
-                    NavigationLink(
-                        destination: MapDetailView(map: Map(name: "曙光都市艾路茲恩", music: "", intro: "未來安全地圖"), player: $player),
-                        label: {
-                            MapBlock(map: Map(name: "曙光都市艾路茲恩", music: "", intro: "未來安全地圖"))
-                                .frame(minWidth: 110, maxWidth: .infinity)
-                        })
-                    NavigationLink(
-                        destination: MapDetailView(map: Map(name: "艾路茲恩機場", music: "", intro: "未來危險地圖"), player: $player),
-                        label: {
-                            MapBlock(map: Map(name: "艾路茲恩機場", music: "", intro: "未來危險地圖"))
-                        })
-                }
-                HStack {
-                    NavigationLink(
-                        destination: MapDetailView(map: Map(name: "次元戰艦", music: "", intro: "未來安全地圖"), player: $player),
-                        label: {
-                            MapBlock(map: Map(name: "次元戰艦", music: "", intro: "未來安全地圖"))
+                            MapBlock(map: Map.future[7])
                                 .frame(minWidth: 220, maxWidth: .infinity)
                         })
                     NavigationLink(
-                        destination: MapDetailView(map: Map(name:"琉萊巨蛋", music: "", intro: "未來安全地圖"), player: $player),
+                        destination: MapDetailView(map: Map.future[8], player: $player),
                         label: {
-                            MapBlock(map: Map(name:"琉萊巨蛋", music: "", intro: "未來安全地圖"))
+                            MapBlock(map: Map.future[8])
                         })
                 }
             }

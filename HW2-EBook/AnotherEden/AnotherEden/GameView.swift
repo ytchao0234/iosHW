@@ -17,26 +17,35 @@ struct GameView: View {
                 destination: StoryView(),
                 label: {
                     Text("劇情")
+                        .font(.title)
+                        .padding()
                 })
             NavigationLink(
                 destination: CharacterView(),
                 label: {
                     Text("角色")
+                        .font(.title)
+                        .padding()
                 })
             NavigationLink(
                 destination: MapView(player: $player),
                 label: {
                     Text("地圖")
+                        .font(.title)
+                        .padding()
                 })
             NavigationLink(
                 destination: DungeonView(),
                 label: {
                     Text("副本")
+                        .font(.title)
+                        .padding()
                 })
         }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("遊戲")
+                    .font(.title)
             }
         })
     }
