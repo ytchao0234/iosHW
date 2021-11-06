@@ -11,6 +11,7 @@ import AVKit
 struct MainView: View {
     @Binding var player: AVAudioPlayer?
     @State private var videoPlayer = AVPlayer(url: Bundle.main.url(forResource: "宣傳影片", withExtension: "mp4")!)
+    @State private var timeControlObservation: NSKeyValueObservation?
     
     var body: some View {
         List {
@@ -20,13 +21,23 @@ struct MainView: View {
             
             VideoPlayer(player: videoPlayer)
                 .scaledToFit()
-                .onChange(of: videoPlayer.rate, perform: { value in
-                    if value != 0 {
-                        player?.pause()
-                    } else {
-                        player?.play()
+                .onAppear {
+                    timeControlObservation = videoPlayer.observe(
+                        \AVPlayer.timeControlStatus,
+                        options: [.old, .new]
+                    ) { (player, change) in
+                        if videoPlayer.timeControlStatus.rawValue == 0 {
+                            self.player?.play()
+                        }
+                        else if videoPlayer.timeControlStatus.rawValue == 2 {
+                            self.player?.pause()
+                        }
                     }
-                })
+                }
+                .onDisappear {
+                    videoPlayer.pause()
+                    self.player?.play()
+                }
             
             Text("遊戲簡介")
                 .font(.title)
@@ -42,26 +53,35 @@ struct MainView: View {
             
             HStack {
                 Spacer()
-                Image(systemName: "gearshape.fill")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 30)
-                    .padding()
-                Image("AEicon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 30)
-                    .padding()
-                Image("facebook")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 30)
-                    .padding()
-                Image("youtube")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 30)
-                    .padding()
+                NavigationLink(
+                    destination: Text("Destination"),
+                    label: {
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 30)
+                })
+                Link(destination: URL(string: "https://www.apple.com")!, label: {
+                    Image("AEicon")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .padding()
+                })
+                Link(destination: URL(string: "https://www.apple.com")!, label: {
+                    Image("facebook")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .padding()
+                })
+                Link(destination: URL(string: "https://www.apple.com")!, label: {
+                    Image("youtube")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .padding()
+                })
                 Spacer()
             }
         }

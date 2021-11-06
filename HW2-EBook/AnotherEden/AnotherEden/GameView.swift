@@ -34,13 +34,6 @@ struct GameView: View {
                         .font(.title)
                         .padding()
                 })
-            NavigationLink(
-                destination: DungeonView(),
-                label: {
-                    Text("副本")
-                        .font(.title)
-                        .padding()
-                })
         }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
