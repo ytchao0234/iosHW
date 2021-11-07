@@ -11,29 +11,60 @@ struct StoryView: View {
     @State private var selection: Story = Story.emptyStory
     
     var body: some View {
-        List {
+        ScrollView(.vertical) {
             Text("主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線")
                 .font(.caption)
                 .padding()
                 .background(Color.secondary.opacity(0.2))
                 .cornerRadius(10)
-            Section(header: Text("主線")) {
-                StoryBlock(selection: $selection, story: Story.defaultStory)
-            }
-            
-            Section(header: Text("外傳")) {
-                ForEach(Story.anthoerStory) { story in
-                    StoryBlock(selection: $selection, story: story)
+            LazyVStack(pinnedViews: [.sectionHeaders]) {
+                Section(header:
+                            Text("主線")
+                                .padding(.vertical, 3)
+                                .frame(minWidth:0, maxWidth: .infinity)
+                                .background(Color.gray)
+                                .cornerRadius(10)
+                ) {
+                    StoryBlock(selection: $selection, story: Story.defaultStory)
+                        .padding(.bottom, 1)
                 }
             }
             
-            Section(header: Text("協奏")) {
-                ForEach(Story.cooperate) { story in
-                    StoryBlock(selection: $selection, story: story)
+            LazyVStack(pinnedViews: [.sectionHeaders]) {
+                Section(header:
+                            Text("外傳")
+                                .padding(.vertical, 3)
+                                .frame(minWidth:0, maxWidth: .infinity)
+                                .background(Color.gray)
+                                .cornerRadius(10)
+                ) {
+                    ForEach(Story.anthoerStory) { story in
+                        StoryBlock(selection: $selection, story: story)
+                            .padding(.bottom, 1)
+                    }
+                }
+            }
+            
+            LazyVStack(pinnedViews: [.sectionHeaders]) {
+                Section(header:
+                            Text("協奏")
+                                .padding(.vertical, 3)
+                                .frame(minWidth:0, maxWidth: .infinity)
+                                .background(Color.gray)
+                                .cornerRadius(10)
+                ) {
+                    ForEach(Story.cooperate) { story in
+                        StoryBlock(selection: $selection, story: story)
+                            .padding(.bottom, 1)
+                    }
                 }
             }
         }
-        .padding()
+        .padding(.top, 100)
+        .padding(.horizontal, 10)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
+        .ignoresSafeArea()
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("劇情")
@@ -57,6 +88,7 @@ struct StoryBlock: View {
     var body: some View {
         VStack {
             Button(action: {
+                print("story: \(story.name)")
                 if selection.id == story.id {
                     selection = Story.emptyStory
                 }
@@ -78,6 +110,7 @@ struct StoryBlock: View {
                     if story.character.count > 0 {
                         Text("可獲得角色: " + story.character.joined(separator: ", "))
                             .font(.caption)
+                            .padding(.horizontal, 20)
                     
                         TabView {
                             ForEach(story.character.indices) { count in
@@ -86,7 +119,7 @@ struct StoryBlock: View {
                                     .scaledToFit()
                             }
                         }
-                        .frame(height: UIScreen.main.bounds.height*0.15)
+                        .frame(width: UIScreen.main.bounds.width*0.6)
                         .tabViewStyle(PageTabViewStyle())
                     }
                     else {
@@ -106,7 +139,7 @@ struct StoryBlock: View {
                     }
                 }
             }
-            .animation(selection.id == story.id ? .easeOut(duration: 0.5) : .none)
+            .animation(selection.id == story.id ? .easeInOut(duration: 0.8) : .none)
         }
         .onAppear {
             self.hidden = false

@@ -8,25 +8,64 @@
 import SwiftUI
 
 struct CatView: View {
+    @State private var show: Bool = false
     let ancientCatCount = 20
-    let modernCatCount = 42
-    let futureCatCount = 57
+    let modernCatCount = 41
+    let futureCatCount = 56
     
     var body: some View {
+        let rows = [GridItem()]
+        
         List {
             Text("簡介")
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(0 ..< 5) { count in
-                        Image("路遇貓\(count)")
-                            .resizable()
-                            .scaledToFit()
+                .font(.title)
+            VStack(alignment: .leading) {
+                Text("...")
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows: rows) {
+                        ForEach(0 ..< 5) { count in
+                            Image("路遇貓\(count)")
+                                .resizable()
+                                .scaledToFit()
+                        }
                     }
                 }
+                .frame(height: UIScreen.main.bounds.height*0.15)
             }
-            .frame(height: 150)
             
-            Text("簡介")
+            Text("貓咪冒險")
+                .font(.title)
+            
+            VStack(alignment: .leading) {
+                HStack {
+                    Spacer()
+                    
+                    VStack {
+                        Image("法路奧")
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                            .frame(height: UIScreen.main.bounds.height*0.1)
+                        Text("法路奧")
+                            .font(.caption2)
+                    }
+                    Spacer()
+                }
+                Text("...")
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows: rows) {
+                        ForEach(0 ..< 5) { count in
+                            Image("貓冒險\(count)")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                    }
+                }
+                .frame(height: UIScreen.main.bounds.height*0.15)
+            }
+            
+            Text("貓咪圖鑑")
+                .font(.title)
             ScrollView(.vertical) {
                 let columns = Array(repeating: GridItem(), count: 3)
                 

@@ -22,6 +22,11 @@ struct MapView: View {
                 .tag(2)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        .padding(.vertical, 100)
+        .padding(.horizontal, 10)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
+        .ignoresSafeArea()
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
 //                Text("地圖")

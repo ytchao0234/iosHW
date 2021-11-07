@@ -8,22 +8,30 @@
 import SwiftUI
 
 struct FishView: View {
+    @State private var show: Bool = false
     let fishCount = 126
+    
     var body: some View {
         List {
             Text("簡介")
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(0 ..< 5) { count in
-                        Image("路遇貓\(count)")
-                            .resizable()
-                            .scaledToFit()
+                .font(.title)
+            VStack(alignment: .leading) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    let rows = [GridItem()]
+                    LazyHGrid(rows: rows) {
+                        ForEach(0 ..< 6) { count in
+                            Image("釣魚\(count)")
+                                .resizable()
+                                .scaledToFit()
+                        }
                     }
                 }
+                .frame(height: UIScreen.main.bounds.height*0.15)
+                Text("...")
             }
-            .frame(height: 150)
             
-            Text("簡介")
+            Text("釣魚圖鑑")
+                .font(.title)
             ScrollView(.vertical) {
                 let columns = Array(repeating: GridItem(), count: 4)
                 
@@ -47,6 +55,8 @@ struct FishView: View {
 
 struct FishView_Previews: PreviewProvider {
     static var previews: some View {
-        FishView()
+        NavigationView {
+            FishView()
+        }
     }
 }
