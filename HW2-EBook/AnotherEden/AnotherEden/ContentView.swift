@@ -15,6 +15,7 @@ struct ContentView: View {
         NavigationView {
             
             TabView {
+                
                 MainView(player: $player)
                     .tabItem {
                         Label("簡介", systemImage: "doc.richtext.fill")

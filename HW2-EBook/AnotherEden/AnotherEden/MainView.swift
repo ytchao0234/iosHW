@@ -55,7 +55,7 @@ struct MainView: View {
             HStack {
                 Spacer()
                 NavigationLink(
-                    destination: Text("Destination"),
+                    destination: IconView(),
                     label: {
                         Image(systemName: "gearshape.fill")
                             .resizable()
@@ -64,21 +64,21 @@ struct MainView: View {
                             .frame(height: 30)
                             .padding()
                 })
-                Link(destination: URL(string: "https://www.apple.com")!, label: {
+                Link(destination: URL(string: "https://tw.another-eden.jp")!, label: {
                     Image("AEicon")
                         .resizable()
                         .scaledToFit()
                         .frame(height: 30)
                         .padding()
                 })
-                Link(destination: URL(string: "https://www.apple.com")!, label: {
+                Link(destination: URL(string: "https://www.facebook.com/AnotherEdenRPG.tw")!, label: {
                     Image("facebook")
                         .resizable()
                         .scaledToFit()
                         .frame(height: 30)
                         .padding()
                 })
-                Link(destination: URL(string: "https://www.apple.com")!, label: {
+                Link(destination: URL(string: "https://www.youtube.com/channel/UCbXzDM-cpEYhBnbxV38Aujw")!, label: {
                     Image("youtube")
                         .resizable()
                         .scaledToFit()

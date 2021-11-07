@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct StoryView: View {
-    @State private var showIntro: Bool = false
-    @State private var selection: Story = Story.defaultStory
+    @State private var selection: Story = Story.emptyStory
     
     var body: some View {
         List {
@@ -19,18 +18,18 @@ struct StoryView: View {
                 .background(Color.secondary.opacity(0.2))
                 .cornerRadius(10)
             Section(header: Text("主線")) {
-                StoryBlock(showIntro: $showIntro, selection: $selection, story: Story.defaultStory)
+                StoryBlock(selection: $selection, story: Story.defaultStory)
             }
             
             Section(header: Text("外傳")) {
                 ForEach(Story.anthoerStory) { story in
-                    StoryBlock(showIntro: $showIntro, selection: $selection, story: story)
+                    StoryBlock(selection: $selection, story: story)
                 }
             }
             
             Section(header: Text("協奏")) {
                 ForEach(Story.cooperate) { story in
-                    StoryBlock(showIntro: $showIntro, selection: $selection, story: story)
+                    StoryBlock(selection: $selection, story: story)
                 }
             }
         }
@@ -50,59 +49,67 @@ struct StoryView_Previews: PreviewProvider {
 }
 
 struct StoryBlock: View {
-    @Binding var showIntro: Bool
     @Binding var selection: Story
     var story: Story
+    
+    @State private var hidden: Bool = true
     
     var body: some View {
         VStack {
             Button(action: {
-                if selection.id == story.id && showIntro {
-                    showIntro = false
+                if selection.id == story.id {
+                    selection = Story.emptyStory
                 }
-                else if !showIntro {
-                    showIntro = true
+                else {
+                    selection = story
                 }
-                
-                selection = story
             }, label: {
                 Image(story.name)
                     .resizable()
                     .scaledToFit()
+                    .offset(y: hidden ? -50: 0)
+                    .opacity(hidden ? 0: 1)
+                    .animation(.easeInOut(duration: 1.5), value: hidden)
                     .cornerRadius(10)
             })
             
-            if showIntro && selection.id == story.id {
-                if story.character.count > 0 {
-                    Text("可獲得角色: " + story.character.joined(separator: ", "))
-                        .font(.caption)
-                
-                    TabView {
-                        ForEach(story.character.indices) { count in
-                            Image(story.character[count])
-                                .resizable()
-                                .scaledToFit()
+            VStack {
+                if selection.id == story.id {
+                    if story.character.count > 0 {
+                        Text("可獲得角色: " + story.character.joined(separator: ", "))
+                            .font(.caption)
+                    
+                        TabView {
+                            ForEach(story.character.indices) { count in
+                                Image(story.character[count])
+                                    .resizable()
+                                    .scaledToFit()
+                            }
                         }
+                        .frame(height: UIScreen.main.bounds.height*0.15)
+                        .tabViewStyle(PageTabViewStyle())
                     }
-                    .frame(height: UIScreen.main.bounds.height*0.15)
-                    .tabViewStyle(PageTabViewStyle())
-                }
-                else {
-                    Text("可獲得角色: 無")
-                        .font(.caption)
-                        .padding(.bottom)
-                }
-                
-                Text(story.intro)
-                
-                if story.cooperater.count > 0 {
-                    Text("合作對象: " + story.cooperater[0])
-                        .font(.caption)
-                        .padding(.top)
-                    Text("合作產品: " + story.cooperater[1])
-                        .font(.caption)
+                    else {
+                        Text("可獲得角色: 無")
+                            .font(.caption)
+                            .padding(.bottom)
+                    }
+                    
+                    Text(story.intro)
+                    
+                    if story.cooperater.count > 0 {
+                        Text("合作對象: " + story.cooperater[0])
+                            .font(.caption)
+                            .padding(.top)
+                        Text("合作產品: " + story.cooperater[1])
+                            .font(.caption)
+                    }
                 }
             }
+            .animation(selection.id == story.id ? .easeOut(duration: 0.5) : .none)
+        }
+        .onAppear {
+            self.hidden = false
         }
     }
 }
@@ -117,6 +124,8 @@ struct Story: Identifiable {
 }
 
 extension Story {
+    static let emptyStory = Story(name: "", character: [], intro: "", cooperater: [])
+    
     static let defaultStory = Story(name: "主線", character:
                                   ["阿爾德","菲妮","艾米","賽勒斯","海蕾娜","基爾德那","阿露緹娜"], intro:
                                   """

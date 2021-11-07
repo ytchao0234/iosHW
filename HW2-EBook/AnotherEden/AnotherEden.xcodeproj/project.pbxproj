@@ -39,6 +39,7 @@
 		558B54B027372A7100F6B834 /* machineCat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 558B54A227372A7000F6B834 /* machineCat@2x.png */; };
 		558B54B127372A7100F6B834 /* calicoCat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 558B54A327372A7000F6B834 /* calicoCat@2x.png */; };
 		558B54B227372A7100F6B834 /* siameseCat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 558B54A427372A7000F6B834 /* siameseCat@2x.png */; };
+		5599818827373927008D9711 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5599818727373927008D9711 /* IconView.swift */; };
 		55B876032735BA1E00F19331 /* Bgm_town_rattle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55B875EC2735BA1D00F19331 /* Bgm_town_rattle.mp3 */; };
 		55B876042735BA1E00F19331 /* Bgm_dungeon_general_tower.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55B875ED2735BA1D00F19331 /* Bgm_dungeon_general_tower.mp3 */; };
 		55B876052735BA1E00F19331 /* Bgm_town_general_ancient.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 55B875EE2735BA1D00F19331 /* Bgm_town_general_ancient.mp3 */; };
@@ -101,6 +102,7 @@
 		558B54A227372A7000F6B834 /* machineCat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "machineCat@2x.png"; sourceTree = "<group>"; };
 		558B54A327372A7000F6B834 /* calicoCat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calicoCat@2x.png"; sourceTree = "<group>"; };
 		558B54A427372A7000F6B834 /* siameseCat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "siameseCat@2x.png"; sourceTree = "<group>"; };
+		5599818727373927008D9711 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		55B875EC2735BA1D00F19331 /* Bgm_town_rattle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bgm_town_rattle.mp3; sourceTree = "<group>"; };
 		55B875ED2735BA1D00F19331 /* Bgm_dungeon_general_tower.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bgm_dungeon_general_tower.mp3; sourceTree = "<group>"; };
 		55B875EE2735BA1D00F19331 /* Bgm_town_general_ancient.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bgm_town_general_ancient.mp3; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				4B4E285C2733C1930027F88B /* GameView.swift */,
 				4B4E285F2733C1A30027F88B /* ChillView.swift */,
 				4B4E28592733B4EA0027F88B /* MainView.swift */,
+				5599818727373927008D9711 /* IconView.swift */,
 				4B4E284C273281C50027F88B /* Assets.xcassets */,
 				4B4E2851273281C50027F88B /* Info.plist */,
 				4B4E284E273281C50027F88B /* Preview Content */,
@@ -364,6 +367,7 @@
 				4B4E285A2733B4EA0027F88B /* MainView.swift in Sources */,
 				4B4E285D2733C1940027F88B /* GameView.swift in Sources */,
 				4B4E2849273281BB0027F88B /* AnotherEdenApp.swift in Sources */,
+				5599818827373927008D9711 /* IconView.swift in Sources */,
 				4B4E28602733C1A30027F88B /* ChillView.swift in Sources */,
 				4B4E28662733C4840027F88B /* CharacterView.swift in Sources */,
 				4B4E28722733C4D10027F88B /* FishView.swift in Sources */,
