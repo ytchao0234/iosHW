@@ -10,6 +10,7 @@ import AVKit
 
 struct ModernMap: View {
     @Binding var player: AVAudioPlayer?
+    @Binding var currentTime: Double
     
     var body: some View {
         VStack {
@@ -26,82 +27,89 @@ struct ModernMap: View {
             .padding()
             .background(Color.secondary.opacity(0.2))
             .cornerRadius(10)
-            
             VStack {
-                HStack {
-                    VStack {
-                        HStack {
-                            NavigationLink(
-                                destination: MapDetailView(map: Map.modern[0], player: $player),
-                                label: {
-                                    MapBlock(map: Map.modern[0])
-                                })
-                            NavigationLink(
-                                destination: MapDetailView(map: Map.modern[1], player: $player),
-                                label: {
-                                    MapBlock(map: Map.modern[1])
-                                })
+                NavigationLink(
+                    destination: MapDetailView(map: Map.defaultMap, player: $player, currentTime: $currentTime),
+                    label: {
+                        MapBlock(map: Map.defaultMap)
+                            .frame(width: UIScreen.main.bounds.width*0.12, height: UIScreen.main.bounds.width*0.12)
+                    })
+                VStack {
+                    HStack {
+                        VStack {
+                            HStack {
+                                NavigationLink(
+                                    destination: MapDetailView(map: Map.modern[0], player: $player, currentTime: $currentTime),
+                                    label: {
+                                        MapBlock(map: Map.modern[0])
+                                    })
+                                NavigationLink(
+                                    destination: MapDetailView(map: Map.modern[1], player: $player, currentTime: $currentTime),
+                                    label: {
+                                        MapBlock(map: Map.modern[1])
+                                    })
+                            }
+                            HStack {
+                                NavigationLink(
+                                    destination: MapDetailView(map: Map.modern[2], player: $player, currentTime: $currentTime),
+                                    label: {
+                                        MapBlock(map: Map.modern[2])
+                                    })
+                                NavigationLink(
+                                    destination: MapDetailView(map: Map.modern[3], player: $player, currentTime: $currentTime),
+                                    label: {
+                                        MapBlock(map: Map.modern[3])
+                                    })
+                                NavigationLink(
+                                    destination: MapDetailView(map: Map.modern[4], player: $player, currentTime: $currentTime),
+                                    label: {
+                                        MapBlock(map: Map.modern[4])
+                                    })
+                            }
                         }
-                        HStack {
+                        .frame(width: UIScreen.main.bounds.width*0.68)
+                        VStack {
                             NavigationLink(
-                                destination: MapDetailView(map: Map.modern[2], player: $player),
+                                destination: MapDetailView(map: Map.modern[5], player: $player, currentTime: $currentTime),
                                 label: {
-                                    MapBlock(map: Map.modern[2])
+                                    MapBlock(map: Map.modern[5])
                                 })
                             NavigationLink(
-                                destination: MapDetailView(map: Map.modern[3], player: $player),
+                                destination: MapDetailView(map: Map.modern[6], player: $player, currentTime: $currentTime),
                                 label: {
-                                    MapBlock(map: Map.modern[3])
-                                })
-                            NavigationLink(
-                                destination: MapDetailView(map: Map.modern[4], player: $player),
-                                label: {
-                                    MapBlock(map: Map.modern[4])
+                                    MapBlock(map: Map.modern[6])
                                 })
                         }
                     }
-                    .frame(width: UIScreen.main.bounds.width*0.68)
-                    VStack {
-                        NavigationLink(
-                            destination: MapDetailView(map: Map.modern[5], player: $player),
-                            label: {
-                                MapBlock(map: Map.modern[5])
-                            })
-                        NavigationLink(
-                            destination: MapDetailView(map: Map.modern[6], player: $player),
-                            label: {
-                                MapBlock(map: Map.modern[6])
-                            })
-                    }
-                }
 
-                HStack {
-                    VStack {
-                        HStack {
+                    HStack {
+                        VStack {
+                            HStack {
+                                NavigationLink(
+                                    destination: MapDetailView(map: Map.modern[7], player: $player, currentTime: $currentTime),
+                                    label: {
+                                        MapBlock(map: Map.modern[7])
+                                    })
+                                NavigationLink(
+                                    destination: MapDetailView(map: Map.modern[8], player: $player, currentTime: $currentTime),
+                                    label: {
+                                        MapBlock(map: Map.modern[8])
+                                    })
+                            }
                             NavigationLink(
-                                destination: MapDetailView(map: Map.modern[7], player: $player),
+                                destination: MapDetailView(map: Map.modern[9], player: $player, currentTime: $currentTime),
                                 label: {
-                                    MapBlock(map: Map.modern[7])
-                                })
-                            NavigationLink(
-                                destination: MapDetailView(map: Map.modern[8], player: $player),
-                                label: {
-                                    MapBlock(map: Map.modern[8])
+                                    MapBlock(map: Map.modern[9])
                                 })
                         }
+                        .frame(width: UIScreen.main.bounds.width*0.55)
+                        
                         NavigationLink(
-                            destination: MapDetailView(map: Map.modern[9], player: $player),
+                            destination: MapDetailView(map: Map.modern[10], player: $player, currentTime: $currentTime),
                             label: {
-                                MapBlock(map: Map.modern[9])
+                                MapBlock(map: Map.modern[10])
                             })
                     }
-                    .frame(width: UIScreen.main.bounds.width*0.55)
-                    
-                    NavigationLink(
-                        destination: MapDetailView(map: Map.modern[10], player: $player),
-                        label: {
-                            MapBlock(map: Map.modern[10])
-                        })
                 }
             }
         }
@@ -111,10 +119,11 @@ struct ModernMap: View {
 
 struct ModernMap_Previews: PreviewProvider {
     @State static var player: AVAudioPlayer?
+    @State static var currentTime: Double = 0
     
     static var previews: some View {
         NavigationView {
-            ModernMap(player: $player)
+            ModernMap(player: $player, currentTime: $currentTime)
         }
     }
 }

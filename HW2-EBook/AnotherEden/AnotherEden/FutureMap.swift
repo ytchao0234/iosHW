@@ -10,6 +10,7 @@ import AVKit
 
 struct FutureMap: View {
     @Binding var player: AVAudioPlayer?
+    @Binding var currentTime: Double
     
     var body: some View {
         VStack {
@@ -28,62 +29,70 @@ struct FutureMap: View {
             .cornerRadius(10)
             
             VStack {
+                NavigationLink(
+                    destination: MapDetailView(map: Map.defaultMap, player: $player, currentTime: $currentTime),
+                    label: {
+                        MapBlock(map: Map.defaultMap)
+                            .frame(width: UIScreen.main.bounds.width*0.12, height: UIScreen.main.bounds.width*0.12)
+                    })
                 VStack {
+                    VStack {
+                        HStack {
+                            NavigationLink(
+                                destination: MapDetailView(map: Map.future[0], player: $player, currentTime: $currentTime),
+                                label: {
+                                    MapBlock(map: Map.future[0])
+                                })
+                            NavigationLink(
+                                destination: MapDetailView(map: Map.future[1], player: $player, currentTime: $currentTime),
+                                label: {
+                                    MapBlock(map: Map.future[1])
+                                        .frame(width: UIScreen.main.bounds.width*0.35)
+                                })
+                            NavigationLink(
+                                destination: MapDetailView(map: Map.future[2], player: $player, currentTime: $currentTime),
+                                label: {
+                                    MapBlock(map: Map.future[2])
+                                })
+                        }
+                        HStack {
+                            NavigationLink(
+                                destination: MapDetailView(map: Map.future[3], player: $player, currentTime: $currentTime),
+                                label: {
+                                    MapBlock(map: Map.future[3])
+                                })
+                            NavigationLink(
+                                destination: MapDetailView(map: Map.future[4], player: $player, currentTime: $currentTime),
+                                label: {
+                                    MapBlock(map: Map.future[4])
+                                })
+                            NavigationLink(
+                                destination: MapDetailView(map: Map.future[5], player: $player, currentTime: $currentTime),
+                                label: {
+                                    MapBlock(map: Map.future[5])
+                                        .frame(width: UIScreen.main.bounds.width*0.32)
+                                })
+                            NavigationLink(
+                                destination: MapDetailView(map: Map.future[6], player: $player, currentTime: $currentTime),
+                                label: {
+                                    MapBlock(map: Map.future[6])
+                                })
+                        }
+                    }
+                    .frame(height: UIScreen.main.bounds.height*0.3)
                     HStack {
                         NavigationLink(
-                            destination: MapDetailView(map: Map.future[0], player: $player),
+                            destination: MapDetailView(map: Map.future[7], player: $player, currentTime: $currentTime),
                             label: {
-                                MapBlock(map: Map.future[0])
+                                MapBlock(map: Map.future[7])
+                                    .frame(minWidth: 220, maxWidth: .infinity)
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map.future[1], player: $player),
+                            destination: MapDetailView(map: Map.future[8], player: $player, currentTime: $currentTime),
                             label: {
-                                MapBlock(map: Map.future[1])
-                                    .frame(width: UIScreen.main.bounds.width*0.35)
-                            })
-                        NavigationLink(
-                            destination: MapDetailView(map: Map.future[2], player: $player),
-                            label: {
-                                MapBlock(map: Map.future[2])
+                                MapBlock(map: Map.future[8])
                             })
                     }
-                    HStack {
-                        NavigationLink(
-                            destination: MapDetailView(map: Map.future[3], player: $player),
-                            label: {
-                                MapBlock(map: Map.future[3])
-                            })
-                        NavigationLink(
-                            destination: MapDetailView(map: Map.future[4], player: $player),
-                            label: {
-                                MapBlock(map: Map.future[4])
-                            })
-                        NavigationLink(
-                            destination: MapDetailView(map: Map.future[5], player: $player),
-                            label: {
-                                MapBlock(map: Map.future[5])
-                                    .frame(width: UIScreen.main.bounds.width*0.32)
-                            })
-                        NavigationLink(
-                            destination: MapDetailView(map: Map.future[6], player: $player),
-                            label: {
-                                MapBlock(map: Map.future[6])
-                            })
-                    }
-                }
-                .frame(height: UIScreen.main.bounds.height*0.4)
-                HStack {
-                    NavigationLink(
-                        destination: MapDetailView(map: Map.future[7], player: $player),
-                        label: {
-                            MapBlock(map: Map.future[7])
-                                .frame(minWidth: 220, maxWidth: .infinity)
-                        })
-                    NavigationLink(
-                        destination: MapDetailView(map: Map.future[8], player: $player),
-                        label: {
-                            MapBlock(map: Map.future[8])
-                        })
                 }
             }
         }
@@ -93,10 +102,11 @@ struct FutureMap: View {
 
 struct FutureMap_Previews: PreviewProvider {
     @State static var player: AVAudioPlayer?
+    @State static var currentTime: Double = 0
     
     static var previews: some View {
         NavigationView {
-            FutureMap(player: $player)
+            FutureMap(player: $player, currentTime: $currentTime)
         }
     }
 }

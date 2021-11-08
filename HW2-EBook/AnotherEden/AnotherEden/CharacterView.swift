@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct CharacterView: View {
+    @Binding var player: AVAudioPlayer?
+    @Binding var currentTime: Double
     let sections = ["主角", "邂逅", "外傳", "協奏", "特殊"]
     let sectionContents = [Character.main, Character.encounter, Character.anotherStory, Character.cooperate, Character.special]
     
@@ -22,7 +25,7 @@ struct CharacterView: View {
                 Section(header: Text(sections[order])) {
                     ForEach(sectionContents[order]) { character in
                         NavigationLink(
-                            destination: CharacterDetailView(character: character),
+                            destination: CharacterDetailView(character: character, player: $player, currentTime: $currentTime),
                             label: {
                                 CharacterRow(character: character)
                             })
@@ -39,9 +42,12 @@ struct CharacterView: View {
 }
 
 struct CharacterView_Previews: PreviewProvider {
+    @State static var player: AVAudioPlayer?
+    @State static var currentTime: Double = 0
+    
     static var previews: some View {
         NavigationView {
-            CharacterView()
+            CharacterView(player: $player, currentTime: $currentTime)
         }
     }
 }
@@ -62,11 +68,11 @@ struct CharacterRow: View {
             Text(character.name)
             Spacer()
             
-            if character.time != nil {
+            if character.time != "" {
                 Image(character.time + "icon")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 25, height: 25)
             }
         }
     }
@@ -83,7 +89,7 @@ struct Character: Identifiable {
 }
 
 extension Character {
-    static let main = [Character(name: "阿爾德", time: "現代", story: nil, cv: "内山 昂輝", intro:
+    static let main = [Character(name: "阿爾德", time: "現代", story: "", cv: "内山 昂輝", intro:
                         """
                         Another Eden 主角。
 
@@ -114,10 +120,10 @@ extension Character {
                         阿爾德最終發現了他真正的家庭成員和他的真實身份，
                         並制止了世界面臨的威脅。
                         """),
-                       Character(name: "菲妮", time: "現代", story: nil, cv: "茅野 愛衣", intro:
+                       Character(name: "菲妮", time: "現代", story: "", cv: "茅野 愛衣", intro:
                         """
                         菲妮的真實身份是塞西雅．庫羅諾斯，
-                        是未來時空庫羅諾斯和圓博士的女兒。
+                        是未來時空庫羅諾斯和圓香博士的女兒。
                         她的親生哥哥是伊甸，家裡有一隻寵物貓叫奇洛斯。
 
                         當庫羅諾斯博士啟動了回到過去阻止研發傑諾稜晶的計劃時，
@@ -129,9 +135,9 @@ extension Character {
                         而透過大地陵晶的力量將奇洛斯轉路成了伊甸的樣子。
 
                         隨後，巴路奧其村長發現了賽西雅和奇洛斯在一起，並把他們帶回家。
-                        他給他們分別取名為費恩和阿爾德。
+                        他給他們分別取名為菲妮和阿爾德。
                         """),
-                       Character(name: "基爾德那", time: "現代", story: nil, cv: "置鮎 龍太郎", intro:
+                       Character(name: "基爾德那", time: "現代", story: "", cv: "置鮎 龍太郎", intro:
                         """
                         年輕時的基爾德那深入月影之森時，
                         他注意到一個搖籃裡的嬰兒，並發現了來自她的力量。
@@ -151,7 +157,7 @@ extension Character {
                         獲得重生的基爾德那，不再選擇成為魔獸王討伐人類，
                         而是努力為魔獸人民建立安居之所。
                         """),
-                       Character(name: "阿露緹娜", time: "現代", story: nil, cv: "竹達 彩奈", intro:
+                       Character(name: "阿露緹娜", time: "現代", story: "", cv: "竹達 彩奈", intro:
                         """
                         魔獸族女孩，是曾經的魔獸王基爾德那的妹妹。
                         年幼時在月影之森與菲妮相識，其後成為了好朋友。
@@ -159,7 +165,7 @@ extension Character {
                         曾在巨魔戰役時被巨魔澤農變成了精靈大劍......
                         十分喜歡梅菇，意外地擁有相當老成的喜好。
                         """),
-                       Character(name: "艾米", time: "未來", story: nil, cv: "佐藤 利奈", intro:
+                       Character(name: "艾米", time: "未來", story: "", cv: "佐藤 利奈", intro:
                         """
                         艾路兹恩伽馬地區武器店「伊莎堂」的招牌女店員。
                         為了對付合成人類，每天不停地鍛鍊身體。 
@@ -167,13 +173,13 @@ extension Character {
                         不過，由於十分粗枝大葉，
                         下廚 3 次總會有1次將菜餚煮成焦炭。
                         """),
-                       Character(name: "莉卡", time: "未來", story: nil, cv: "佐藤 利奈", intro:
+                       Character(name: "莉卡", time: "未來", story: "", cv: "釘宮 理惠", intro:
                         """
                         由艾路兹恩的超大型企業KMS公司，生產的工作型人造人。
                         因為擁有接近人類的人工智慧，所以能夠愛惜各種事物。
                         但由於內部的黑箱干涉，偶爾會產生無法認路等錯誤......
                         """),
-                       Character(name: "嘉里德", time: "未來", story: nil, cv: "磯部 勉", intro:
+                       Character(name: "嘉里德", time: "未來", story: "", cv: "磯部 勉", intro:
                         """
                         合成人類為反抗人類所組成的，叛亂軍的前領袖。
                         於重裝甲機車上輕鬆揮舞，
@@ -183,15 +189,15 @@ extension Character {
                         是世界上唯二的原型機，
                         似乎也與「庫羅諾斯報告」有著某種關係。
                         """),
-                       Character(name: "海蕾娜", time: "未來", story: nil, cv: "田中 理恵", intro:
+                       Character(name: "海蕾娜", time: "未來", story: "", cv: "田中 理恵", intro:
                         """
                         合成人類，年齡設定在20歲左右，與嘉里德皆為合成人類原型機。
                         這是在著手研發合成人類時，
                         由艾路兹恩的天才科學家庫羅諾斯博士所製作的特殊樣本。
-                        精神層面相當、接近人類。
-                        性格十分沉著冷靜，一直思考著如何能夠與人類共存。
+                        精神層面相當接近人類、性格十分沉著冷靜，
+                        一直思考著如何能夠與人類共存。
                         """),
-                       Character(name: "賽勒斯", time: "古代", story: nil, cv: "前田 正治", intro:
+                       Character(name: "賽勒斯", time: "古代", story: "", cv: "前田 正治", intro:
                         """
                         外貌為青蛙模樣的神秘劍士。
                         有如隱姓埋名般，默默地獨居著。
@@ -203,7 +209,7 @@ extension Character {
                         推測年齡為 37 歲。
                         """)]
 
-    static let encounter = [Character(name: "阿佐美", time: "現代", story: nil, cv: "川澄 綾子", intro:
+    static let encounter = [Character(name: "阿佐美", time: "現代", story: "", cv: "川澄 綾子", intro:
                             """
                             來自東方某國度的女武士。
                             為了成為公主的警衛，遠渡重洋來此進行武者的修行。
@@ -211,7 +217,7 @@ extension Character {
                             但其實內心也有花樣少女的一面。
                             一旦放鬆心情就會露出本性。
                             """),
-                            Character(name: "伽琉", time: "古代", story: nil, cv: "細谷 佳正", intro:
+                            Character(name: "伽琉", time: "古代", story: "", cv: "細谷 佳正", intro:
                             """
                             能自由操控業火，瞬間就能將敵人燒成灰燼的火焰魔法使。 
                             對自己的火焰有絕對的自信。
@@ -220,7 +226,7 @@ extension Character {
                             個性驕傲自大且殘酷無情。
                             面對敵人絕不留情，會毫不猶豫地殲滅敵人。
                             """),
-                            Character(name: "思琳", time: "未來", story: nil, cv: "久川 綾", intro:
+                            Character(name: "思琳", time: "未來", story: "", cv: "久川 綾", intro:
                             """
                             IDA學園新上任的教師。
                             負責的科目為「戰術理論」，在此領域中的研究受到了相當高的評價。 
@@ -230,13 +236,13 @@ extension Character {
                             """),
                             Character(name: "賈德", time: "未來", story: "絕對零度鎖鏈", cv: "中井 和哉", intro:
                             """
-                            從突然出現在IDA學園的，冰之異世界中加入隊伍的白髮青年。
+                            從突然出現在IDA學園的，絕對零度鎖鏈夢境意識中加入隊伍的白髮青年。
                             總是帶著銳利眼神和兇惡表情的獨行俠，
                             但其實是個溫和熱情的人。
 
                             可以隱約看出他非常想救出，
                             因吃下黑暗蘋果，
-                            而被吞噬到冰之異世界裡的少女。
+                            而被吞噬到絕對零度鎖鏈夢境意識裡的少女。
                             """)]
     static let anotherStory = [Character(name: "蒂亞朵拉", time: "現代", story: "雙騎士與祈禱的魔劍", cv: "内田 真禮", intro:
                                 """
@@ -263,10 +269,10 @@ extension Character {
                                 """
                                 乙姬王族後裔的少女，第25代乙姬。
                                 由於她魯莽的行為和錯誤的決定，她被人民認為已經辭去了乙姬的角色，
-                                在睡覺時被人偷偷藏在一個木桶裡，扔進了龍宮的一魚池。
+                                在睡覺時被人偷偷藏在一個木桶裡，扔進了龍宮城裡的一個魚池。
                                 不料在魚池內出現了時空隧道，將她送入了阿爾德所在的AD300年。
                                 """),
-                                Character(name: "波波羅", time: "現代", story: "衝天之塔與幽冥魔女", cv: "甲斐田 裕子", intro:
+                                Character(name: "波波羅", time: "現代", story: "衝天之塔與幽冥魔女", cv: "大谷 育江", intro:
                                 """
                                 諾澎族的男孩子。
                                 據說牠們額頭上的葉子相當於人類的頭髮，
@@ -295,7 +301,7 @@ extension Character {
 
                                 如果問她的戶藉和年齡，會有點情緒失落。
                                 """),
-                                Character(name: "蘇菲婭", time: "未來", story: "失落的正點與銀色的不凋花", cv: "高橋 李依", intro:
+                                Character(name: "蘇菲婭", time: "未來", story: "失落的正典與銀色的不凋花", cv: "高橋 李依", intro:
                                 """
                                 為了某本書而前來參加艾路茲恩的拍賣會的女性。
                                 左眼被一朵銀色的花覆蓋，
@@ -306,7 +312,7 @@ extension Character {
                                 但卻沒有任何人知道她的來歷。
                                 """)]
 
-    static let cooperate = [Character(name: "JOKER", time: nil, story: "雙魂之羈絆與虛無的傀儡師", cv: "福山 潤", intro:
+    static let cooperate = [Character(name: "JOKER", time: "", story: "雙魂之羈絆與虛無的傀儡師", cv: "福山 潤", intro:
                             """
                             在春天時搬到東京，轉校到城市的學校的高二少年。
                             在某件事件後覺醒了使用「人格面具」的能力。
@@ -315,7 +321,7 @@ extension Character {
                             白天過著普通的學生生活，
                             而晚上則是作為在社會中引起騷動的怪盜，在暗地裡展開活動。
                             """),
-                            Character(name: "摩爾加納", time: nil, story: "雙魂之羈絆與虛無的傀儡師", cv: "大谷 育江", intro:
+                            Character(name: "摩爾加納", time: "", story: "雙魂之羈絆與虛無的傀儡師", cv: "大谷 育江", intro:
                             """
                             與JOKER等人在異世界的殿堂裡認識。
                             像黑貓一般的謎之存在。
@@ -324,7 +330,7 @@ extension Character {
                             雖然說話的語氣很粗魯，但總是不顧自身地支援著怪盜團的夥伴們。
                             口頭禪是「吾輩不是貓！」
                             """),
-                            Character(name: "SKULL", time: nil, story: "雙魂之羈絆與虛無的傀儡師-Promises, Vows, and Rings", cv: "宮野 真守", intro:
+                            Character(name: "SKULL", time: "", story: "雙魂之羈絆與虛無的傀儡師-Promises, Vows, and Rings", cv: "宮野 真守", intro:
                             """
                             秀畫學園的2年級學生。
                             雖然平常言行舉止粗暴，但富有同情心。
@@ -333,19 +339,19 @@ extension Character {
                             因而無法融入其他學生的圈子。
                             遇到JOKER後覺醒了人格面具的能力。
                             """),
-                            Character(name: "VIOLET", time: nil, story: "雙魂之羈絆與虛無的傀儡師-Promises, Vows, and Rings", cv: "雨宮 天", intro:
+                            Character(name: "VIOLET", time: "", story: "雙魂之羈絆與虛無的傀儡師-Promises, Vows, and Rings", cv: "雨宮 天", intro:
                             """
                             秀盡學園 1 年級生的美少女。
                             從中學時代起，作為新體操選手，獲得了十分優異的成積。
                             前途一片光明，連學園都對她十分期待。
                             """),
-                            Character(name: "克雷斯", time: nil, story: "光陰之尾與四穹群星", cv: "草尾 毅", intro:
+                            Character(name: "克雷斯", time: "", story: "光陰之尾、四穹群星", cv: "草尾 毅", intro:
                             """
                             修煉繼承自父親的，阿爾貝因流劍術的劍士。
                             性格善良、樂於助人，很會照顧別人的心情。
                             同時亦具備勇敢對抗敵人的勇氣。
                             """),
-                            Character(name: "蜜樂", time: nil, story: "光陰之尾與四穹群星", cv: "澤城 美雪", intro:
+                            Character(name: "蜜樂", time: "", story: "光陰之尾、四穹群星", cv: "澤城 美雪", intro:
                             """
                             以精靈之主「麥斯威爾」的身分守護世界的女性。
                             性格冷靜沉著，為了守護人類和精靈的使命，
@@ -355,7 +361,7 @@ extension Character {
                             對人類的文化有很強烈的好奇心。
                             只要一感興趣，就會想追根究底。
                             """),
-                            Character(name: "薇爾貝特", time: nil, story: "光陰之尾與四穹群星", cv: "佐藤 利奈", intro:
+                            Character(name: "薇爾貝特", time: "", story: "光陰之尾、四穹群星", cv: "佐藤 利奈", intro:
                             """
                             原本是在邊境村莊裡生活的平凡小姑娘，
                             因為某件事件令她變成了與世界為敵的復仇者。
@@ -365,7 +371,7 @@ extension Character {
                             以繃帶包裹的左手，是在事件發生的那天，
                             被吞噬她的謎之力量改變成非人之姿。
                             """),
-                            Character(name: "由利", time: nil, story: "光陰之尾與四穹群星", cv: "鳥海 浩輔", intro:
+                            Character(name: "由利", time: "", story: "光陰之尾、四穹群星", cv: "鳥海 浩輔", intro:
                             """
                             一直在尋找貫徹自身正義之道的青年。
                             過去曾對騎士團抱有憧憬而加入了，
@@ -373,7 +379,7 @@ extension Character {
                             雖然說話語氣粗魯但很會照顧人。
                             就算嘴上再不情願，最後還是無法放著有困難的人不管。
                             """)]
-    static let special = [Character(name: "草人小子", time: "古代", story: nil, cv: "加藤 英美里", intro:
+    static let special = [Character(name: "草人小子", time: "古代", story: "", cv: "加藤 英美里", intro:
                             """
                             稻草人的小孩。
                             被沖到海邊國佐見附近的海岸上的，不可思議的稻草人。 
@@ -385,7 +391,7 @@ extension Character {
                             但是那無垢且明亮的眼眸，
                             映照著藍天與海，充滿率直和純真。
                             """),
-                            Character(name: "莉維雅", time: "古代", story: nil, cv: "種﨑 敦美", intro:
+                            Character(name: "莉維雅", time: "古代", story: "", cv: "種﨑 敦美", intro:
                             """
                             從曾被玉手箱封印的災厄，利維坦身上掉落的古代魚人族少女。
                             對自己的過去毫無記憶，

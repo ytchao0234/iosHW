@@ -13,9 +13,7 @@ struct FishView: View {
     
     var body: some View {
         List {
-            Text("簡介")
-                .font(.title)
-            VStack(alignment: .leading) {
+            Section(header: Text("簡介").font(.title3)) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     let rows = [GridItem()]
                     LazyHGrid(rows: rows) {
@@ -27,6 +25,8 @@ struct FishView: View {
                     }
                 }
                 .frame(height: UIScreen.main.bounds.height*0.15)
+                .padding()
+                
                 Text("""
                      開始進行外傳「千年寶盒與海神神殿」後，就可以開始釣魚啦！
                      帶著從釣魚仙人那裡獲得的釣竿，探索各個地圖上的魚池吧！
@@ -35,11 +35,10 @@ struct FishView: View {
                      暫時離開戰鬥，慢下來享受釣魚的時光，慢慢提升釣魚成就與釣具等級。
                      在釣到越來越多的魚之後，說不定會有意想不到的成果哦！
                      """)
+                    .padding()
             }
             
-            Text("釣魚圖鑑")
-                .font(.title)
-            ScrollView(.vertical) {
+            Section(header: Text("釣魚圖鑑").font(.title3)) {
                 let columns = Array(repeating: GridItem(), count: 4)
                 
                 LazyVGrid(columns: columns) {
@@ -49,9 +48,9 @@ struct FishView: View {
                             .scaledToFit()
                     }
                 }
+                .padding()
             }
         }
-        .padding()
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("釣魚")

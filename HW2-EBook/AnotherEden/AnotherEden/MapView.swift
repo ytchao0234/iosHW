@@ -10,15 +10,16 @@ import AVKit
 
 struct MapView: View {
     @Binding var player: AVAudioPlayer?
+    @Binding var currentTime: Double
     @State private var selectedTab = 1
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            AncientMap(player: $player)
+            AncientMap(player: $player, currentTime: $currentTime)
                 .tag(0)
-            ModernMap(player: $player)
+            ModernMap(player: $player, currentTime: $currentTime)
                 .tag(1)
-            FutureMap(player: $player)
+            FutureMap(player: $player, currentTime: $currentTime)
                 .tag(2)
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -29,13 +30,7 @@ struct MapView: View {
         .ignoresSafeArea()
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
-//                Text("地圖")
-                NavigationLink(
-                    destination: MapDetailView(map: Map.defaultMap, player: $player),
-                    label: {
-                        MapBlock(map: Map.defaultMap)
-                            .frame(width: UIScreen.main.bounds.width*0.12, height: UIScreen.main.bounds.width*0.12)
-                    })
+                Text("地圖")
             }
         })
     }
@@ -43,10 +38,11 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     @State static var player: AVAudioPlayer?
+    @State static var currentTime: Double = 0
     
     static var previews: some View {
         NavigationView {
-            MapView(player: $player)
+            MapView(player: $player, currentTime: $currentTime)
         }
     }
 }

@@ -17,9 +17,7 @@ struct CatView: View {
         let rows = [GridItem()]
         
         List {
-            Text("簡介")
-                .font(.title)
-            VStack(alignment: .leading) {
+            Section(header: Text("簡介").font(.title3)) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows) {
                         ForEach(0 ..< 5) { count in
@@ -30,6 +28,7 @@ struct CatView: View {
                     }
                 }
                 .frame(height: UIScreen.main.bounds.height*0.15)
+                .padding()
 
                 Text("""
                      無論是什麼時代，安全地圖或是危險地圖，都有機會看見貓咪的出沒唷！
@@ -37,12 +36,10 @@ struct CatView: View {
                      遇到喜歡的貓咪，也可以讓牠加入你的隊伍，和你一起穿越時空、展開冒險！
                      甚至還有機會在任務過程中成為你的小幫手！
                      """)
+                    .padding()
             }
             
-            Text("貓咪冒險")
-                .font(.title)
-            
-            VStack(alignment: .leading) {
+            Section(header: Text("貓咪冒險").font(.title3)) {
                 HStack {
                     Spacer()
                     
@@ -57,6 +54,8 @@ struct CatView: View {
                     }
                     Spacer()
                 }
+                .padding()
+                
                 Text("""
                      完成主線劇情第一部後，就可以進行貓咪冒險啦！
                      以阿爾德家的貓咪「法路奧」的視角，探索貓咪才能發現的事物。
@@ -70,6 +69,8 @@ struct CatView: View {
                      在探索地圖的過程中，有可能進入貓咪才能發現的隱藏通道，
                      讓貓咪帶領你走進通道，獲得豐厚獎勵吧！
                      """)
+                    .padding()
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows) {
                         ForEach(0 ..< 5) { count in
@@ -80,14 +81,13 @@ struct CatView: View {
                     }
                 }
                 .frame(height: UIScreen.main.bounds.height*0.15)
+                .padding()
             }
             
-            Text("貓咪圖鑑")
-                .font(.title)
-            ScrollView(.vertical) {
+            Section(header: Text("貓咪圖鑑").font(.title3)) {
                 let columns = Array(repeating: GridItem(), count: 3)
-                
-                Section(header: Text("古代")) {
+                    
+                Section(header: HStack{Spacer();Text("古代");Spacer()}) {
                     LazyVGrid(columns: columns) {
                         ForEach(0 ..< ancientCatCount) { count in
                             Image("cat\(count)")
@@ -95,9 +95,10 @@ struct CatView: View {
                                 .scaledToFit()
                         }
                     }
+                    .padding()
                 }
-                
-                Section(header: Text("現代")) {
+                    
+                Section(header: HStack{Spacer();Text("現代");Spacer()}) {
                     LazyVGrid(columns: columns) {
                         Image("法路奧")
                             .resizable()
@@ -108,9 +109,10 @@ struct CatView: View {
                                 .scaledToFit()
                         }
                     }
+                    .padding()
                 }
-                
-                Section(header: Text("未來")) {
+                    
+                Section(header: HStack{Spacer();Text("未來");Spacer()}) {
                     LazyVGrid(columns: columns) {
                         ForEach(modernCatCount ..< futureCatCount) { count in
                             Image("cat\(count)")
@@ -118,10 +120,10 @@ struct CatView: View {
                                 .scaledToFit()
                         }
                     }
+                    .padding()
                 }
             }
         }
-        .padding()
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("貓咪")

@@ -61,6 +61,7 @@ struct StoryView: View {
             }
         }
         .padding(.top, 100)
+        .padding(.bottom, 80)
         .padding(.horizontal, 10)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
@@ -88,7 +89,6 @@ struct StoryBlock: View {
     var body: some View {
         VStack {
             Button(action: {
-                print("story: \(story.name)")
                 if selection.id == story.id {
                     selection = Story.emptyStory
                 }
@@ -119,8 +119,8 @@ struct StoryBlock: View {
                                     .scaledToFit()
                             }
                         }
-                        .frame(width: UIScreen.main.bounds.width*0.6)
                         .tabViewStyle(PageTabViewStyle())
+                        .frame(height: UIScreen.main.bounds.height*0.2)
                     }
                     else {
                         Text("可獲得角色: 無")
@@ -249,7 +249,7 @@ extension Story {
                                    那個人一直在被封閉的庭園裡，暗中操縱著一切。
                                    一切都是為了奪取遺失的睿智之書「庫羅諾斯的報告」.......
                                    """, cooperater: []),
-                               Story(name: "引導的果實與虛像隻迷途羔羊", character: ["瑪娜"], intro:
+                               Story(name: "引導的果實與虛像之迷途羔羊", character: ["瑪娜"], intro:
                                    """
                                    被譽為艾路兹恩最頂級的學園都市IDA學園。
                                    之前一直侵蝕著此地的夢境意識事件，正默默地潜伏起來。

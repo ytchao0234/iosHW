@@ -7,6 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0300D8B02738AA7300D2324A /* 莉維雅.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8AF2738AA7300D2324A /* 莉維雅.mp3 */; };
+		0300D8B92738AAA300D2324A /* VIOLET.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B12738AAA200D2324A /* VIOLET.mp3 */; };
+		0300D8BA2738AAA300D2324A /* 克雷斯.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B22738AAA300D2324A /* 克雷斯.mp3 */; };
+		0300D8BB2738AAA300D2324A /* 薇爾貝特.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B32738AAA300D2324A /* 薇爾貝特.mp3 */; };
+		0300D8BC2738AAA300D2324A /* 由利.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B42738AAA300D2324A /* 由利.mp3 */; };
+		0300D8BD2738AAA300D2324A /* JOKER.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B52738AAA300D2324A /* JOKER.mp3 */; };
+		0300D8BE2738AAA400D2324A /* 蜜樂.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B62738AAA300D2324A /* 蜜樂.mp3 */; };
+		0300D8BF2738AAA400D2324A /* SKULL.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B72738AAA300D2324A /* SKULL.mp3 */; };
+		0300D8C02738AAA400D2324A /* 摩爾加納.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8B82738AAA300D2324A /* 摩爾加納.mp3 */; };
+		0300D8CA2738AAC500D2324A /* 阿爾德.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C12738AAC400D2324A /* 阿爾德.mp3 */; };
+		0300D8CB2738AAC500D2324A /* 莉卡.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C22738AAC400D2324A /* 莉卡.mp3 */; };
+		0300D8CC2738AAC500D2324A /* 基爾德那.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C32738AAC400D2324A /* 基爾德那.mp3 */; };
+		0300D8CD2738AAC500D2324A /* 嘉里德.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C42738AAC500D2324A /* 嘉里德.mp3 */; };
+		0300D8CE2738AAC500D2324A /* 阿露緹娜.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C52738AAC500D2324A /* 阿露緹娜.mp3 */; };
+		0300D8CF2738AAC500D2324A /* 艾米.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C62738AAC500D2324A /* 艾米.mp3 */; };
+		0300D8D02738AAC500D2324A /* 賽勒斯.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C72738AAC500D2324A /* 賽勒斯.mp3 */; };
+		0300D8D12738AAC500D2324A /* 菲妮.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C82738AAC500D2324A /* 菲妮.mp3 */; };
+		0300D8D22738AAC500D2324A /* 海蕾娜.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8C92738AAC500D2324A /* 海蕾娜.mp3 */; };
+		0300D8DB2738AB2000D2324A /* 波波羅.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8D52738AB1F00D2324A /* 波波羅.mp3 */; };
+		0300D8DC2738AB2000D2324A /* 蘇菲婭.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8D62738AB1F00D2324A /* 蘇菲婭.mp3 */; };
+		0300D8DD2738AB2000D2324A /* 紗希.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8D72738AB2000D2324A /* 紗希.mp3 */; };
+		0300D8DE2738AB2000D2324A /* 瑪娜.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8D82738AB2000D2324A /* 瑪娜.mp3 */; };
+		0300D8DF2738AB2000D2324A /* 蒂亞朵拉.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8D92738AB2000D2324A /* 蒂亞朵拉.mp3 */; };
+		0300D8E02738AB2000D2324A /* 謝拉.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8DA2738AB2000D2324A /* 謝拉.mp3 */; };
+		0300D8E52738AB4000D2324A /* 阿佐美.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8E12738AB3F00D2324A /* 阿佐美.mp3 */; };
+		0300D8E62738AB4000D2324A /* 思琳.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8E22738AB3F00D2324A /* 思琳.mp3 */; };
+		0300D8E72738AB4000D2324A /* 賈德.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8E32738AB3F00D2324A /* 賈德.mp3 */; };
+		0300D8E82738AB4000D2324A /* 伽琉.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8E42738AB4000D2324A /* 伽琉.mp3 */; };
 		4B4E2849273281BB0027F88B /* AnotherEdenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E2848273281BB0027F88B /* AnotherEdenApp.swift */; };
 		4B4E284B273281BB0027F88B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E284A273281BB0027F88B /* ContentView.swift */; };
 		4B4E284D273281C50027F88B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B4E284C273281C50027F88B /* Assets.xcassets */; };
@@ -68,6 +96,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0300D8AF2738AA7300D2324A /* 莉維雅.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "莉維雅.mp3"; sourceTree = "<group>"; };
+		0300D8B12738AAA200D2324A /* VIOLET.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VIOLET.mp3; sourceTree = "<group>"; };
+		0300D8B22738AAA300D2324A /* 克雷斯.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "克雷斯.mp3"; sourceTree = "<group>"; };
+		0300D8B32738AAA300D2324A /* 薇爾貝特.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "薇爾貝特.mp3"; sourceTree = "<group>"; };
+		0300D8B42738AAA300D2324A /* 由利.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "由利.mp3"; sourceTree = "<group>"; };
+		0300D8B52738AAA300D2324A /* JOKER.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = JOKER.mp3; sourceTree = "<group>"; };
+		0300D8B62738AAA300D2324A /* 蜜樂.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "蜜樂.mp3"; sourceTree = "<group>"; };
+		0300D8B72738AAA300D2324A /* SKULL.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SKULL.mp3; sourceTree = "<group>"; };
+		0300D8B82738AAA300D2324A /* 摩爾加納.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "摩爾加納.mp3"; sourceTree = "<group>"; };
+		0300D8C12738AAC400D2324A /* 阿爾德.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "阿爾德.mp3"; sourceTree = "<group>"; };
+		0300D8C22738AAC400D2324A /* 莉卡.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "莉卡.mp3"; sourceTree = "<group>"; };
+		0300D8C32738AAC400D2324A /* 基爾德那.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "基爾德那.mp3"; sourceTree = "<group>"; };
+		0300D8C42738AAC500D2324A /* 嘉里德.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "嘉里德.mp3"; sourceTree = "<group>"; };
+		0300D8C52738AAC500D2324A /* 阿露緹娜.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "阿露緹娜.mp3"; sourceTree = "<group>"; };
+		0300D8C62738AAC500D2324A /* 艾米.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "艾米.mp3"; sourceTree = "<group>"; };
+		0300D8C72738AAC500D2324A /* 賽勒斯.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "賽勒斯.mp3"; sourceTree = "<group>"; };
+		0300D8C82738AAC500D2324A /* 菲妮.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "菲妮.mp3"; sourceTree = "<group>"; };
+		0300D8C92738AAC500D2324A /* 海蕾娜.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "海蕾娜.mp3"; sourceTree = "<group>"; };
+		0300D8D52738AB1F00D2324A /* 波波羅.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "波波羅.mp3"; sourceTree = "<group>"; };
+		0300D8D62738AB1F00D2324A /* 蘇菲婭.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "蘇菲婭.mp3"; sourceTree = "<group>"; };
+		0300D8D72738AB2000D2324A /* 紗希.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "紗希.mp3"; sourceTree = "<group>"; };
+		0300D8D82738AB2000D2324A /* 瑪娜.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "瑪娜.mp3"; sourceTree = "<group>"; };
+		0300D8D92738AB2000D2324A /* 蒂亞朵拉.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "蒂亞朵拉.mp3"; sourceTree = "<group>"; };
+		0300D8DA2738AB2000D2324A /* 謝拉.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "謝拉.mp3"; sourceTree = "<group>"; };
+		0300D8E12738AB3F00D2324A /* 阿佐美.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "阿佐美.mp3"; sourceTree = "<group>"; };
+		0300D8E22738AB3F00D2324A /* 思琳.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "思琳.mp3"; sourceTree = "<group>"; };
+		0300D8E32738AB3F00D2324A /* 賈德.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "賈德.mp3"; sourceTree = "<group>"; };
+		0300D8E42738AB4000D2324A /* 伽琉.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "伽琉.mp3"; sourceTree = "<group>"; };
 		4B4E2845273281BB0027F88B /* AnotherEden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnotherEden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4E2848273281BB0027F88B /* AnotherEdenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherEdenApp.swift; sourceTree = "<group>"; };
 		4B4E284A273281BB0027F88B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -141,6 +197,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0300D89A2738A97D00D2324A /* characterVoice */ = {
+			isa = PBXGroup;
+			children = (
+				0300D8E42738AB4000D2324A /* 伽琉.mp3 */,
+				0300D8E22738AB3F00D2324A /* 思琳.mp3 */,
+				0300D8E32738AB3F00D2324A /* 賈德.mp3 */,
+				0300D8E12738AB3F00D2324A /* 阿佐美.mp3 */,
+				0300D8D52738AB1F00D2324A /* 波波羅.mp3 */,
+				0300D8D82738AB2000D2324A /* 瑪娜.mp3 */,
+				0300D8D72738AB2000D2324A /* 紗希.mp3 */,
+				0300D8D92738AB2000D2324A /* 蒂亞朵拉.mp3 */,
+				0300D8D62738AB1F00D2324A /* 蘇菲婭.mp3 */,
+				0300D8DA2738AB2000D2324A /* 謝拉.mp3 */,
+				0300D8C42738AAC500D2324A /* 嘉里德.mp3 */,
+				0300D8C92738AAC500D2324A /* 海蕾娜.mp3 */,
+				0300D8C62738AAC500D2324A /* 艾米.mp3 */,
+				0300D8C22738AAC400D2324A /* 莉卡.mp3 */,
+				0300D8C82738AAC500D2324A /* 菲妮.mp3 */,
+				0300D8C72738AAC500D2324A /* 賽勒斯.mp3 */,
+				0300D8C12738AAC400D2324A /* 阿爾德.mp3 */,
+				0300D8C52738AAC500D2324A /* 阿露緹娜.mp3 */,
+				0300D8C32738AAC400D2324A /* 基爾德那.mp3 */,
+				0300D8B52738AAA300D2324A /* JOKER.mp3 */,
+				0300D8B72738AAA300D2324A /* SKULL.mp3 */,
+				0300D8B12738AAA200D2324A /* VIOLET.mp3 */,
+				0300D8B22738AAA300D2324A /* 克雷斯.mp3 */,
+				0300D8B82738AAA300D2324A /* 摩爾加納.mp3 */,
+				0300D8B42738AAA300D2324A /* 由利.mp3 */,
+				0300D8B32738AAA300D2324A /* 薇爾貝特.mp3 */,
+				0300D8B62738AAA300D2324A /* 蜜樂.mp3 */,
+				0300D8AF2738AA7300D2324A /* 莉維雅.mp3 */,
+			);
+			path = characterVoice;
+			sourceTree = "<group>";
+		};
 		4B4E283C273281BB0027F88B = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +251,7 @@
 		4B4E2847273281BB0027F88B /* AnotherEden */ = {
 			isa = PBXGroup;
 			children = (
+				0300D89A2738A97D00D2324A /* characterVoice */,
 				558B54582737248800F6B834 /* Icons */,
 				55B876232735FEA300F19331 /* 宣傳影片.mp4 */,
 				4B4E2888273403400027F88B /* BGM */,
@@ -304,47 +396,75 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0300D8E82738AB4000D2324A /* 伽琉.mp3 in Resources */,
+				0300D8B02738AA7300D2324A /* 莉維雅.mp3 in Resources */,
 				55B876172735BA1E00F19331 /* Bgm_dungeon_general_bog.mp3 in Resources */,
+				0300D8BD2738AAA300D2324A /* JOKER.mp3 in Resources */,
 				55B8760C2735BA1E00F19331 /* Bgm_main_theme.mp3 in Resources */,
+				0300D8CE2738AAC500D2324A /* 阿露緹娜.mp3 in Resources */,
 				55B876192735BA1E00F19331 /* Bgm_dungeon_general_forest.mp3 in Resources */,
+				0300D8D22738AAC500D2324A /* 海蕾娜.mp3 in Resources */,
 				55B876242735FEA300F19331 /* 宣傳影片.mp4 in Resources */,
 				558B54AC27372A7100F6B834 /* whiteCat@2x.png in Resources */,
 				55B8760B2735BA1E00F19331 /* Bgm_dungeon_general_maze.mp3 in Resources */,
+				0300D8DE2738AB2000D2324A /* 瑪娜.mp3 in Resources */,
 				55B8760E2735BA1E00F19331 /* Bgm_dungeon_beast_castle.mp3 in Resources */,
+				0300D8BE2738AAA400D2324A /* 蜜樂.mp3 in Resources */,
 				55B876032735BA1E00F19331 /* Bgm_town_rattle.mp3 in Resources */,
+				0300D8E52738AB4000D2324A /* 阿佐美.mp3 in Resources */,
 				55B876062735BA1E00F19331 /* Bgm_town_general_modern.mp3 in Resources */,
 				55B876072735BA1E00F19331 /* Bgm_storm.mp3 in Resources */,
+				0300D8CB2738AAC500D2324A /* 莉卡.mp3 in Resources */,
 				55B876042735BA1E00F19331 /* Bgm_dungeon_general_tower.mp3 in Resources */,
 				558B54A827372A7100F6B834 /* americaCurlCat@3x.png in Resources */,
 				55B876142735BA1E00F19331 /* Bgm_town_elgion.mp3 in Resources */,
 				4B4E2850273281C50027F88B /* Preview Assets.xcassets in Resources */,
+				0300D8CC2738AAC500D2324A /* 基爾德那.mp3 in Resources */,
 				558B54AE27372A7100F6B834 /* whiteCat@3x.png in Resources */,
 				4B4E284D273281C50027F88B /* Assets.xcassets in Resources */,
 				55B8760F2735BA1E00F19331 /* Bgm_town_palcifal.mp3 in Resources */,
 				55B8760A2735BA1E00F19331 /* Bgm_dungeon_xeno_domain.mp3 in Resources */,
+				0300D8DF2738AB2000D2324A /* 蒂亞朵拉.mp3 in Resources */,
 				558B54B027372A7100F6B834 /* machineCat@2x.png in Resources */,
 				558B54AB27372A7100F6B834 /* siameseCat@3x.png in Resources */,
 				55B876052735BA1E00F19331 /* Bgm_town_general_ancient.mp3 in Resources */,
+				0300D8D12738AAC500D2324A /* 菲妮.mp3 in Resources */,
 				55B876182735BA1E00F19331 /* Bgm_field_time_forgot.mp3 in Resources */,
 				55B8760D2735BA1E00F19331 /* Bgm_town_baruoky.mp3 in Resources */,
 				55B876092735BA1E00F19331 /* Bgm_dungeon_nadara.mp3 in Resources */,
 				55B876102735BA1E00F19331 /* Bgm_town_baruoky_2.mp3 in Resources */,
+				0300D8E62738AB4000D2324A /* 思琳.mp3 in Resources */,
 				55B876152735BA1E00F19331 /* Bgm_field_ancient.mp3 in Resources */,
 				55B876122735BA1E00F19331 /* Bgm_field_future.mp3 in Resources */,
 				558B54A527372A7100F6B834 /* orangeCat@3x.png in Resources */,
+				0300D8C02738AAA400D2324A /* 摩爾加納.mp3 in Resources */,
+				0300D8BB2738AAA300D2324A /* 薇爾貝特.mp3 in Resources */,
+				0300D8CA2738AAC500D2324A /* 阿爾德.mp3 in Resources */,
+				0300D8DB2738AB2000D2324A /* 波波羅.mp3 in Resources */,
+				0300D8D02738AAC500D2324A /* 賽勒斯.mp3 in Resources */,
+				0300D8CD2738AAC500D2324A /* 嘉里德.mp3 in Resources */,
+				0300D8E02738AB2000D2324A /* 謝拉.mp3 in Resources */,
 				558B54AA27372A7100F6B834 /* orangeCat@2x.png in Resources */,
 				55B876162735BA1E00F19331 /* Bgm_town_raula_dome.mp3 in Resources */,
 				55B8761D2735BF9500F19331 /* Bgm_sad.mp3 in Resources */,
+				0300D8BA2738AAA300D2324A /* 克雷斯.mp3 in Resources */,
 				55B876082735BA1E00F19331 /* Bgm_town_actool.mp3 in Resources */,
 				558B54B127372A7100F6B834 /* calicoCat@2x.png in Resources */,
 				558B54AD27372A7100F6B834 /* tortoiseshellCat@3x.png in Resources */,
+				0300D8BF2738AAA400D2324A /* SKULL.mp3 in Resources */,
 				55B876112735BA1E00F19331 /* Bgm_town_unigan.mp3 in Resources */,
+				0300D8CF2738AAC500D2324A /* 艾米.mp3 in Resources */,
 				558B54A927372A7100F6B834 /* machineCat@3x.png in Resources */,
 				558B54A727372A7100F6B834 /* calicoCat@3x.png in Resources */,
+				0300D8DC2738AB2000D2324A /* 蘇菲婭.mp3 in Resources */,
+				0300D8E72738AB4000D2324A /* 賈德.mp3 in Resources */,
+				0300D8BC2738AAA300D2324A /* 由利.mp3 in Resources */,
 				558B54A627372A7100F6B834 /* americaCurlCat@2x.png in Resources */,
+				0300D8DD2738AB2000D2324A /* 紗希.mp3 in Resources */,
 				55B876132735BA1E00F19331 /* Bgm_field_modern.mp3 in Resources */,
 				558B54AF27372A7100F6B834 /* tortoiseshellCat@2x.png in Resources */,
 				558B54B227372A7100F6B834 /* siameseCat@2x.png in Resources */,
+				0300D8B92738AAA300D2324A /* VIOLET.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

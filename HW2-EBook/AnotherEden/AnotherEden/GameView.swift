@@ -10,6 +10,7 @@ import AVKit
 
 struct GameView: View {
     @Binding var player: AVAudioPlayer?
+    @Binding var currentTime: Double
     
     var body: some View {
         NavigationView {
@@ -24,7 +25,7 @@ struct GameView: View {
                             .padding(.horizontal)
                     })
                 NavigationLink(
-                    destination: CharacterView(),
+                    destination: CharacterView(player: $player, currentTime: $currentTime),
                     label: {
                         Image("character")
                             .resizable()
@@ -33,7 +34,7 @@ struct GameView: View {
                             .padding(.horizontal)
                     })
                 NavigationLink(
-                    destination: MapView(player: $player),
+                    destination: MapView(player: $player, currentTime: $currentTime),
                     label: {
                         Image("map")
                             .resizable()
@@ -56,8 +57,9 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     @State static var player: AVAudioPlayer?
+    @State static var currentTime: Double = 0
     
     static var previews: some View {
-        GameView(player: $player)
+        GameView(player: $player, currentTime: $currentTime)
     }
 }
