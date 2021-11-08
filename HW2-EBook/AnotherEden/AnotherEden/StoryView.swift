@@ -12,7 +12,7 @@ struct StoryView: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            Text("主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線主線")
+            Text("Another Eden 的所有劇情任務都沒有時間限制，而且都有非常精采而完整的故事內容，需要花比較多的時間觀看。完成劇情後，有些劇情中的角色還有可能直接加入隊伍，和你一起繼續冒險！")
                 .font(.caption)
                 .padding()
                 .background(Color.secondary.opacity(0.2))
