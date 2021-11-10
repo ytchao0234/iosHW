@@ -10,10 +10,10 @@ import AVKit
 
 struct CharacterDetailView: View {
     var character: Character
-    @Binding var player: AVAudioPlayer?
-    @Binding var currentTime: Double
+    @Binding var player: AVQueuePlayer
     @State private var show: Bool = false
     @State private var play: Bool = true
+    @State private var currentTime = CMTime.zero
     @State private var timer: Timer?
     
     var body: some View {
@@ -34,22 +34,21 @@ struct CharacterDetailView: View {
                         self.play = !self.play
                         
                         if self.play {
-                            self.player?.play()
+                            self.player.seek(to: .zero)
+                            self.player.play()
                             
                             self.timer?.invalidate()
                             self.timer = Timer.scheduledTimer(
-                                withTimeInterval: Double(self.player!.duration),
+                                withTimeInterval: self.player.currentItem?.asset.duration.seconds ?? 0,
                                 repeats: false,
                                 block: { _ in
                                     self.play = false
-                                    self.player?.stop()
-                                    self.player?.currentTime = 0
+                                    self.player.pause()
                                 }
                             )
                         }
                         else {
-                            self.player?.stop()
-                            self.player?.currentTime = 0
+                            self.player.pause()
                         }
                     }
                     
@@ -100,44 +99,29 @@ struct CharacterDetailView: View {
         .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
         .ignoresSafeArea()
         .onAppear {
-            if character.name != "草人小子", let sound = Bundle.main.url(forResource: character.name, withExtension: "mp3") {
-                do {
-                    self.currentTime = (self.player?.currentTime)!
-                    player?.stop()
-                    try self.player = AVAudioPlayer(contentsOf: sound)
-                    self.player?.numberOfLoops = 0
-                    self.player?.play()
-                    
-                    self.timer?.invalidate()
-                    self.timer = Timer.scheduledTimer(
-                        withTimeInterval: Double(self.player!.duration),
-                        repeats: false,
-                        block: { _ in
-                            self.play = false
-                            self.player?.stop()
-                            self.player?.currentTime = 0
-                        }
-                    )
-                }
-                catch {
-                    print("error: \(error)")
-                }
+            if character.name != "草人小子" {
+                self.player.pause()
+                self.currentTime = self.player.currentTime()
+                self.player.replaceCurrentItem(with: character.voice)
+                self.player.seek(to: .zero)
+                self.player.play()
+
+                self.timer?.invalidate()
+                self.timer = Timer.scheduledTimer(
+                    withTimeInterval: self.player.currentItem?.asset.duration.seconds ?? 0,
+                    repeats: false,
+                    block: { _ in
+                        self.play = false
+                        self.player.pause()
+                    }
+                )
             }
         }
         .onDisappear {
-            if character.name != "草人小子", let sound = Bundle.main.url(forResource: "Bgm_main_theme", withExtension: "mp3") {
-                do {
-                    self.player?.stop()
-                    try self.player = AVAudioPlayer(contentsOf: sound)
-                    self.player?.numberOfLoops = .max
-                    self.player?.volume = 0.2
-                    self.player?.currentTime = self.currentTime
-                    self.player?.play()
-                }
-                catch {
-                    print("error: \(error)")
-                }
-            }
+            self.player.pause()
+            self.player.replaceCurrentItem(with: BGM)
+            self.player.seek(to: self.currentTime)
+            self.player.play()
         }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
@@ -148,12 +132,11 @@ struct CharacterDetailView: View {
 }
 
 struct CharacterDetailView_Previews: PreviewProvider {
-    @State static var player: AVAudioPlayer?
-    @State static var currentTime: Double = 0
+    @State static var player = AVQueuePlayer()
     
     static var previews: some View {
 //        NavigationView {
-        CharacterDetailView(character: Character.main.first!, player: $player, currentTime: $currentTime)
+        CharacterDetailView(character: Character.main.first!, player: $player)
 //        }
     }
 }

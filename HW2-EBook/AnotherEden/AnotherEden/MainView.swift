@@ -9,7 +9,7 @@ import SwiftUI
 import AVKit
 
 struct MainView: View {
-    @Binding var player: AVAudioPlayer?
+    @Binding var player: AVQueuePlayer
     @State private var videoPlayer = AVPlayer(url: Bundle.main.url(forResource: "宣傳影片", withExtension: "mp4")!)
     @State private var timeControlObservation: NSKeyValueObservation?
     
@@ -28,16 +28,16 @@ struct MainView: View {
                             options: [.old, .new]
                         ) { (player, change) in
                             if videoPlayer.timeControlStatus.rawValue == 0 {
-                                self.player?.play()
+                                self.player.play()
                             }
                             else if videoPlayer.timeControlStatus.rawValue == 2 {
-                                self.player?.pause()
+                                self.player.pause()
                             }
                         }
                     }
                     .onDisappear {
                         videoPlayer.pause()
-                        self.player?.play()
+                        self.player.play()
                     }
                 
                 HStack {
@@ -83,7 +83,7 @@ struct MainView: View {
 }
 
 struct MainView_Previews: PreviewProvider {
-    @State static var player: AVAudioPlayer?
+    @State static var player = AVQueuePlayer()
     
     static var previews: some View {
         MainView(player: $player)

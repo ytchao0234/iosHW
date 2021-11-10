@@ -10,8 +10,7 @@ import AVKit
 
 struct MapDetailView: View {
     var map: Map
-    @Binding var player: AVAudioPlayer?
-    @Binding var currentTime: Double
+    @Binding var player: AVQueuePlayer
     @State private var show: Bool = false
     
     var body: some View {
@@ -39,34 +38,16 @@ struct MapDetailView: View {
         .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
         .ignoresSafeArea()
         .onAppear {
-            if let sound = Bundle.main.url(forResource: map.music, withExtension: "mp3") {
-                do {
-                    self.currentTime = (self.player?.currentTime)!
-                    player?.stop()
-                    try self.player = AVAudioPlayer(contentsOf: sound)
-                    self.player?.numberOfLoops = .max
-                    self.player?.volume = 0.5
-                    self.player?.play()
-                }
-                catch {
-                    print("error: \(error)")
-                }
-            }
+            self.player.pause()
+            self.player.replaceCurrentItem(with: map.music)
+            self.player.seek(to: .zero)
+            self.player.play()
+            
         }
         .onDisappear {
-            if let sound = Bundle.main.url(forResource: "Bgm_main_theme", withExtension: "mp3") {
-                do {
-                    self.player?.stop()
-                    try self.player = AVAudioPlayer(contentsOf: sound)
-                    self.player?.numberOfLoops = .max
-                    self.player?.volume = 0.2
-                    self.player?.currentTime = self.currentTime
-                    self.player?.play()
-                }
-                catch {
-                    print("error: \(error)")
-                }
-            }
+            self.player.pause()
+            self.player.replaceCurrentItem(with: BGM)
+            self.player.play()
         }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
@@ -77,10 +58,9 @@ struct MapDetailView: View {
 }
 
 struct MapDetailView_Previews: PreviewProvider {
-    @State static var player: AVAudioPlayer?
-    @State static var currentTime: Double = 0
+    @State static var player = AVQueuePlayer()
     
     static var previews: some View {
-        MapDetailView(map: Map.defaultMap, player: $player, currentTime: $currentTime)
+        MapDetailView(map: Map.defaultMap, player: $player)
     }
 }

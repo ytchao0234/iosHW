@@ -9,8 +9,7 @@ import SwiftUI
 import AVKit
 
 struct AncientMap: View {
-    @Binding var player: AVAudioPlayer?
-    @Binding var currentTime: Double
+    @Binding var player:  AVQueuePlayer
     
     var body: some View {
         VStack {
@@ -30,7 +29,7 @@ struct AncientMap: View {
             
             VStack {
                 NavigationLink(
-                    destination: MapDetailView(map: Map.defaultMap, player: $player, currentTime: $currentTime),
+                    destination: MapDetailView(map: Map.defaultMap, player: $player),
                     label: {
                         MapBlock(map: Map.defaultMap)
                             .frame(width: UIScreen.main.bounds.width*0.12, height: UIScreen.main.bounds.width*0.12)
@@ -38,46 +37,46 @@ struct AncientMap: View {
                 VStack {
                     HStack {
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[0], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[0], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[0])
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[1], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[1], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[1])
                                     .frame(width: UIScreen.main.bounds.width*0.3)
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[2], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[2], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[2])
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[3], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[3], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[3])
                             })
                     }
                     HStack {
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[4], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[4], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[4])
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[5], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[5], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[5])
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[6], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[6], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[6])
                                     .frame(width: UIScreen.main.bounds.width*0.3)
                             })
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[7], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[7], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[7])
                             })
@@ -86,35 +85,35 @@ struct AncientMap: View {
                         VStack {
                             HStack {
                                 NavigationLink(
-                                    destination: MapDetailView(map: Map.ancient[8], player: $player, currentTime: $currentTime),
+                                    destination: MapDetailView(map: Map.ancient[8], player: $player),
                                     label: {
                                         MapBlock(map: Map.ancient[8])
                                             .frame(width: UIScreen.main.bounds.width*0.25)
                                     })
                                 NavigationLink(
-                                    destination: MapDetailView(map: Map.ancient[9], player: $player, currentTime: $currentTime),
+                                    destination: MapDetailView(map: Map.ancient[9], player: $player),
                                     label: {
                                         MapBlock(map: Map.ancient[9])
                                     })
                                 NavigationLink(
-                                    destination: MapDetailView(map: Map.ancient[10], player: $player, currentTime: $currentTime),
+                                    destination: MapDetailView(map: Map.ancient[10], player: $player),
                                     label: {
                                         MapBlock(map: Map.ancient[10])
                                     })
                             }
                             HStack {
                                 NavigationLink(
-                                    destination: MapDetailView(map: Map.ancient[11], player: $player, currentTime: $currentTime),
+                                    destination: MapDetailView(map: Map.ancient[11], player: $player),
                                     label: {
                                         MapBlock(map: Map.ancient[11])
                                     })
                                 NavigationLink(
-                                    destination: MapDetailView(map: Map.ancient[12], player: $player, currentTime: $currentTime),
+                                    destination: MapDetailView(map: Map.ancient[12], player: $player),
                                     label: {
                                         MapBlock(map: Map.ancient[12])
                                     })
                                 NavigationLink(
-                                    destination: MapDetailView(map: Map.ancient[13], player: $player, currentTime: $currentTime),
+                                    destination: MapDetailView(map: Map.ancient[13], player: $player),
                                     label: {
                                         MapBlock(map: Map.ancient[13])
                                     })
@@ -124,7 +123,7 @@ struct AncientMap: View {
                         .frame(width: UIScreen.main.bounds.width*0.65)
                         
                         NavigationLink(
-                            destination: MapDetailView(map: Map.ancient[14], player: $player, currentTime: $currentTime),
+                            destination: MapDetailView(map: Map.ancient[14], player: $player),
                             label: {
                                 MapBlock(map: Map.ancient[14])
                             })
@@ -139,12 +138,12 @@ struct AncientMap: View {
 }
 
 struct AncientMap_Previews: PreviewProvider {
-    @State static var player: AVAudioPlayer?
+    @State static var player = AVQueuePlayer()
     @State static var currentTime: Double = 0
     
     static var previews: some View {
         NavigationView {
-            AncientMap(player: $player, currentTime: $currentTime)
+            AncientMap(player: $player)
         }
     }
 }

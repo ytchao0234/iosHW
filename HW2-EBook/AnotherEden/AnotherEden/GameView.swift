@@ -9,8 +9,7 @@ import SwiftUI
 import AVKit
 
 struct GameView: View {
-    @Binding var player: AVAudioPlayer?
-    @Binding var currentTime: Double
+    @Binding var player: AVQueuePlayer
     
     var body: some View {
         NavigationView {
@@ -39,7 +38,7 @@ struct GameView: View {
                         .cornerRadius(10)
                 ) {
                     NavigationLink(
-                        destination: CharacterView(player: $player, currentTime: $currentTime),
+                        destination: CharacterView(player: $player),
                         label: {
                             Image("character")
                                 .resizable()
@@ -55,7 +54,7 @@ struct GameView: View {
                         .cornerRadius(10)
                 ) {
                     NavigationLink(
-                        destination: MapView(player: $player, currentTime: $currentTime),
+                        destination: MapView(player: $player),
                         label: {
                             Image("map")
                                 .resizable()
@@ -78,10 +77,9 @@ struct GameView: View {
 }
 
 struct GameView_Previews: PreviewProvider {
-    @State static var player: AVAudioPlayer?
-    @State static var currentTime: Double = 0
+    @State static var player = AVQueuePlayer()
     
     static var previews: some View {
-        GameView(player: $player, currentTime: $currentTime)
+        GameView(player: $player)
     }
 }

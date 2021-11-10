@@ -8,9 +8,11 @@
 import SwiftUI
 import AVKit
 
+let BGM: AVPlayerItem = AVPlayerItem(url: Bundle.main.url(forResource: "Bgm_main_theme", withExtension: "mp3")!)
+
 struct ContentView: View {
-    @State var player: AVAudioPlayer?
-    @State var currentTime: Double = 0
+    @State var player = AVQueuePlayer()
+    @State var looper: AVPlayerLooper?
     
     var body: some View {
         TabView {
@@ -18,28 +20,19 @@ struct ContentView: View {
                 .tabItem {
                     Label("主頁", systemImage: "house.fill")
                 }
-            GameView(player: $player, currentTime: $currentTime)
-                .tabItem {
-                    Label("遊戲", systemImage: "gamecontroller.fill")
-                }
+//            GameView(player: $player)
+//                .tabItem {
+//                    Label("遊戲", systemImage: "gamecontroller.fill")
+//                }
             ChillView()
                 .tabItem {
                     Label("休閒", systemImage: "gift.fill")
                 }
         }
         .onAppear {
-            if let sound = Bundle.main.url(forResource: "Bgm_main_theme", withExtension: "mp3") {
-                do {
-                    self.player?.stop()
-                    self.player?.currentTime = self.currentTime
-                    try self.player = AVAudioPlayer(contentsOf: sound)
-                    self.player?.numberOfLoops = .max
-                    self.player?.volume = 0.2
-                    self.player?.play()
-                }
-                catch {
-                    print("error: \(error)")
-                }
+            if self.looper == nil {
+                self.looper = AVPlayerLooper(player: self.player, templateItem: BGM)
+                self.player.play()
             }
         }
     }
