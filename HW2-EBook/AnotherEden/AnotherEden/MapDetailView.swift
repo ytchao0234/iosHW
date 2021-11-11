@@ -27,7 +27,7 @@ struct MapDetailView: View {
                             .scaledToFit()
                             .opacity(show ? 1: 0)
                             .scaleEffect(show ? 1: 0.3)
-                            .animation(.easeInOut(duration: 1), value: show)
+                            .animation(.easeInOut(duration: 0.8), value: show)
                             .onAppear {
                                 show = true
                             }

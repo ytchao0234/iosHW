@@ -42,7 +42,7 @@ struct FishView: View {
             
             Section(header: Text("釣魚圖鑑")
                         .font(.custom("Yuppy TC Regular", size: 22))) {
-                let columns = [GridItem(.adaptive(minimum: 50))]
+                let columns = [GridItem(.adaptive(minimum: 65))]
                 
                 LazyVGrid(columns: columns) {
                     ForEach(0 ..< fishCount) { count in
