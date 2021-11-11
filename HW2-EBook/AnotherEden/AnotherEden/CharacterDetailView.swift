@@ -16,6 +16,10 @@ struct CharacterDetailView: View {
     @State private var currentTime = CMTime.zero
     @State private var timer: Timer?
     
+    private var scaleAndRotateAndOpacity: AnyTransition {
+        .scale(scale: 0.1).combined(with: .modifier(active: RotateModifier(amount: 90), identity: RotateModifier(amount: 0))).combined(with: .opacity)
+    }
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1))
@@ -23,49 +27,49 @@ struct CharacterDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 ZStack(alignment: .bottomLeading) {
-                    Image(character.name)
-                        .resizable()
-                        .scaledToFit()
-                        .opacity(show ? 1: 0)
-                        .scaleEffect(show ? 1: 0.1)
-                        .rotationEffect(show ? .zero : Angle(degrees: 90))
-                        .animation(.easeInOut(duration: 1), value: show)
-                        .onAppear {
-                            show = true
-                        }
-                    Button(action: {
-                        if character.name != "草人小子" {
-                            self.play = !self.play
-                            
-                            if self.play {
-                                self.player.seek(to: .zero)
-                                self.player.play()
+                    if show {
+                        Image(character.name)
+                            .resizable()
+                            .scaledToFit()
+                            .transition(scaleAndRotateAndOpacity)
+                        Button(action: {
+                            if character.name != "草人小子" {
+                                self.play = !self.play
                                 
-                                self.timer?.invalidate()
-                                self.timer = Timer.scheduledTimer(
-                                    withTimeInterval: self.player.currentItem?.asset.duration.seconds ?? 0,
-                                    repeats: false,
-                                    block: { _ in
-                                        self.play = false
-                                        self.player.pause()
-                                    }
-                                )
+                                if self.play {
+                                    self.player.seek(to: .zero)
+                                    self.player.play()
+                                    
+                                    self.timer?.invalidate()
+                                    self.timer = Timer.scheduledTimer(
+                                        withTimeInterval: self.player.currentItem?.asset.duration.seconds ?? 0,
+                                        repeats: false,
+                                        block: { _ in
+                                            self.play = false
+                                            self.player.pause()
+                                        }
+                                    )
+                                }
+                                else {
+                                    self.player.pause()
+                                }
+                            }
+                            
+                        }, label: {
+                            if character.name != "草人小子" {
+                                Image(systemName: play ? "stop.circle" : "play.circle")
                             }
                             else {
-                                self.player.pause()
+                                Text("無語音")
+                                    .font(.caption)
                             }
-                        }
-                        
-                    }, label: {
-                        if character.name != "草人小子" {
-                            Image(systemName: play ? "stop.circle" : "play.circle")
-                        }
-                        else {
-                            Text("無語音")
-                                .font(.caption)
-                        }
-                    })
-                    .offset(y: 25)
+                        })
+                        .offset(y: 25)
+                    }
+                }
+                .animation(.easeInOut(duration: 1), value: show)
+                .onAppear {
+                    show = true
                 }
                 VStack {
                     HStack {
@@ -139,8 +143,17 @@ struct CharacterDetailView_Previews: PreviewProvider {
     @State static var player = AVQueuePlayer()
     
     static var previews: some View {
-//        NavigationView {
-        CharacterDetailView(character: Character.main.first!, player: $player)
-//        }
+        NavigationView {
+            CharacterDetailView(character: Character.main.first!, player: $player)
+        }
+    }
+}
+
+struct RotateModifier: ViewModifier {
+    let amount: Double
+    
+    func body(content: Content) -> some View {
+        content
+            .rotationEffect(Angle(degrees: amount))
     }
 }
