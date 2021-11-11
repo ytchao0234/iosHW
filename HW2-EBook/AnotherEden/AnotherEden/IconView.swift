@@ -42,6 +42,7 @@ struct IconView: View {
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("App Icon")
+                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
     }

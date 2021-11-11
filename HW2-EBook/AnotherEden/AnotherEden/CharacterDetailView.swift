@@ -74,6 +74,7 @@ struct CharacterDetailView: View {
                 VStack {
                     HStack {
                         Text(character.name)
+                            .font(.custom("Yuppy TC Regular", size: 18))
                         
                         if character.time != "" {
                             Image(character.time + "icon")
@@ -83,7 +84,7 @@ struct CharacterDetailView: View {
                         }
                     }
                     Text("CV: " + character.cv)
-                        .font(.caption)
+                        .font(.custom("Yuppy TC Regular", size: 12))
                 }
                 .padding(.bottom)
 
@@ -94,10 +95,11 @@ struct CharacterDetailView: View {
                         .frame(width: UIScreen.main.bounds.width*0.6)
 
                     Text("劇情故事: " + character.story)
-                        .font(.caption)
+                        .font(.custom("Yuppy TC Regular", size: 12))
                 }
 
                 Text(character.intro)
+                    .font(.custom("Yuppy TC Regular", size: 18))
                     .padding()
             }
             .padding()
@@ -133,6 +135,7 @@ struct CharacterDetailView: View {
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text(character.name)
+                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
         .navigationBarTitleDisplayMode(.inline)

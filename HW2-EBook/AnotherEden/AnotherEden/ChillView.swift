@@ -17,6 +17,7 @@ struct ChillView: View {
                 VStack {
                     Section(header:
                         Text("貓咪")
+                            .font(.custom("Yuppy TC Regular", size: 14))
                             .padding(.vertical, 3)
                             .frame(minWidth:0, maxWidth: .infinity)
                             .background(Color.gray)
@@ -34,6 +35,7 @@ struct ChillView: View {
                     
                     Section(header:
                         Text("釣魚")
+                            .font(.custom("Yuppy TC Regular", size: 14))
                             .padding(.vertical, 3)
                             .frame(minWidth:0, maxWidth: .infinity)
                             .background(Color.gray)
@@ -54,6 +56,7 @@ struct ChillView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     Text("休閒")
+                        .font(.custom("Yuppy TC Regular", size: 18))
                 }
             })
             .navigationBarTitleDisplayMode(.inline)

@@ -17,7 +17,8 @@ struct CatView: View {
         let rows = [GridItem()]
         
         List {
-            Section(header: Text("簡介").font(.title3)) {
+            Section(header: Text("簡介")
+                        .font(.custom("Yuppy TC Regular", size: 22))) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows) {
                         ForEach(0 ..< 5) { count in
@@ -36,10 +37,12 @@ struct CatView: View {
                      遇到喜歡的貓咪，也可以讓牠加入你的隊伍，和你一起穿越時空、展開冒險！
                      甚至還有機會在任務過程中成為你的小幫手！
                      """)
+                    .font(.custom("Yuppy TC Regular", size: 18))
                     .padding()
             }
             
-            Section(header: Text("貓咪冒險").font(.title3)) {
+            Section(header: Text("貓咪冒險")
+                        .font(.custom("Yuppy TC Regular", size: 22))) {
                 HStack {
                     Spacer()
                     
@@ -50,11 +53,11 @@ struct CatView: View {
                             .cornerRadius(10)
                             .frame(height: UIScreen.main.bounds.height*0.1)
                         Text("法路奧")
-                            .font(.caption2)
+                            .font(.custom("Yuppy TC Regular", size: 12))
                     }
                     Spacer()
                 }
-                .padding()
+                .padding(.top)
                 
                 Text("""
                      完成主線劇情第一部後，就可以進行貓咪冒險啦！
@@ -69,6 +72,7 @@ struct CatView: View {
                      在探索地圖的過程中，有可能進入貓咪才能發現的隱藏通道，
                      讓貓咪帶領你走進通道，獲得豐厚獎勵吧！
                      """)
+                    .font(.custom("Yuppy TC Regular", size: 18))
                     .padding()
                 
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -84,10 +88,17 @@ struct CatView: View {
                 .padding()
             }
             
-            Section(header: Text("貓咪圖鑑").font(.title3)) {
-                let columns = Array(repeating: GridItem(), count: 3)
+            Section(header: Text("貓咪圖鑑")
+                        .font(.custom("Yuppy TC Regular", size: 22))) {
+                let columns = [GridItem(.adaptive(minimum: 80))]
                     
-                Section(header: HStack{Spacer();Text("古代");Spacer()}) {
+                Section(header:
+                    HStack{
+                        Spacer()
+                        Text("古代")
+                            .font(.custom("Yuppy TC Regular", size: 18))
+                        Spacer()
+                }) {
                     LazyVGrid(columns: columns) {
                         ForEach(0 ..< ancientCatCount) { count in
                             Image("cat\(count)")
@@ -98,7 +109,13 @@ struct CatView: View {
                     .padding()
                 }
                     
-                Section(header: HStack{Spacer();Text("現代");Spacer()}) {
+                Section(header:
+                    HStack{
+                        Spacer()
+                        Text("現代")
+                            .font(.custom("Yuppy TC Regular", size: 18))
+                        Spacer()
+                }) {
                     LazyVGrid(columns: columns) {
                         Image("法路奧")
                             .resizable()
@@ -112,7 +129,13 @@ struct CatView: View {
                     .padding()
                 }
                     
-                Section(header: HStack{Spacer();Text("未來");Spacer()}) {
+                Section(header:
+                    HStack{
+                        Spacer()
+                        Text("未來")
+                            .font(.custom("Yuppy TC Regular", size: 18))
+                        Spacer()
+                }) {
                     LazyVGrid(columns: columns) {
                         ForEach(modernCatCount ..< futureCatCount) { count in
                             Image("cat\(count)")
@@ -127,6 +150,7 @@ struct CatView: View {
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("貓咪")
+                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
         .navigationBarTitleDisplayMode(.inline)

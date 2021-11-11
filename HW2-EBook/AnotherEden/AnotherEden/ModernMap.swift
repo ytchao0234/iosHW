@@ -21,7 +21,7 @@ struct ModernMap: View {
                 }
                 .padding(0.3)
                 Text("Another Eden 的美術和音樂都非常精緻，每一張地圖都有各自的場景和音樂。根據任務進度不同，每次和 NPC 對話都有可能聽到不同的內容，也可以到地圖的各個角落尋找隱藏彩蛋哦！")
-                    .font(.caption)
+                    .font(.custom("Yuppy TC Regular", size: 14))
             }
             .padding()
             .background(Color.secondary.opacity(0.2))

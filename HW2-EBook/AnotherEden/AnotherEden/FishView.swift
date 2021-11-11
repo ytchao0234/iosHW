@@ -13,7 +13,8 @@ struct FishView: View {
     
     var body: some View {
         List {
-            Section(header: Text("簡介").font(.title3)) {
+            Section(header: Text("簡介")
+                        .font(.custom("Yuppy TC Regular", size: 22))) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     let rows = [GridItem()]
                     LazyHGrid(rows: rows) {
@@ -35,11 +36,13 @@ struct FishView: View {
                      暫時離開戰鬥，慢下來享受釣魚的時光，慢慢提升釣魚成就與釣具等級。
                      在釣到越來越多的魚之後，說不定會有意想不到的成果哦！
                      """)
+                    .font(.custom("Yuppy TC Regular", size: 18))
                     .padding()
             }
             
-            Section(header: Text("釣魚圖鑑").font(.title3)) {
-                let columns = Array(repeating: GridItem(), count: 4)
+            Section(header: Text("釣魚圖鑑")
+                        .font(.custom("Yuppy TC Regular", size: 22))) {
+                let columns = [GridItem(.adaptive(minimum: 50))]
                 
                 LazyVGrid(columns: columns) {
                     ForEach(0 ..< fishCount) { count in
@@ -54,6 +57,7 @@ struct FishView: View {
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("釣魚")
+                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
         .navigationBarTitleDisplayMode(.inline)

@@ -31,6 +31,7 @@ struct MapView: View {
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("地圖")
+                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
         .navigationBarTitleDisplayMode(.inline)

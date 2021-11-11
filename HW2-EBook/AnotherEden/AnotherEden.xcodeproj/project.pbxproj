@@ -35,6 +35,7 @@
 		0300D8E62738AB4000D2324A /* 思琳.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8E22738AB3F00D2324A /* 思琳.mp3 */; };
 		0300D8E72738AB4000D2324A /* 賈德.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8E32738AB3F00D2324A /* 賈德.mp3 */; };
 		0300D8E82738AB4000D2324A /* 伽琉.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0300D8E42738AB4000D2324A /* 伽琉.mp3 */; };
+		03C3F191273D9E330097E0D0 /* YuppyTC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 03C3F190273D9E320097E0D0 /* YuppyTC-Regular.otf */; };
 		4B4E2849273281BB0027F88B /* AnotherEdenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E2848273281BB0027F88B /* AnotherEdenApp.swift */; };
 		4B4E284B273281BB0027F88B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E284A273281BB0027F88B /* ContentView.swift */; };
 		4B4E284D273281C50027F88B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B4E284C273281C50027F88B /* Assets.xcassets */; };
@@ -45,7 +46,6 @@
 		4B4E28632733C4680027F88B /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E28622733C4680027F88B /* StoryView.swift */; };
 		4B4E28662733C4840027F88B /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E28652733C4840027F88B /* CharacterView.swift */; };
 		4B4E28692733C4940027F88B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E28682733C4940027F88B /* MapView.swift */; };
-		4B4E286C2733C4A20027F88B /* DungeonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E286B2733C4A20027F88B /* DungeonView.swift */; };
 		4B4E286F2733C4C00027F88B /* CatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E286E2733C4C00027F88B /* CatView.swift */; };
 		4B4E28722733C4D10027F88B /* FishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E28712733C4D10027F88B /* FishView.swift */; };
 		4B4E28782733CE8A0027F88B /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E28772733CE8A0027F88B /* CharacterDetailView.swift */; };
@@ -124,6 +124,7 @@
 		0300D8E22738AB3F00D2324A /* 思琳.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "思琳.mp3"; sourceTree = "<group>"; };
 		0300D8E32738AB3F00D2324A /* 賈德.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "賈德.mp3"; sourceTree = "<group>"; };
 		0300D8E42738AB4000D2324A /* 伽琉.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "伽琉.mp3"; sourceTree = "<group>"; };
+		03C3F190273D9E320097E0D0 /* YuppyTC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "YuppyTC-Regular.otf"; path = "Exported Fonts/Yuppy TC/YuppyTC-Regular.otf"; sourceTree = "<group>"; };
 		4B4E2845273281BB0027F88B /* AnotherEden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnotherEden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4E2848273281BB0027F88B /* AnotherEdenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherEdenApp.swift; sourceTree = "<group>"; };
 		4B4E284A273281BB0027F88B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,7 +137,6 @@
 		4B4E28622733C4680027F88B /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		4B4E28652733C4840027F88B /* CharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 		4B4E28682733C4940027F88B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		4B4E286B2733C4A20027F88B /* DungeonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DungeonView.swift; sourceTree = "<group>"; };
 		4B4E286E2733C4C00027F88B /* CatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatView.swift; sourceTree = "<group>"; };
 		4B4E28712733C4D10027F88B /* FishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishView.swift; sourceTree = "<group>"; };
 		4B4E28772733CE8A0027F88B /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
@@ -251,6 +251,7 @@
 		4B4E2847273281BB0027F88B /* AnotherEden */ = {
 			isa = PBXGroup;
 			children = (
+				03C3F190273D9E320097E0D0 /* YuppyTC-Regular.otf */,
 				0300D89A2738A97D00D2324A /* characterVoice */,
 				558B54582737248800F6B834 /* Icons */,
 				55B876232735FEA300F19331 /* 宣傳影片.mp4 */,
@@ -262,7 +263,6 @@
 				4B4E287D2733DB6D0027F88B /* ModernMap.swift */,
 				4B4E28802733DB7C0027F88B /* FutureMap.swift */,
 				4B4E28842733FE3F0027F88B /* MapDetailView.swift */,
-				4B4E286B2733C4A20027F88B /* DungeonView.swift */,
 				4B4E286E2733C4C00027F88B /* CatView.swift */,
 				4B4E28712733C4D10027F88B /* FishView.swift */,
 				4B4E28622733C4680027F88B /* StoryView.swift */,
@@ -459,6 +459,7 @@
 				0300D8DC2738AB2000D2324A /* 蘇菲婭.mp3 in Resources */,
 				0300D8E72738AB4000D2324A /* 賈德.mp3 in Resources */,
 				0300D8BC2738AAA300D2324A /* 由利.mp3 in Resources */,
+				03C3F191273D9E330097E0D0 /* YuppyTC-Regular.otf in Resources */,
 				558B54A627372A7100F6B834 /* americaCurlCat@2x.png in Resources */,
 				0300D8DD2738AB2000D2324A /* 紗希.mp3 in Resources */,
 				55B876132735BA1E00F19331 /* Bgm_field_modern.mp3 in Resources */,
@@ -475,7 +476,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B4E286C2733C4A20027F88B /* DungeonView.swift in Sources */,
 				4B4E28632733C4680027F88B /* StoryView.swift in Sources */,
 				4B4E28692733C4940027F88B /* MapView.swift in Sources */,
 				4B4E28812733DB7C0027F88B /* FutureMap.swift in Sources */,

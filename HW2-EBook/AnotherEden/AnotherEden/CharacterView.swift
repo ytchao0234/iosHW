@@ -16,12 +16,15 @@ struct CharacterView: View {
     var body: some View {
         List {
             Text("在 Another Eden 裡，就算不用抽卡也能拿到非常多的角色。包含主角群、邂逅角、外傳角、協奏角以及一些特殊角色，都是在完成劇情任務後就會漸漸加入隊伍。其中邂逅角為特殊連續戰鬥任務獲得、外傳角為支線劇情任務獲得、協奏角為合作活動任務獲得。")
-                .font(.caption)
+                .font(.custom("Yuppy TC Regular", size: 14))
                 .padding()
                 .background(Color.secondary.opacity(0.2))
                 .cornerRadius(10)
             ForEach(0 ..< sections.count) { order in
-                Section(header: Text(sections[order])) {
+                Section(header:
+                    Text(sections[order])
+                        .font(.custom("Yuppy TC Regular", size: 14))
+                ) {
                     ForEach(sectionContents[order]) { character in
                         NavigationLink(
                             destination: CharacterDetailView(character: character, player: $player),
@@ -35,6 +38,7 @@ struct CharacterView: View {
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("角色")
+                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
         .navigationBarTitleDisplayMode(.inline)
@@ -65,6 +69,7 @@ struct CharacterRow: View {
                 .overlay(Circle().stroke(Color.gray))
                 .padding(.trailing)
             Text(character.name)
+                .font(.custom("Yuppy TC Regular", size: 18))
             Spacer()
             
             if character.time != "" {

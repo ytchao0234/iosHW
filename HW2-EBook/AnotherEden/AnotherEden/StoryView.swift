@@ -17,17 +17,18 @@ struct StoryView: View {
                 .ignoresSafeArea()
             ScrollView(.vertical) {
                 Text("Another Eden 的所有劇情任務都沒有時間限制，而且都有非常精采而完整的故事內容，需要花比較多的時間觀看。完成劇情後，有些劇情中的角色還有可能直接加入隊伍，和你一起繼續冒險！")
-                    .font(.caption)
+                    .font(.custom("Yuppy TC Regular", size: 14))
                     .padding()
                     .background(Color.secondary.opacity(0.2))
                     .cornerRadius(10)
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
                     Section(header:
-                                Text("主線")
-                                    .padding(.vertical, 3)
-                                    .frame(minWidth:0, maxWidth: .infinity)
-                                    .background(Color.gray)
-                                    .cornerRadius(10)
+                        Text("主線")
+                            .font(.custom("Yuppy TC Regular", size: 14))
+                            .padding(.vertical, 3)
+                            .frame(minWidth:0, maxWidth: .infinity)
+                            .background(Color.gray)
+                            .cornerRadius(10)
                     ) {
                         StoryBlock(selection: $selection, story: Story.defaultStory)
                             .padding(.bottom, 1)
@@ -36,11 +37,12 @@ struct StoryView: View {
                 
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
                     Section(header:
-                                Text("外傳")
-                                    .padding(.vertical, 3)
-                                    .frame(minWidth:0, maxWidth: .infinity)
-                                    .background(Color.gray)
-                                    .cornerRadius(10)
+                        Text("外傳")
+                            .font(.custom("Yuppy TC Regular", size: 14))
+                            .padding(.vertical, 3)
+                            .frame(minWidth:0, maxWidth: .infinity)
+                            .background(Color.gray)
+                            .cornerRadius(10)
                     ) {
                         ForEach(Story.anthoerStory) { story in
                             StoryBlock(selection: $selection, story: story)
@@ -51,11 +53,12 @@ struct StoryView: View {
                 
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
                     Section(header:
-                                Text("協奏")
-                                    .padding(.vertical, 3)
-                                    .frame(minWidth:0, maxWidth: .infinity)
-                                    .background(Color.gray)
-                                    .cornerRadius(10)
+                        Text("協奏")
+                            .font(.custom("Yuppy TC Regular", size: 14))
+                            .padding(.vertical, 3)
+                            .frame(minWidth:0, maxWidth: .infinity)
+                            .background(Color.gray)
+                            .cornerRadius(10)
                     ) {
                         ForEach(Story.cooperate) { story in
                             StoryBlock(selection: $selection, story: story)
@@ -85,7 +88,8 @@ struct StoryBlock: View {
     @Binding var selection: Story
     var story: Story
     
-    @State private var hidden: Bool = true
+    @State private var show: Bool = false
+    @State private var showIntro: Bool = false
     
     var body: some View {
         VStack {
@@ -96,21 +100,25 @@ struct StoryBlock: View {
                 else {
                     selection = story
                 }
+                
+                withAnimation(.easeInOut(duration: 0.8)) {
+                    showIntro.toggle()
+                }
             }, label: {
                 Image(story.name)
                     .resizable()
                     .scaledToFit()
-                    .offset(y: hidden ? -50: 0)
-                    .opacity(hidden ? 0: 1)
-                    .animation(.easeInOut(duration: 1.5), value: hidden)
                     .cornerRadius(10)
             })
+            .offset(y: show ? 0: -50)
+            .opacity(show ? 1: 0)
+            .animation(.easeInOut(duration: 0.8), value: show)
             
-            VStack {
-                if selection.id == story.id {
+            if showIntro && selection.id == story.id {
+                VStack {
                     if story.character.count > 0 {
                         Text("可獲得角色: " + story.character.joined(separator: ", "))
-                            .font(.caption)
+                            .font(.custom("Yuppy TC Regular", size: 12))
                             .padding(.horizontal, 20)
                     
                         TabView {
@@ -125,25 +133,26 @@ struct StoryBlock: View {
                     }
                     else {
                         Text("可獲得角色: 無")
-                            .font(.caption)
+                            .font(.custom("Yuppy TC Regular", size: 12))
                             .padding(.bottom)
                     }
                     
                     Text(story.intro)
+                        .font(.custom("Yuppy TC Regular", size: 18))
                     
                     if story.cooperater.count > 0 {
                         Text("合作對象: " + story.cooperater[0])
-                            .font(.caption)
+                            .font(.custom("Yuppy TC Regular", size: 12))
                             .padding(.top)
                         Text("合作產品: " + story.cooperater[1])
                             .font(.caption)
                     }
                 }
+                .transition(.opacity)
             }
-            .animation(selection.id == story.id ? .easeInOut(duration: 0.8) : .none)
         }
         .onAppear {
-            self.hidden = false
+            self.show = true
         }
     }
 }

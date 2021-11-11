@@ -20,6 +20,7 @@ struct GameView: View {
                 VStack {
                     Section(header:
                         Text("劇情")
+                            .font(.custom("Yuppy TC Regular", size: 14))
                             .padding(.vertical, 3)
                             .frame(minWidth:0, maxWidth: .infinity)
                             .background(Color.gray)
@@ -36,6 +37,7 @@ struct GameView: View {
                     }
                     Section(header:
                         Text("角色")
+                            .font(.custom("Yuppy TC Regular", size: 14))
                             .padding(.vertical, 3)
                             .frame(minWidth:0, maxWidth: .infinity)
                             .background(Color.gray)
@@ -52,6 +54,7 @@ struct GameView: View {
                     }
                     Section(header:
                         Text("地圖")
+                            .font(.custom("Yuppy TC Regular", size: 14))
                             .padding(.vertical, 3)
                             .frame(minWidth:0, maxWidth: .infinity)
                             .background(Color.gray)
@@ -72,6 +75,7 @@ struct GameView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     Text("遊戲")
+                        .font(.custom("Yuppy TC Regular", size: 18))
                 }
             })
             .navigationBarTitleDisplayMode(.inline)

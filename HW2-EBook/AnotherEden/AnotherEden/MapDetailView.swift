@@ -14,7 +14,11 @@ struct MapDetailView: View {
     @State private var show: Bool = false
     
     var body: some View {
-        return ScrollView {
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1))
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .ignoresSafeArea()
+            
             ScrollView(.vertical) {
                 LazyVStack {
                     ForEach(map.name, id: \.self) { name in
@@ -30,20 +34,14 @@ struct MapDetailView: View {
                     }
                 }
             }
+            .padding()
         }
-        .padding(.top, 100)
-        .padding(.bottom, 80)
-        .padding(.horizontal, 10)
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
-        .ignoresSafeArea()
         .onAppear {
             self.player.pause()
             self.player.replaceCurrentItem(with: map.music)
             self.player.seek(to: .zero)
             self.player.volume = 1
             self.player.play()
-            
         }
         .onDisappear {
             self.player.pause()
@@ -54,6 +52,7 @@ struct MapDetailView: View {
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text(map.name.first!)
+                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
         .navigationBarTitleDisplayMode(.inline)

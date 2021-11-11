@@ -79,6 +79,7 @@ struct MainView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     Text("主頁")
+                        .font(.custom("Yuppy TC Regular", size: 18))
                 }
             })
             .navigationBarTitleDisplayMode(.inline)
