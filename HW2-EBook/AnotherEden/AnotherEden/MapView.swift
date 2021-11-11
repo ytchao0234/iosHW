@@ -13,25 +13,27 @@ struct MapView: View {
     @State private var selectedTab = 1
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            AncientMap(player: $player)
-                .tag(0)
-            ModernMap(player: $player)
-                .tag(1)
-            FutureMap(player: $player)
-                .tag(2)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1))
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .ignoresSafeArea()
+            
+            TabView(selection: $selectedTab) {
+                AncientMap(player: $player)
+                    .tag(0)
+                ModernMap(player: $player)
+                    .tag(1)
+                FutureMap(player: $player)
+                    .tag(2)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-        .padding(.vertical, 100)
-        .padding(.horizontal, 10)
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
-        .ignoresSafeArea()
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("地圖")
             }
         })
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

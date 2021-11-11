@@ -129,6 +129,7 @@ struct CatView: View {
                 Text("貓咪")
             }
         })
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

@@ -37,6 +37,7 @@ struct CharacterView: View {
                 Text("角色")
             }
         })
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

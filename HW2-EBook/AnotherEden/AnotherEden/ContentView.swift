@@ -20,10 +20,10 @@ struct ContentView: View {
                 .tabItem {
                     Label("主頁", systemImage: "house.fill")
                 }
-//            GameView(player: $player)
-//                .tabItem {
-//                    Label("遊戲", systemImage: "gamecontroller.fill")
-//                }
+            GameView(player: $player)
+                .tabItem {
+                    Label("遊戲", systemImage: "gamecontroller.fill")
+                }
             ChillView()
                 .tabItem {
                     Label("休閒", systemImage: "gift.fill")
@@ -32,6 +32,7 @@ struct ContentView: View {
         .onAppear {
             if self.looper == nil {
                 self.looper = AVPlayerLooper(player: self.player, templateItem: BGM)
+                self.player.volume = 0.2
                 self.player.play()
             }
         }

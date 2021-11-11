@@ -11,66 +11,67 @@ struct StoryView: View {
     @State private var selection: Story = Story.emptyStory
     
     var body: some View {
-        ScrollView(.vertical) {
-            Text("Another Eden 的所有劇情任務都沒有時間限制，而且都有非常精采而完整的故事內容，需要花比較多的時間觀看。完成劇情後，有些劇情中的角色還有可能直接加入隊伍，和你一起繼續冒險！")
-                .font(.caption)
-                .padding()
-                .background(Color.secondary.opacity(0.2))
-                .cornerRadius(10)
-            LazyVStack(pinnedViews: [.sectionHeaders]) {
-                Section(header:
-                            Text("主線")
-                                .padding(.vertical, 3)
-                                .frame(minWidth:0, maxWidth: .infinity)
-                                .background(Color.gray)
-                                .cornerRadius(10)
-                ) {
-                    StoryBlock(selection: $selection, story: Story.defaultStory)
-                        .padding(.bottom, 1)
-                }
-            }
-            
-            LazyVStack(pinnedViews: [.sectionHeaders]) {
-                Section(header:
-                            Text("外傳")
-                                .padding(.vertical, 3)
-                                .frame(minWidth:0, maxWidth: .infinity)
-                                .background(Color.gray)
-                                .cornerRadius(10)
-                ) {
-                    ForEach(Story.anthoerStory) { story in
-                        StoryBlock(selection: $selection, story: story)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1))
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .ignoresSafeArea()
+            ScrollView(.vertical) {
+                Text("Another Eden 的所有劇情任務都沒有時間限制，而且都有非常精采而完整的故事內容，需要花比較多的時間觀看。完成劇情後，有些劇情中的角色還有可能直接加入隊伍，和你一起繼續冒險！")
+                    .font(.caption)
+                    .padding()
+                    .background(Color.secondary.opacity(0.2))
+                    .cornerRadius(10)
+                LazyVStack(pinnedViews: [.sectionHeaders]) {
+                    Section(header:
+                                Text("主線")
+                                    .padding(.vertical, 3)
+                                    .frame(minWidth:0, maxWidth: .infinity)
+                                    .background(Color.gray)
+                                    .cornerRadius(10)
+                    ) {
+                        StoryBlock(selection: $selection, story: Story.defaultStory)
                             .padding(.bottom, 1)
                     }
                 }
-            }
-            
-            LazyVStack(pinnedViews: [.sectionHeaders]) {
-                Section(header:
-                            Text("協奏")
-                                .padding(.vertical, 3)
-                                .frame(minWidth:0, maxWidth: .infinity)
-                                .background(Color.gray)
-                                .cornerRadius(10)
-                ) {
-                    ForEach(Story.cooperate) { story in
-                        StoryBlock(selection: $selection, story: story)
-                            .padding(.bottom, 1)
+                
+                LazyVStack(pinnedViews: [.sectionHeaders]) {
+                    Section(header:
+                                Text("外傳")
+                                    .padding(.vertical, 3)
+                                    .frame(minWidth:0, maxWidth: .infinity)
+                                    .background(Color.gray)
+                                    .cornerRadius(10)
+                    ) {
+                        ForEach(Story.anthoerStory) { story in
+                            StoryBlock(selection: $selection, story: story)
+                                .padding(.bottom, 1)
+                        }
+                    }
+                }
+                
+                LazyVStack(pinnedViews: [.sectionHeaders]) {
+                    Section(header:
+                                Text("協奏")
+                                    .padding(.vertical, 3)
+                                    .frame(minWidth:0, maxWidth: .infinity)
+                                    .background(Color.gray)
+                                    .cornerRadius(10)
+                    ) {
+                        ForEach(Story.cooperate) { story in
+                            StoryBlock(selection: $selection, story: story)
+                                .padding(.bottom, 1)
+                        }
                     }
                 }
             }
+            .padding()
         }
-        .padding(.top, 100)
-        .padding(.bottom, 80)
-        .padding(.horizontal, 10)
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .background(LinearGradient(gradient: Gradient(colors: [Color("launchColor"), Color("bgColor")]), startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1, y: 1)))
-        .ignoresSafeArea()
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("劇情")
             }
         })
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

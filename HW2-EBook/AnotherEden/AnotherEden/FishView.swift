@@ -56,6 +56,7 @@ struct FishView: View {
                 Text("釣魚")
             }
         })
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

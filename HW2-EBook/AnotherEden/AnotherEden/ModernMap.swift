@@ -31,7 +31,7 @@ struct ModernMap: View {
                     destination: MapDetailView(map: Map.defaultMap, player: $player),
                     label: {
                         MapBlock(map: Map.defaultMap)
-                            .frame(width: UIScreen.main.bounds.width*0.12, height: UIScreen.main.bounds.width*0.12)
+                            .frame(width: UIScreen.main.bounds.width*0.18, height: UIScreen.main.bounds.width*0.18)
                     })
                 VStack {
                     HStack {
