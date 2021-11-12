@@ -32,7 +32,7 @@ struct ContentView: View {
         .onAppear {
             if self.looper == nil {
                 self.looper = AVPlayerLooper(player: self.player, templateItem: BGM)
-                self.player.volume = 0.2
+                self.player.volume = 0.5
                 self.player.play()
             }
         }

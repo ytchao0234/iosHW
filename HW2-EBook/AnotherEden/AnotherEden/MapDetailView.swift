@@ -40,13 +40,13 @@ struct MapDetailView: View {
             self.player.pause()
             self.player.replaceCurrentItem(with: map.music)
             self.player.seek(to: .zero)
-            self.player.volume = 1
+            self.player.volume = 0.8
             self.player.play()
         }
         .onDisappear {
             self.player.pause()
             self.player.replaceCurrentItem(with: BGM)
-            self.player.volume = 0.2
+            self.player.volume = 0.5
             self.player.play()
         }
         .toolbar(content: {

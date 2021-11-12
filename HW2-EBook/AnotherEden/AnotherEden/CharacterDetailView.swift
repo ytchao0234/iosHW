@@ -110,7 +110,7 @@ struct CharacterDetailView: View {
                 self.currentTime = self.player.currentTime()
                 self.player.replaceCurrentItem(with: character.voice)
                 self.player.seek(to: .zero)
-                self.player.volume = 1
+                self.player.volume = 1.5
                 self.player.play()
 
                 self.timer?.invalidate()
@@ -129,7 +129,7 @@ struct CharacterDetailView: View {
             self.player.pause()
             self.player.replaceCurrentItem(with: BGM)
             self.player.seek(to: self.currentTime)
-            self.player.volume = 0.2
+            self.player.volume = 0.5
             self.player.play()
         }
         .toolbar(content: {
