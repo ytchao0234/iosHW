@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03DBC7D7274D44BC00DF3B12 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7D6274D44BC00DF3B12 /* Journal.swift */; };
+		03DBC7D9274D452600DF3B12 /* JournalBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */; };
+		03DBC7DB274D515500DF3B12 /* JournalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7DA274D515500DF3B12 /* JournalEditView.swift */; };
 		03F91DB52743AE26001B6860 /* MoodJournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F91DB42743AE26001B6860 /* MoodJournalApp.swift */; };
 		03F91DB72743AE26001B6860 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F91DB62743AE26001B6860 /* ContentView.swift */; };
 		03F91DB92743AE2C001B6860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03F91DB82743AE2C001B6860 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03DBC7D6274D44BC00DF3B12 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBlockView.swift; sourceTree = "<group>"; };
+		03DBC7DA274D515500DF3B12 /* JournalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEditView.swift; sourceTree = "<group>"; };
 		03F91DB12743AE26001B6860 /* MoodJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03F91DB42743AE26001B6860 /* MoodJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodJournalApp.swift; sourceTree = "<group>"; };
 		03F91DB62743AE26001B6860 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +59,9 @@
 			children = (
 				03F91DB42743AE26001B6860 /* MoodJournalApp.swift */,
 				03F91DB62743AE26001B6860 /* ContentView.swift */,
+				03DBC7DA274D515500DF3B12 /* JournalEditView.swift */,
+				03DBC7D6274D44BC00DF3B12 /* Journal.swift */,
+				03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */,
 				03F91DB82743AE2C001B6860 /* Assets.xcassets */,
 				03F91DBA2743AE2C001B6860 /* Preview Content */,
 			);
@@ -139,6 +148,9 @@
 			files = (
 				03F91DB72743AE26001B6860 /* ContentView.swift in Sources */,
 				03F91DB52743AE26001B6860 /* MoodJournalApp.swift in Sources */,
+				03DBC7D9274D452600DF3B12 /* JournalBlockView.swift in Sources */,
+				03DBC7DB274D515500DF3B12 /* JournalEditView.swift in Sources */,
+				03DBC7D7274D44BC00DF3B12 /* Journal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
