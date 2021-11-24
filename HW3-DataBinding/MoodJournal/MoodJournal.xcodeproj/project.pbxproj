@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		031E3E0A274E4E2A00BF9771 /* JournalReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E3E09274E4E2A00BF9771 /* JournalReadView.swift */; };
 		03DBC7D7274D44BC00DF3B12 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7D6274D44BC00DF3B12 /* Journal.swift */; };
 		03DBC7D9274D452600DF3B12 /* JournalBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */; };
 		03DBC7DB274D515500DF3B12 /* JournalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7DA274D515500DF3B12 /* JournalEditView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		031E3E09274E4E2A00BF9771 /* JournalReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalReadView.swift; sourceTree = "<group>"; };
 		03DBC7D6274D44BC00DF3B12 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBlockView.swift; sourceTree = "<group>"; };
 		03DBC7DA274D515500DF3B12 /* JournalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEditView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			children = (
 				03F91DB42743AE26001B6860 /* MoodJournalApp.swift */,
 				03F91DB62743AE26001B6860 /* ContentView.swift */,
+				031E3E09274E4E2A00BF9771 /* JournalReadView.swift */,
 				03DBC7DA274D515500DF3B12 /* JournalEditView.swift */,
 				03DBC7D6274D44BC00DF3B12 /* Journal.swift */,
 				03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */,
@@ -148,6 +151,7 @@
 			files = (
 				03F91DB72743AE26001B6860 /* ContentView.swift in Sources */,
 				03F91DB52743AE26001B6860 /* MoodJournalApp.swift in Sources */,
+				031E3E0A274E4E2A00BF9771 /* JournalReadView.swift in Sources */,
 				03DBC7D9274D452600DF3B12 /* JournalBlockView.swift in Sources */,
 				03DBC7DB274D515500DF3B12 /* JournalEditView.swift in Sources */,
 				03DBC7D7274D44BC00DF3B12 /* Journal.swift in Sources */,

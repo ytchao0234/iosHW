@@ -8,23 +8,26 @@
 import SwiftUI
 
 struct JournalEditView: View {
-    @Binding var journalList: [Journal]
-    let index: Int
+    @Binding var journalDict: [UUID: Journal]
+    let id: UUID
     
     var body: some View {
         VStack {
-            Text(journalList[index].title)
+            Text(journalDict[id]!.title)
         }
         .onAppear {
-            journalList[index].title = "!!!"
+            journalDict[id]!.title = "!!!"
+        }
+        .onDisappear {
+            Journal.saveJournalDict(records: journalDict)
         }
     }
 }
 
 struct JournalEditView_Previews: PreviewProvider {
-    @State static var journalList = [Journal.defaultJournal]
+    @State static var journalDict = Journal.defaultDict
     
     static var previews: some View {
-        JournalEditView(journalList: $journalList, index: 0)
+        JournalEditView(journalDict: $journalDict, id: journalDict.first!.value.id)
     }
 }

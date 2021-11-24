@@ -12,7 +12,7 @@ struct JournalBlockView: View {
     
     var body: some View {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss E dd M yyyy"
+        dateFormatter.dateFormat = "HH:mm:ss E, dd MMM yyyy"
         
         return ZStack(alignment: .topLeading) {
             Rectangle()
