@@ -17,6 +17,6 @@ struct JournalReadView: View {
 
 struct JournalReadView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalReadView(journal: Journal.defaultJournal)
+        JournalReadView(journal: Journal(title: "", content: "", time: Date(), fontSize: 18, fontFamily: 0, moodTag: 0))
     }
 }

@@ -19,15 +19,15 @@ struct JournalBlockView: View {
                 .foregroundColor(.secondary)
                 .opacity(0.5)
                 .cornerRadius(20)
-            
+
             VStack(alignment: .leading) {
                 Text(journal.title)
                     .font(.title2)
                     .foregroundColor(.black)
                     .lineLimit(2)
-                
+
                 Spacer()
-                
+
                 Label(dateFormatter.string(from: journal.time), systemImage: "clock")
                     .font(.caption)
                     .foregroundColor(.black)
@@ -40,6 +40,6 @@ struct JournalBlockView: View {
 
 struct JournalBlockView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalBlockView(journal: Journal(title: "hhhhhhhhhhh", content: "aaa", time: Date()))
+        JournalBlockView(journal: Journal.emptyJournal)
     }
 }
