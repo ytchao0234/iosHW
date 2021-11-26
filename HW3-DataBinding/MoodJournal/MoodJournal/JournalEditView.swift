@@ -11,67 +11,39 @@ struct JournalEditView: View {
     @Binding var journalDict: [String: [UUID: Journal]]
     let tag: String
     let id: UUID
-    @State var journal = Journal.emptyJournal
     @State var toAddTag = false
     @State var newTag = ""
 
     var body: some View {
         let tagList = journalDict.keys.sorted(by: sortTag)
-
-        let title = Binding (
-            get: { journal.title },
-            set: { journal.title = $0 }
-        )
-        let content = Binding (
-            get: { journal.content },
-            set: { journal.content = $0 }
-        )
-        let fontSize = Binding (
-            get: { journal.fontSize },
-            set: { journal.fontSize = $0 }
-        )
-        let fontFamily = Binding (
-            get: { journal.fontFamily },
-            set: { journal.fontFamily = $0; print($0) }
-        )
-        let moodTag = Binding (
-            get: { journal.moodTag },
-            set: { journal.moodTag = $0 }
-        )
         
         return GeometryReader { geometry in
             Form {
-                Picker(selection: fontFamily, label: Text("字型")) {
-                    ForEach(Journal.fontFamilyList.indices) { index in
-                        Text(Journal.fontFamilyList[index]).tag(index)
-                    }
-                }
-                Stepper("字體大小: \(journal.fontSize)", value: fontSize, in: 10...40)
-
-                TextField("標題", text: title, prompt: Text("請輸入標題"))
-                    .padding(5)
-                    .overlay(RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.secondary, lineWidth: 1))
-
-                TextEditor(text: content)
-                    .overlay(RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.secondary, lineWidth: 1))
-                    .frame(height: geometry.size.height * 0.65)
+                fontFamilyPicker(
+                    journalDict: $journalDict,
+                    tag: tag, id: id
+                )
+                fontSizeStepper(
+                    journalDict: $journalDict,
+                    tag: tag, id: id
+                )
+                titleTextField(
+                    journalDict: $journalDict,
+                    tag: tag, id: id
+                )
+                contentTextEditor(
+                    journalDict: $journalDict,
+                    tag: tag, id: id,
+                    geometryHeight: geometry.size.height
+                )
                 DisclosureGroup("其他") {
-                    Toggle("新增標籤", isOn: $toAddTag)
-
-                    if toAddTag {
-                        TextField("標籤", text: $newTag, prompt: Text("請輸入標籤"))
-                            .padding(5)
-                            .overlay(RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.secondary, lineWidth: 1))
-                    } else {
-                        Picker(selection: moodTag, label: Text("標籤")) {
-                            ForEach(tagList.indices) { index in
-                                Text(tagList[index]).tag(index)
-                            }
-                        }
-                    }
+                    tagPicker(
+                        journalDict: $journalDict,
+                        tag: tag, id: id,
+                        tagList: tagList,
+                        toAddTag: $toAddTag,
+                        newTag: $newTag
+                    )
 //                        地點
                 }
             }
@@ -83,26 +55,16 @@ struct JournalEditView: View {
             }
         })
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            self.journal = journalDict[tag]![id]!
-        }
         .onDisappear {
-            if journal.isEmpty()  {
+            if toAddTag &&
+               newTag.count > 0 &&
+               !journalDict[tag]![id]!.isEmpty()
+            {
+                journalDict[newTag] = [id: journalDict[tag]![id]!]
+                
                 journalDict[tag]!.removeValue(forKey: id)
-
-                if NSDictionary(dictionary: journalDict[tag]!).isEqual(to: [:]) {
-                    journalDict.removeValue(forKey: tag)
-                }
-            }
-            else {
-                if toAddTag {
-                    journalDict[newTag] = [id: self.journal]
-                    journalDict[tag]!.removeValue(forKey: id)
-                    self.journal.moodTag = journalDict.keys.sorted().firstIndex(where: {$0 == newTag})!
-                }
-                else {
-                    journalDict[tag]![id]! = self.journal
-                }
+                
+                journalDict[newTag]![id]!.moodTag = journalDict.keys.sorted().firstIndex(where: {$0 == newTag})!
             }
 
             Journal.saveJournalDict(records: journalDict)
@@ -115,7 +77,190 @@ struct JournalEditView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            JournalEditView(journalDict: $journalDict, tag: journalDict.keys.first!, id: journalDict.first!.value.first!.value.id)
+            JournalEditView(journalDict: $journalDict, tag: "無標籤", id: Journal.test1.id)
+        }
+    }
+}
+
+struct fontFamilyPicker: View {
+    @Binding var journalDict: [String: [UUID: Journal]]
+    let tag: String
+    let id: UUID
+    
+    var body: some View {
+        let fontFamily = Binding (
+            get: { () -> Int in
+                if let journalDictTag = journalDict[tag],
+                   let journal = journalDictTag[id]
+                {
+                    return journal.fontFamily
+                }
+                else {
+                    return 0
+                }
+            },
+            set: {
+                if let journalDictTag = journalDict[tag],
+                   let _ = journalDictTag[id]
+                {
+                    journalDict[tag]![id]!.fontFamily = $0
+                }
+            }
+        )
+        
+        return Picker(selection: fontFamily, label: Text("字型")) {
+            ForEach(Journal.fontFamilyList.indices) { index in
+                Text(Journal.fontFamilyList[index]).tag(index)
+            }
+        }
+    }
+}
+
+struct fontSizeStepper: View {
+    @Binding var journalDict: [String: [UUID: Journal]]
+    let tag: String
+    let id: UUID
+    
+    var body: some View {
+        let fontSize = Binding (
+            get: { () -> Int in
+                if let journalDictTag = journalDict[tag],
+                   let journal = journalDictTag[id]
+                {
+                    return journal.fontSize
+                }
+                else {
+                    return 0
+                }
+            },
+            set: {
+                if let journalDictTag = journalDict[tag],
+                   let _ = journalDictTag[id]
+                {
+                    journalDict[tag]![id]!.fontSize = $0
+                }
+            }
+        )
+        
+        return Stepper("字體大小: \(fontSize.wrappedValue)", value: fontSize, in: 10...40)
+    }
+}
+
+struct titleTextField: View {
+    @Binding var journalDict: [String: [UUID: Journal]]
+    let tag: String
+    let id: UUID
+    
+    var body: some View {
+        let title = Binding (
+            get: { () -> String in
+                if let journalDictTag = journalDict[tag],
+                   let journal = journalDictTag[id]
+                {
+                    return journal.title
+                }
+                else {
+                    return ""
+                }
+            },
+            set: {
+                if let journalDictTag = journalDict[tag],
+                   let _ = journalDictTag[id]
+                {
+                    journalDict[tag]![id]!.title = $0
+                }
+            }
+        )
+        
+        return TextField("標題", text: title, prompt: Text("請輸入標題"))
+            .padding(5)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.secondary, lineWidth: 1)
+            )
+    }
+}
+
+struct contentTextEditor: View {
+    @Binding var journalDict: [String: [UUID: Journal]]
+    let tag: String
+    let id: UUID
+    let geometryHeight: CGFloat
+    
+    var body: some View {
+        let content = Binding (
+            get: { () -> String in
+                if let journalDictTag = journalDict[tag],
+                   let journal = journalDictTag[id]
+                {
+                    return journal.content
+                }
+                else {
+                    return ""
+                }
+            },
+            set: {
+                if let journalDictTag = journalDict[tag],
+                   let _ = journalDictTag[id]
+                {
+                    journalDict[tag]![id]!.content = $0
+                }
+            }
+        )
+        
+        return TextEditor(text: content)
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(Color.secondary, lineWidth: 1)
+            )
+            .frame(height: geometryHeight * 0.65)
+    }
+}
+
+struct tagPicker: View {
+    @Binding var journalDict: [String: [UUID: Journal]]
+    let tag: String
+    let id: UUID
+    let tagList: [String]
+    @Binding var toAddTag: Bool
+    @Binding var newTag: String
+    
+    var body: some View {
+        let moodTag = Binding (
+            get: { () -> Int in
+                if let journalDictTag = journalDict[tag],
+                   let journal = journalDictTag[id]
+                {
+                    return journal.moodTag
+                }
+                else {
+                    return 0
+                }
+            },
+            set: {
+                if let journalDictTag = journalDict[tag],
+                   let _ = journalDictTag[id]
+                {
+                    journalDict[tag]![id]!.moodTag = $0
+                }
+            }
+        )
+        
+        return Group {
+            Toggle("新增標籤", isOn: $toAddTag)
+
+            if toAddTag {
+                TextField("標籤", text: $newTag, prompt: Text("請輸入標籤"))
+                    .padding(5)
+                    .overlay(RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.secondary, lineWidth: 1))
+            } else {
+                Picker(selection: moodTag, label: Text("標籤")) {
+                    ForEach(tagList.indices) { index in
+                        Text(tagList[index]).tag(index)
+                    }
+                }
+            }
         }
     }
 }
