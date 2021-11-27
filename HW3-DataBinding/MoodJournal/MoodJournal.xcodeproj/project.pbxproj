@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03099C1A27528E7400BF0E4B /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03099C1927528E7400BF0E4B /* SearchBarView.swift */; };
 		031E3E0A274E4E2A00BF9771 /* JournalReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E3E09274E4E2A00BF9771 /* JournalReadView.swift */; };
 		038F82A427510CD2002AA9D9 /* JournalBlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */; };
 		038F82A627510FE0002AA9D9 /* optionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A527510FE0002AA9D9 /* optionButtonView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03099C1927528E7400BF0E4B /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		031E3E09274E4E2A00BF9771 /* JournalReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalReadView.swift; sourceTree = "<group>"; };
 		038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBlockButton.swift; sourceTree = "<group>"; };
 		038F82A527510FE0002AA9D9 /* optionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionButtonView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				03F91DB42743AE26001B6860 /* MoodJournalApp.swift */,
 				03F91DB62743AE26001B6860 /* ContentView.swift */,
+				03099C1927528E7400BF0E4B /* SearchBarView.swift */,
 				038F82A72751137B002AA9D9 /* readAndEditNavLinks.swift */,
 				038F82A527510FE0002AA9D9 /* optionButtonView.swift */,
 				038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */,
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03099C1A27528E7400BF0E4B /* SearchBarView.swift in Sources */,
 				038F82A427510CD2002AA9D9 /* JournalBlockButton.swift in Sources */,
 				038F82A627510FE0002AA9D9 /* optionButtonView.swift in Sources */,
 				03F91DB72743AE26001B6860 /* ContentView.swift in Sources */,

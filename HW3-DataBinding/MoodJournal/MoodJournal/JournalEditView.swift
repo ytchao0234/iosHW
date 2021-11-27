@@ -56,15 +56,20 @@ struct JournalEditView: View {
         })
         .navigationBarTitleDisplayMode(.inline)
         .onDisappear {
-            if toAddTag &&
-               newTag.count > 0 &&
-               !journalDict[tag]![id]!.isEmpty()
+            if toAddTag && newTag != tag && newTag.count > 0,
+               let journalDictTag = journalDict[tag],
+               let journal = journalDictTag[id],
+               !journal.isEmpty()
             {
-                journalDict[newTag] = [id: journalDict[tag]![id]!]
+                if journalDict[newTag] == nil {
+                    journalDict[newTag] = [id: journal]
+                } else {
+                    journalDict[newTag]![id] = journal
+                }
                 
                 journalDict[tag]!.removeValue(forKey: id)
                 
-                journalDict[newTag]![id]!.moodTag = journalDict.keys.sorted().firstIndex(where: {$0 == newTag})!
+                journalDict[newTag]![id]!.moodTag = journalDict.keys.sorted(by: sortTag).firstIndex(where: {$0 == newTag})!
             }
 
             Journal.saveJournalDict(records: journalDict)

@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var journalDict: [String:[UUID: Journal]] = Journal.readJournalDict() ?? [:]
 //    @State var journalDict: [String: [UUID: Journal]] = Journal.defaultDict
-    
+    @State var searchText = ""
     @State var toRead = false
     @State var toEdit = false
     @State var journalID: UUID?
@@ -22,31 +22,45 @@ struct ContentView: View {
         return NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .bottomTrailing) {
-                    ScrollView(.vertical) {
-                        ForEach(
-                            journalDict.keys.sorted(by: sortTag)
-                            , id: \.self)
-                        { tag in
-                            
-                            Section(header: Text(tag)) {
-                                LazyVGrid(columns: columns) {
-                                    ForEach(journalDict[tag]!.values.sorted())
-                                    { journal in
-                                        
-                                        JournalBlockButton(
-                                            journalDict: $journalDict,
-                                            journalTag: $journalTag,
-                                            journalID: $journalID,
-                                            toRead: $toRead,
-                                            toEdit: $toEdit,
-                                            tag: tag,
-                                            journal: journal
-                                        )
-                                        
+                    VStack {
+                        SearchBarView(text: $searchText)
+                            .padding(.bottom)
+                        
+                        ScrollView(.vertical) {
+                            ForEach(
+                                SearchBarView
+                                    .getFilterItems(
+                                        searchText: searchText,
+                                        dict: journalDict
+                                    ).keys.sorted(by: sortTag)
+                                , id: \.self)
+                            { tag in
+                                
+                                Section(header: Text(tag)) {
+                                    LazyVGrid(columns: columns) {
+                                        ForEach(
+                                            SearchBarView
+                                            .getFilterItems(
+                                                searchText: searchText,
+                                                dict: journalDict
+                                            )[tag]!.values.sorted())
+                                        { journal in
+                                            
+                                            JournalBlockButton(
+                                                journalDict: $journalDict,
+                                                journalTag: $journalTag,
+                                                journalID: $journalID,
+                                                toRead: $toRead,
+                                                toEdit: $toEdit,
+                                                tag: tag,
+                                                journal: journal
+                                            )
+                                            
+                                        }
                                     }
                                 }
+                                
                             }
-                            
                         }
                     }
                     
@@ -58,7 +72,7 @@ struct ContentView: View {
                     )
                 }
                 .frame(
-                    width: geometry.size.width * 0.95,
+                    width: geometry.size.width * 0.9,
                     height: geometry.size.height * 0.95,
                     alignment: .bottomTrailing
                 )
