@@ -14,6 +14,7 @@ struct optionButtonView: View {
     @Binding var toEdit: Bool
     
     @State private var showOptions = false
+    @State private var showAlert = false
     
     var body: some View {
         Button(action: {
@@ -36,11 +37,18 @@ struct optionButtonView: View {
                         self.setting()
                     },
                     .destructive(Text("清空筆記")) {
-                        self.deleteAll()
+                        showAlert = true
                     },
                     .cancel(Text("取消"))
                 ]
             )
+        }
+        .alert(isPresented: $showAlert) { () -> Alert in
+            Alert(title: Text("確定要清空筆記嗎？"),
+                  primaryButton: .destructive(Text("Yes")) {
+                      self.deleteAll()
+                  },
+                  secondaryButton: .default(Text("Cancel")))
         }
     }
 }
@@ -63,7 +71,7 @@ struct optionButtonView_Previews: PreviewProvider {
 
 extension optionButtonView {
     func newJournal() {
-        let newJournal = Journal(title: "", content: "", time: Date(), fontSize: 18, fontFamily: 0, moodTag: 0)
+        let newJournal = Journal(title: "", content: "", time: Date(), fontSize: 26, fontFamily: 0, moodTag: 0)
 
         if self.journalDict["無標籤"] == nil {
             self.journalDict["無標籤"] = [newJournal.id: newJournal]

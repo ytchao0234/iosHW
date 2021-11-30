@@ -11,6 +11,8 @@ struct JournalEditView: View {
     @Binding var journalDict: [String: [UUID: Journal]]
     let tag: String
     let id: UUID
+    @State var fontFamily: String = ""
+    @State var fontSize: CGFloat = 0
     @State var toAddTag = false
     @State var newTag = ""
 
@@ -21,19 +23,25 @@ struct JournalEditView: View {
             Form {
                 fontFamilyPicker(
                     journalDict: $journalDict,
-                    tag: tag, id: id
+                    tag: tag, id: id,
+                    currentFontFamily: $fontFamily
                 )
                 fontSizeStepper(
                     journalDict: $journalDict,
-                    tag: tag, id: id
+                    tag: tag, id: id,
+                    currentFontSize: $fontSize
                 )
                 titleTextField(
                     journalDict: $journalDict,
-                    tag: tag, id: id
+                    tag: tag, id: id,
+                    currentFontFamily: $fontFamily,
+                    currentFontSize: $fontSize
                 )
                 contentTextEditor(
                     journalDict: $journalDict,
                     tag: tag, id: id,
+                    currentFontFamily: $fontFamily,
+                    currentFontSize: $fontSize,
                     geometryHeight: geometry.size.height
                 )
                 DisclosureGroup("其他") {
@@ -48,10 +56,17 @@ struct JournalEditView: View {
                 }
             }
         }
+        .onAppear {
+            if let journalDictTag = journalDict[tag],
+               let journal = journalDictTag[id]
+            {
+                self.fontFamily = Journal.fontFamilyList[journal.fontFamily]
+                self.fontSize = journal.fontSize
+            }
+        }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("編輯筆記")
-                    .font(.custom("Yuppy TC Regular", size: 18))
             }
         })
         .navigationBarTitleDisplayMode(.inline)
@@ -91,6 +106,7 @@ struct fontFamilyPicker: View {
     @Binding var journalDict: [String: [UUID: Journal]]
     let tag: String
     let id: UUID
+    @Binding var currentFontFamily: String
     
     var body: some View {
         let fontFamily = Binding (
@@ -108,14 +124,18 @@ struct fontFamilyPicker: View {
                 if let journalDictTag = journalDict[tag],
                    let _ = journalDictTag[id]
                 {
+                    currentFontFamily = Journal.fontFamilyList[$0]
                     journalDict[tag]![id]!.fontFamily = $0
                 }
             }
         )
         
-        return Picker(selection: fontFamily, label: Text("字型")) {
+        return Picker(selection: fontFamily,
+                      label: Text("字型")) {
             ForEach(Journal.fontFamilyList.indices) { index in
-                Text(Journal.fontFamilyList[index]).tag(index)
+                Text(Journal.fontFamilyList[index])
+                    .font(.custom(Journal.fontFamilyList[index], size: 20))
+                    .tag(index)
             }
         }
     }
@@ -125,10 +145,11 @@ struct fontSizeStepper: View {
     @Binding var journalDict: [String: [UUID: Journal]]
     let tag: String
     let id: UUID
+    @Binding var currentFontSize: CGFloat
     
     var body: some View {
         let fontSize = Binding (
-            get: { () -> Int in
+            get: { () -> CGFloat in
                 if let journalDictTag = journalDict[tag],
                    let journal = journalDictTag[id]
                 {
@@ -142,12 +163,13 @@ struct fontSizeStepper: View {
                 if let journalDictTag = journalDict[tag],
                    let _ = journalDictTag[id]
                 {
+                    currentFontSize = $0
                     journalDict[tag]![id]!.fontSize = $0
                 }
             }
         )
         
-        return Stepper("字體大小: \(fontSize.wrappedValue)", value: fontSize, in: 10...40)
+        return Stepper("字體大小: \(Int(fontSize.wrappedValue))", value: fontSize, in: 10...40)
     }
 }
 
@@ -155,6 +177,8 @@ struct titleTextField: View {
     @Binding var journalDict: [String: [UUID: Journal]]
     let tag: String
     let id: UUID
+    @Binding var currentFontFamily: String
+    @Binding var currentFontSize: CGFloat
     
     var body: some View {
         let title = Binding (
@@ -177,7 +201,9 @@ struct titleTextField: View {
             }
         )
         
-        return TextField("標題", text: title, prompt: Text("請輸入標題"))
+        return TextField("標題", text: title,
+                         prompt: Text("請輸入標題"))
+            .font(.custom(currentFontFamily, size: currentFontSize))
             .padding(5)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
@@ -190,6 +216,8 @@ struct contentTextEditor: View {
     @Binding var journalDict: [String: [UUID: Journal]]
     let tag: String
     let id: UUID
+    @Binding var currentFontFamily: String
+    @Binding var currentFontSize: CGFloat
     let geometryHeight: CGFloat
     
     var body: some View {
@@ -214,6 +242,7 @@ struct contentTextEditor: View {
         )
         
         return TextEditor(text: content)
+            .font(.custom(currentFontFamily, size: currentFontSize))
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(Color.secondary, lineWidth: 1)

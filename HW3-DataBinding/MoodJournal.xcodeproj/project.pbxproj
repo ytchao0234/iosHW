@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03099C1A27528E7400BF0E4B /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03099C1927528E7400BF0E4B /* SearchBarView.swift */; };
+		03099C1A27528E7400BF0E4B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03099C1927528E7400BF0E4B /* SearchView.swift */; };
+		03099C332753E38D00BF0E4B /* Yuanti.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 03099C2B2753E38D00BF0E4B /* Yuanti.ttc */; };
+		03099C342753E38D00BF0E4B /* Klee.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 03099C2C2753E38D00BF0E4B /* Klee.ttc */; };
+		03099C352753E38D00BF0E4B /* Xingkai.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 03099C2D2753E38D00BF0E4B /* Xingkai.ttc */; };
+		03099C362753E38D00BF0E4B /* Hanzipen.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 03099C2E2753E38D00BF0E4B /* Hanzipen.ttc */; };
+		03099C372753E38D00BF0E4B /* PingFang.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 03099C2F2753E38D00BF0E4B /* PingFang.ttc */; };
+		03099C392753E38D00BF0E4B /* Hannotate.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 03099C312753E38D00BF0E4B /* Hannotate.ttc */; };
+		03099C3A2753E38D00BF0E4B /* YuMincho.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 03099C322753E38D00BF0E4B /* YuMincho.ttc */; };
 		031E3E0A274E4E2A00BF9771 /* JournalReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031E3E09274E4E2A00BF9771 /* JournalReadView.swift */; };
 		038F82A427510CD2002AA9D9 /* JournalBlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */; };
 		038F82A627510FE0002AA9D9 /* optionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A527510FE0002AA9D9 /* optionButtonView.swift */; };
@@ -22,7 +29,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		03099C1927528E7400BF0E4B /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		03099C1927528E7400BF0E4B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		03099C1D2753B26C00BF0E4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		03099C2B2753E38D00BF0E4B /* Yuanti.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Yuanti.ttc; sourceTree = "<group>"; };
+		03099C2C2753E38D00BF0E4B /* Klee.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Klee.ttc; sourceTree = "<group>"; };
+		03099C2D2753E38D00BF0E4B /* Xingkai.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Xingkai.ttc; sourceTree = "<group>"; };
+		03099C2E2753E38D00BF0E4B /* Hanzipen.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hanzipen.ttc; sourceTree = "<group>"; };
+		03099C2F2753E38D00BF0E4B /* PingFang.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = PingFang.ttc; sourceTree = "<group>"; };
+		03099C312753E38D00BF0E4B /* Hannotate.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Hannotate.ttc; sourceTree = "<group>"; };
+		03099C322753E38D00BF0E4B /* YuMincho.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = YuMincho.ttc; sourceTree = "<group>"; };
 		031E3E09274E4E2A00BF9771 /* JournalReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalReadView.swift; sourceTree = "<group>"; };
 		038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBlockButton.swift; sourceTree = "<group>"; };
 		038F82A527510FE0002AA9D9 /* optionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionButtonView.swift; sourceTree = "<group>"; };
@@ -48,6 +63,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03099C282753DDE000BF0E4B /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				03099C312753E38D00BF0E4B /* Hannotate.ttc */,
+				03099C2E2753E38D00BF0E4B /* Hanzipen.ttc */,
+				03099C2C2753E38D00BF0E4B /* Klee.ttc */,
+				03099C2F2753E38D00BF0E4B /* PingFang.ttc */,
+				03099C2D2753E38D00BF0E4B /* Xingkai.ttc */,
+				03099C2B2753E38D00BF0E4B /* Yuanti.ttc */,
+				03099C322753E38D00BF0E4B /* YuMincho.ttc */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		03F91DA82743AE26001B6860 = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +96,11 @@
 		03F91DB32743AE26001B6860 /* MoodJournal */ = {
 			isa = PBXGroup;
 			children = (
+				03099C282753DDE000BF0E4B /* fonts */,
+				03099C1D2753B26C00BF0E4B /* Info.plist */,
 				03F91DB42743AE26001B6860 /* MoodJournalApp.swift */,
 				03F91DB62743AE26001B6860 /* ContentView.swift */,
-				03099C1927528E7400BF0E4B /* SearchBarView.swift */,
+				03099C1927528E7400BF0E4B /* SearchView.swift */,
 				038F82A72751137B002AA9D9 /* readAndEditNavLinks.swift */,
 				038F82A527510FE0002AA9D9 /* optionButtonView.swift */,
 				038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */,
@@ -149,7 +180,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03099C352753E38D00BF0E4B /* Xingkai.ttc in Resources */,
+				03099C332753E38D00BF0E4B /* Yuanti.ttc in Resources */,
+				03099C372753E38D00BF0E4B /* PingFang.ttc in Resources */,
+				03099C362753E38D00BF0E4B /* Hanzipen.ttc in Resources */,
+				03099C3A2753E38D00BF0E4B /* YuMincho.ttc in Resources */,
+				03099C392753E38D00BF0E4B /* Hannotate.ttc in Resources */,
 				03F91DBC2743AE2C001B6860 /* Preview Assets.xcassets in Resources */,
+				03099C342753E38D00BF0E4B /* Klee.ttc in Resources */,
 				03F91DB92743AE2C001B6860 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,7 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				03099C1A27528E7400BF0E4B /* SearchBarView.swift in Sources */,
+				03099C1A27528E7400BF0E4B /* SearchView.swift in Sources */,
 				038F82A427510CD2002AA9D9 /* JournalBlockButton.swift in Sources */,
 				038F82A627510FE0002AA9D9 /* optionButtonView.swift in Sources */,
 				03F91DB72743AE26001B6860 /* ContentView.swift in Sources */,
@@ -304,6 +342,7 @@
 				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoodJournal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -333,6 +372,7 @@
 				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoodJournal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

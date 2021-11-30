@@ -11,6 +11,9 @@ struct ContentView: View {
     @State var journalDict: [String:[UUID: Journal]] = Journal.readJournalDict() ?? [:]
 //    @State var journalDict: [String: [UUID: Journal]] = Journal.defaultDict
     @State var searchText = ""
+    @State var isPickingDate: Bool = false
+    @State var startDate: Date = Date()
+    @State var endDate: Date = Date()
     @State var toRead = false
     @State var toEdit = false
     @State var journalID: UUID?
@@ -23,14 +26,16 @@ struct ContentView: View {
             GeometryReader { geometry in
                 ZStack(alignment: .bottomTrailing) {
                     VStack {
-                        SearchBarView(text: $searchText)
+                        SearchView(text: $searchText, startDate: $startDate, endDate: $endDate, isPickingDate: $isPickingDate)
                             .padding(.bottom)
                         
                         ScrollView(.vertical) {
                             ForEach(
-                                SearchBarView
+                                SearchView
                                     .getFilterItems(
                                         searchText: searchText,
+                                        isPickingDate: isPickingDate,
+                                        dateRange: startDate...endDate,
                                         dict: journalDict
                                     ).keys.sorted(by: sortTag)
                                 , id: \.self)
@@ -39,11 +44,13 @@ struct ContentView: View {
                                 Section(header: Text(tag)) {
                                     LazyVGrid(columns: columns) {
                                         ForEach(
-                                            SearchBarView
-                                            .getFilterItems(
-                                                searchText: searchText,
-                                                dict: journalDict
-                                            )[tag]!.values.sorted())
+                                            SearchView
+                                                .getFilterItems(
+                                                    searchText: searchText,
+                                                    isPickingDate: isPickingDate,
+                                                    dateRange: startDate...endDate,
+                                                    dict: journalDict
+                                                )[tag]!.values.sorted())
                                         { journal in
                                             
                                             JournalBlockButton(
@@ -105,7 +112,6 @@ struct ContentView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .principal) {
                     Text("我的心情小記")
-                        .font(.custom("Yuppy TC Regular", size: 18))
                 }
             })
             .navigationBarTitleDisplayMode(.inline)
