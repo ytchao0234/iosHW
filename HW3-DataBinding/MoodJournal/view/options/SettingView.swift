@@ -25,11 +25,22 @@ struct SettingView: View {
                     
                     Section(header: Text("音樂")) {
                         Toggle(optionViewModel.background.isPlaying ? "播放音樂" : "暫停音樂", isOn: $optionViewModel.background.isPlaying)
+                            .onChange(of: optionViewModel.background.isPlaying) { newValue in
+                                if newValue {
+                                    optionViewModel.playBGM()
+                                }
+                                else {
+                                    optionViewModel.pauseBGM()
+                                }
+                            }
                     
                     if optionViewModel.background.isPlaying {
                         HStack {
                             Text("音量")
                             Slider(value: $optionViewModel.background.volume, in: 0...5, step: 0.1, minimumValueLabel: Text("0%"), maximumValueLabel: Text("100%")) {}
+                            .onChange(of: optionViewModel.background.volume) { newValue in
+                                optionViewModel.adjustVolume()
+                            }
                         }
                     }
                     
@@ -40,11 +51,14 @@ struct SettingView: View {
                                           Spacer()
                                       }
                         ) {
-                            ForEach(0 ..< 10) { item in
-                                Text("BGM\(item)").tag(item)
+                            ForEach(Background.BGMList.indices) { index in
+                                Text(Background.BGMList[index]).tag(index)
                             }
                         }
                         .pickerStyle(.inline)
+                        .onChange(of: optionViewModel.background.music) { newValue in
+                            optionViewModel.changeBGM()
+                        }
                     }
                 }
                 .background(optionViewModel.background.color.brightness(-0.12))

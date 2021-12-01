@@ -9,20 +9,23 @@ import SwiftUI
 
 struct JournalReadView: View {
     let journal: Journal
+    @StateObject var optionViewModel: OptionViewModel
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(alignment: .leading) {
-                Text(journal.title)
-                    .font(.custom(Journal.fontFamilyList[journal.fontFamily], size: journal.fontSize + 6))
-                    .fontWeight(.heavy)
-                    .padding(.bottom)
-                Text(journal.content)
-                    .font(.custom(Journal.fontFamilyList[journal.fontFamily], size: journal.fontSize))
+        GeometryReader { geometry in
+            ScrollView(.vertical) {
+                VStack(alignment: .leading) {
+                    Text(journal.title)
+                        .font(.custom(Journal.fontFamilyList[journal.fontFamily], size: journal.fontSize + 6))
+                        .fontWeight(.heavy)
+                        .padding(.bottom)
+                    Text(journal.content)
+                        .font(.custom(Journal.fontFamilyList[journal.fontFamily], size: journal.fontSize))
+                }
             }
+            .padding()
         }
-        .padding()
-        .frame(width: UIScreen.main.bounds.width, alignment: .topLeading)
+        .background(optionViewModel.background.color)
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text(journal.title)
@@ -35,7 +38,7 @@ struct JournalReadView: View {
 struct JournalReadView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            JournalReadView(journal: Journal.test1)
+            JournalReadView(journal: Journal.test1, optionViewModel: OptionViewModel())
         }
     }
 }

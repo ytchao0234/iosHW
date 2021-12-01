@@ -74,6 +74,7 @@ struct ContentView: View {
             }
             .background(optionViewModel.background.color)
             .onAppear {
+                optionViewModel.playBGM()
                 journalViewModel.clearEmptyJournal()
             }
             .toolbar(content: {

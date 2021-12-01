@@ -17,7 +17,10 @@ struct readAndEditNavLinks: View {
                let journal = tag[journalViewModel.id]
             {
                 NavigationLink(
-                    destination: JournalReadView(journal: journal),
+                    destination: JournalReadView(
+                        journal: journal,
+                        optionViewModel: optionViewModel
+                    ),
                     isActive: $journalViewModel.toRead,
                     label: {
                         EmptyView()
