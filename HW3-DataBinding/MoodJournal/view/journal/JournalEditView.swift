@@ -48,7 +48,7 @@ struct JournalEditView: View {
             }
             .padding(.horizontal)
         }
-        .background(optionViewModel.background.color)
+        .background(optionViewModel.background.color.brightness(-0.12))
         .onAppear {
             if let tag = journalViewModel.journals[journalViewModel.tag],
                let journal = tag[journalViewModel.id]

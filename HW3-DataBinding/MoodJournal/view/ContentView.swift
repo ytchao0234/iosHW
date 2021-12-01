@@ -12,9 +12,9 @@ struct ContentView: View {
     @StateObject var journalViewModel = JournalViewModel()
     @StateObject var optionViewModel = OptionViewModel()
     
-//    init() {
-//        UITableView.appearance().backgroundColor = .clear
-//    }
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
     
     var body: some View {
         let columns = [GridItem(.adaptive(minimum: 150, maximum: 400), spacing: 10)]
@@ -42,6 +42,7 @@ struct ContentView: View {
 
                                             JournalBlockButton(
                                                 journalViewModel: journalViewModel,
+                                                optionViewModel: optionViewModel,
                                                 tag: tag,
                                                 journal: journal
                                             )

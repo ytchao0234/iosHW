@@ -9,17 +9,13 @@ import SwiftUI
 
 struct JournalBlockView: View {
     let journal: Journal
-    
+    @StateObject var optionViewModel: OptionViewModel
+
     var body: some View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss E, dd MMM yyyy"
         
         return ZStack(alignment: .topLeading) {
-            Rectangle()
-                .foregroundColor(.secondary)
-                .opacity(0.5)
-                .cornerRadius(20)
-
             VStack(alignment: .leading) {
                 Text(journal.title)
                     .font(.title2)
@@ -34,12 +30,15 @@ struct JournalBlockView: View {
             }
             .padding(10)
         }
-        .frame(height: 120)
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 120, maxHeight: 120)
+        .background(optionViewModel.background.color.brightness(-0.12))
+        .cornerRadius(20)
     }
 }
 
 struct JournalBlockView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalBlockView(journal: Journal.emptyJournal)
+        JournalBlockView(journal: Journal.emptyJournal,
+                         optionViewModel: OptionViewModel())
     }
 }

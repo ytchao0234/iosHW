@@ -9,6 +9,7 @@ import SwiftUI
 
 struct JournalBlockButton: View {
     @StateObject var journalViewModel: JournalViewModel
+    @StateObject var optionViewModel: OptionViewModel
     let tag: String
     let journal: Journal
     
@@ -18,7 +19,8 @@ struct JournalBlockButton: View {
             journalViewModel.tag = tag
             journalViewModel.id = journal.id
         }, label: {
-            JournalBlockView(journal: journal)
+            JournalBlockView(journal: journal,
+                             optionViewModel: optionViewModel)
         })
         .contextMenu {
             Button(action: {
@@ -52,6 +54,7 @@ struct JournalBlockButton_Previews: PreviewProvider {
     static var previews: some View {
         JournalBlockButton(
             journalViewModel: JournalViewModel(),
+            optionViewModel: OptionViewModel(),
             tag: "無標籤",
             journal: Journal.test1
         )

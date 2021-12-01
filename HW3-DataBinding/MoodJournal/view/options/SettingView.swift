@@ -47,7 +47,7 @@ struct SettingView: View {
                         .pickerStyle(.inline)
                     }
                 }
-                .background(optionViewModel.background.color)
+                .background(optionViewModel.background.color.brightness(-0.12))
                 .cornerRadius(30)
             }
             .padding()
