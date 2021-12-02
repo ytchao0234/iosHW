@@ -16,39 +16,43 @@ struct JournalEditView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                Rectangle()
-                    .frame(height: 70)
-                Form {
-                    FontFamilyPicker(
+            Form {
+                FontFamilyPicker(
+                    journalViewModel: journalViewModel,
+                    optionViewModel: optionViewModel,
+                    currentFontFamily: $currentFontFamily
+                )
+                FontSizeStepper(
+                    journalViewModel: journalViewModel,
+                    optionViewModel: optionViewModel,
+                    currentFontSize: $currentFontSize
+                )
+                TitleTextField(
+                    journalViewModel: journalViewModel,
+                    optionViewModel: optionViewModel,
+                    currentFontFamily: $currentFontFamily,
+                    currentFontSize: $currentFontSize
+                )
+                ContentTextEditor(
+                    journalViewModel: journalViewModel,
+                    optionViewModel: optionViewModel,
+                    currentFontFamily: $currentFontFamily,
+                    currentFontSize: $currentFontSize,
+                    geometryHeight: 700
+                )
+                DisclosureGroup("其他") {
+                    TagPicker(
                         journalViewModel: journalViewModel,
-                        currentFontFamily: $currentFontFamily
+                        optionViewModel: optionViewModel
                     )
-                    FontSizeStepper(
-                        journalViewModel: journalViewModel,
-                        currentFontSize: $currentFontSize
-                    )
-                    TitleTextField(
-                        journalViewModel: journalViewModel,
-                        currentFontFamily: $currentFontFamily,
-                        currentFontSize: $currentFontSize
-                    )
-                    ContentTextEditor(
-                        journalViewModel: journalViewModel,
-                        currentFontFamily: $currentFontFamily,
-                        currentFontSize: $currentFontSize,
-                        geometryHeight: geometry.size.height
-                    )
-                    DisclosureGroup("其他") {
-                        TagPicker(journalViewModel: journalViewModel)
 //                                地點
-                    }
                 }
-                .cornerRadius(30)
             }
-            .padding(.horizontal)
+            .background(optionViewModel.background.color.brightness(-0.12))
+            .cornerRadius(30)
+            .padding()
         }
-        .background(optionViewModel.background.color.brightness(-0.12))
+        .background(optionViewModel.background.color)
         .onAppear {
             if let tag = journalViewModel.journals[journalViewModel.tag],
                let journal = tag[journalViewModel.id]
@@ -80,5 +84,25 @@ struct JournalEditView_Previews: PreviewProvider {
                 optionViewModel: OptionViewModel()
             )
         }
+    }
+}
+
+struct FormFactorModifier: ViewModifier {
+    let color: Color
+    
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(color)
+            .padding(.vertical , 5)
+            .padding(.horizontal, 15)
+            .background(color.brightness(-0.4))
+            .overlay(
+                RoundedRectangle(cornerRadius: 5)
+                    .stroke(color, lineWidth: 5)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.secondary, lineWidth: 0.5)
+                    )
+            )
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TagPicker: View {
     @StateObject var journalViewModel: JournalViewModel
+    @StateObject var optionViewModel: OptionViewModel
     
     var body: some View {
         let moodTag = Binding (
@@ -34,15 +35,37 @@ struct TagPicker: View {
         let tagList = journalViewModel.journals.keys.sorted(by: journalViewModel.sortTag)
         
         return Group {
-            Toggle("新增標籤", isOn: $journalViewModel.toAddTag)
+            Toggle(isOn: $journalViewModel.toAddTag) {
+                Text("新增標籤")
+                    .modifier(FormFactorModifier(color: optionViewModel.background.color))
+            }
 
             if journalViewModel.toAddTag {
-                TextField("標籤", text: $journalViewModel.newTag, prompt: Text("請輸入標籤"))
-                    .padding(5)
-                    .overlay(RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.secondary, lineWidth: 1))
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(optionViewModel.background.color, lineWidth: 5)
+                        .background(optionViewModel.background.color.brightness(-0.4))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color.secondary, lineWidth: 0.5)
+                        )
+                    
+                    if journalViewModel.newTag.isEmpty {
+                        Text("請輸入標籤...")
+                            .foregroundColor(optionViewModel.background.color)
+                            .opacity(0.5)
+                            .padding(5)
+                    }
+                        
+                    TextField("", text: $journalViewModel.newTag)
+                        .foregroundColor(optionViewModel.background.color)
+                        .padding(5)
+                }
             } else {
-                Picker(selection: moodTag, label: Text("標籤")) {
+                Picker(selection: moodTag, label:
+                        Text("標籤")
+                            .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                ) {
                     ForEach(tagList.indices) { index in
                         Text(tagList[index]).tag(index)
                     }

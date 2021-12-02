@@ -20,11 +20,33 @@ struct SettingView: View {
                 
                 Form {
                     Section(header: Text("背景")) {
-                        ColorPicker("選擇背景顏色", selection: $optionViewModel.background.color)
+                        Picker(
+                            selection: $optionViewModel.background.theme,
+                            label: Text("選擇背景主題")
+                                .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                        ) {
+                            ForEach(Background.themeList.indices) { index in
+                                Image(Background.themeList[index])
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: geometry.size.width*0.65)
+                                    .tag(index)
+                            }
+                        }
+                        .pickerStyle(.inline)
+                        ColorPicker(
+                            selection: $optionViewModel.background.color
+                        ) {
+                            Text("選擇背景顏色")
+                                .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                        }
                     }
                     
                     Section(header: Text("音樂")) {
-                        Toggle(optionViewModel.background.isPlaying ? "播放音樂" : "暫停音樂", isOn: $optionViewModel.background.isPlaying)
+                        Toggle(isOn: $optionViewModel.background.isPlaying) {
+                            Text(optionViewModel.background.isPlaying ? "播放音樂" : "暫停音樂")
+                                .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                            }
                             .onChange(of: optionViewModel.background.isPlaying) { newValue in
                                 if newValue {
                                     optionViewModel.playBGM()
@@ -37,6 +59,7 @@ struct SettingView: View {
                     if optionViewModel.background.isPlaying {
                         HStack {
                             Text("音量")
+                                .modifier(FormFactorModifier(color: optionViewModel.background.color))
                             Slider(value: $optionViewModel.background.volume, in: 0...5, step: 0.1, minimumValueLabel: Text("0%"), maximumValueLabel: Text("100%")) {}
                             .onChange(of: optionViewModel.background.volume) { newValue in
                                 optionViewModel.adjustVolume()
@@ -48,6 +71,7 @@ struct SettingView: View {
                                label: HStack{
                                           Spacer()
                                           Text("曲目")
+                                            .modifier(FormFactorModifier(color: optionViewModel.background.color))
                                           Spacer()
                                       }
                         ) {

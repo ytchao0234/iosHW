@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentTextEditor: View {
     @StateObject var journalViewModel: JournalViewModel
+    @StateObject var optionViewModel: OptionViewModel
     @Binding var currentFontFamily: String
     @Binding var currentFontSize: CGFloat
     let geometryHeight: CGFloat
@@ -34,12 +35,19 @@ struct ContentTextEditor: View {
             }
         )
         
-        return TextEditor(text: content)
-            .font(.custom(currentFontFamily, size: currentFontSize))
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.secondary, lineWidth: 1)
-            )
-            .frame(height: geometryHeight * 0.45)
+        return ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(optionViewModel.background.color, lineWidth: 5)
+                .background(optionViewModel.background.color.brightness(-0.4))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.secondary, lineWidth: 0.5)
+                )
+            
+            TextEditor(text: content)
+                .font(.custom(currentFontFamily, size: currentFontSize))
+                .foregroundColor(optionViewModel.background.color)
+        }
+        .frame(height: geometryHeight * 0.55)
     }
 }

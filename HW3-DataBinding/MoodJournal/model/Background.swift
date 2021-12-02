@@ -9,10 +9,11 @@ import SwiftUI
 import AVKit
 
 struct Background {
-    var color = Color.white
+    var theme = Int()
+    var color = Color(red: 0.99, green: 0.96, blue: 0.89)
     var player = AVQueuePlayer()
     var looper: AVPlayerLooper
-    var music: Int = 0
+    var music = Int()
     var isPlaying: Bool = true
     var volume: Float = 1
     
@@ -21,6 +22,7 @@ struct Background {
     }
 }
 extension Background {
+    static let themeList: [String] = ["cat", "dog", "rabbit"]
     static let BGMList: [String] = [
         "Sunshine_from_Someday",
         "Surrounded_by_Smiles",

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FontFamilyPicker: View {
     @StateObject var journalViewModel: JournalViewModel
+    @StateObject var optionViewModel: OptionViewModel
     @Binding var currentFontFamily: String
     
     var body: some View {
@@ -33,8 +34,10 @@ struct FontFamilyPicker: View {
             }
         )
         
-        return Picker(selection: fontFamily,
-                      label: Text("字型")) {
+        return Picker(selection: fontFamily, label:
+                Text("字型")
+                    .modifier(FormFactorModifier(color: optionViewModel.background.color))
+        ) {
             ForEach(Journal.fontFamilyList.indices) { index in
                 Text(Journal.fontFamilyList[index])
                     .font(.custom(Journal.fontFamilyList[index], size: 20))

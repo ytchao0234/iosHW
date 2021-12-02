@@ -9,14 +9,21 @@ import SwiftUI
 
 struct SearchView: View {
     @StateObject var searchViewModel: SearchViewModel
+    @StateObject var optionViewModel: OptionViewModel
     
     var body: some View {
         VStack {
-            SearchBarView(searchViewModel: searchViewModel)
+            SearchBarView(
+                searchViewModel: searchViewModel,
+                optionViewModel: optionViewModel
+            )
             
             DisclosureGroup("其他搜尋條件") {
                 Group {
-                    DateRangeView(searchViewModel: searchViewModel)
+                    DateRangeView(
+                        searchViewModel: searchViewModel,
+                        optionViewModel: optionViewModel
+                    )
                 }
                 .padding(.horizontal)
             }
@@ -27,6 +34,9 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(searchViewModel: SearchViewModel())
+        SearchView(
+            searchViewModel: SearchViewModel(),
+            optionViewModel: OptionViewModel()
+        )
     }
 }

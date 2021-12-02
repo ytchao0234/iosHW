@@ -9,39 +9,52 @@ import SwiftUI
 
 struct DateRangeView: View {
     @StateObject var searchViewModel: SearchViewModel
+    @StateObject var optionViewModel: OptionViewModel
     
     var body: some View {
-        Toggle("選擇日期區間",
-               isOn: $searchViewModel
+        Toggle(isOn: $searchViewModel
                          .searchItem
                          .isPickingDate
-        )
+        ) {
+            Text("選擇日期區間")
+                .modifier(FormFactorModifier(color: optionViewModel.background.color))
+        }
         
         if searchViewModel.searchItem.isPickingDate {
-            DatePicker("起始日期",
-                       selection: $searchViewModel
-                                      .searchItem
-                                      .startDate,
-                       in: ...searchViewModel
-                                  .searchItem
-                                  .endDate,
-                       displayedComponents: .date
-            )
-            DatePicker("結束日期",
-                       selection: $searchViewModel
-                                      .searchItem
-                                      .endDate,
-                       in: searchViewModel
+            DatePicker(
+               selection: $searchViewModel
                               .searchItem
-                              .startDate...Date(),
-                       displayedComponents: .date
-            )
+                              .startDate,
+               in: ...searchViewModel
+                          .searchItem
+                          .endDate,
+               displayedComponents: .date
+            ) {
+                Text("起始日期")
+                    .modifier(FormFactorModifier(color: optionViewModel.background.color))
+            }
+            DatePicker(
+               selection: $searchViewModel
+                              .searchItem
+                              .endDate,
+               in: searchViewModel
+                      .searchItem
+                      .startDate...Date(),
+               displayedComponents: .date
+            ) {
+                Text("結束日期")
+                    .modifier(FormFactorModifier(color: optionViewModel.background.color))
+            }
         }
     }
 }
 
 struct DateRangeView_Previews: PreviewProvider {
     static var previews: some View {
-        DateRangeView(searchViewModel: SearchViewModel())
+        DateRangeView(
+            searchViewModel: SearchViewModel(),
+            optionViewModel: OptionViewModel()
+        )
     }
 }
+

@@ -14,7 +14,7 @@ class SearchViewModel: ObservableObject {
     func getFilterItems(dict: [String: [UUID: Journal]]) -> [String: [UUID: Journal]]
     {
         var result = dict
-        let dateRange = searchItem.startDate...searchItem.endDate
+        let dateRange = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: searchItem.startDate)!...Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: searchItem.endDate)!
         
         result.forEach { (key, value) in
             

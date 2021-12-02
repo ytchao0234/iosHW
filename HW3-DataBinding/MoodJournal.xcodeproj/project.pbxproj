@@ -27,22 +27,22 @@
 		032DC8EC2757B9E90081174F /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DC8EB2757B9E90081174F /* TitleTextField.swift */; };
 		032DC8EE2757BA410081174F /* ContentTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DC8ED2757BA410081174F /* ContentTextEditor.swift */; };
 		032DC8F02757BACD0081174F /* TagPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032DC8EF2757BACD0081174F /* TagPicker.swift */; };
+		035958AF2758D3A7002AB745 /* The_Unforgettable_Light.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958A42758D3A6002AB745 /* The_Unforgettable_Light.mp3 */; };
+		035958B02758D3A7002AB745 /* Theme_of_Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958A52758D3A6002AB745 /* Theme_of_Love.mp3 */; };
+		035958B12758D3A7002AB745 /* Joyful_Moments.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958A62758D3A6002AB745 /* Joyful_Moments.mp3 */; };
+		035958B22758D3A7002AB745 /* The_Thousand_Year_Wish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958A72758D3A6002AB745 /* The_Thousand_Year_Wish.mp3 */; };
+		035958B32758D3A7002AB745 /* The_Divine_Crystal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958A82758D3A6002AB745 /* The_Divine_Crystal.mp3 */; };
+		035958B42758D3A7002AB745 /* Confidentially.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958A92758D3A6002AB745 /* Confidentially.mp3 */; };
+		035958B52758D3A7002AB745 /* One_Morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AA2758D3A6002AB745 /* One_Morning.mp3 */; };
+		035958B62758D3A7002AB745 /* The_Despair.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AB2758D3A6002AB745 /* The_Despair.mp3 */; };
+		035958B72758D3A7002AB745 /* Surrounded_by_Smiles.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AC2758D3A6002AB745 /* Surrounded_by_Smiles.mp3 */; };
+		035958B82758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AD2758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 */; };
+		035958B92758D3A7002AB745 /* Sunshine_from_Someday.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AE2758D3A7002AB745 /* Sunshine_from_Someday.mp3 */; };
 		0362619427567CDB00BB3272 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0362619327567CDB00BB3272 /* Background.swift */; };
 		038E8F0E2756704E002AFCBA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E8F0D2756704E002AFCBA /* SettingView.swift */; };
 		038F82A427510CD2002AA9D9 /* JournalBlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */; };
 		038F82A627510FE0002AA9D9 /* optionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A527510FE0002AA9D9 /* optionButtonView.swift */; };
 		038F82A82751137B002AA9D9 /* readAndEditNavLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A72751137B002AA9D9 /* readAndEditNavLinks.swift */; };
-		0396F6E02757F81F004150FB /* City_of_the_Butterflys_Dream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6D52757F81F004150FB /* City_of_the_Butterflys_Dream.mp3 */; };
-		0396F6E12757F81F004150FB /* The_Unforgettable_Light.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6D62757F81F004150FB /* The_Unforgettable_Light.mp3 */; };
-		0396F6E22757F81F004150FB /* One_Morning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6D72757F81F004150FB /* One_Morning.mp3 */; };
-		0396F6E32757F81F004150FB /* The_Despair.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6D82757F81F004150FB /* The_Despair.mp3 */; };
-		0396F6E42757F81F004150FB /* Confidentially.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6D92757F81F004150FB /* Confidentially.mp3 */; };
-		0396F6E52757F81F004150FB /* The_Divine_Crystal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6DA2757F81F004150FB /* The_Divine_Crystal.mp3 */; };
-		0396F6E62757F81F004150FB /* The_Thousand_Year_Wish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6DB2757F81F004150FB /* The_Thousand_Year_Wish.mp3 */; };
-		0396F6E72757F81F004150FB /* Surrounded_by_Smiles.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6DC2757F81F004150FB /* Surrounded_by_Smiles.mp3 */; };
-		0396F6E82757F81F004150FB /* Theme_of_Love.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6DD2757F81F004150FB /* Theme_of_Love.mp3 */; };
-		0396F6E92757F81F004150FB /* Joyful_Moments.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6DE2757F81F004150FB /* Joyful_Moments.mp3 */; };
-		0396F6EA2757F81F004150FB /* Sunshine_from_Someday.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0396F6DF2757F81F004150FB /* Sunshine_from_Someday.mp3 */; };
 		03DBC7D7274D44BC00DF3B12 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7D6274D44BC00DF3B12 /* Journal.swift */; };
 		03DBC7D9274D452600DF3B12 /* JournalBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */; };
 		03DBC7DB274D515500DF3B12 /* JournalEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DBC7DA274D515500DF3B12 /* JournalEditView.swift */; };
@@ -74,22 +74,22 @@
 		032DC8EB2757B9E90081174F /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
 		032DC8ED2757BA410081174F /* ContentTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTextEditor.swift; sourceTree = "<group>"; };
 		032DC8EF2757BACD0081174F /* TagPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagPicker.swift; sourceTree = "<group>"; };
+		035958A42758D3A6002AB745 /* The_Unforgettable_Light.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = The_Unforgettable_Light.mp3; sourceTree = "<group>"; };
+		035958A52758D3A6002AB745 /* Theme_of_Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Theme_of_Love.mp3; sourceTree = "<group>"; };
+		035958A62758D3A6002AB745 /* Joyful_Moments.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Joyful_Moments.mp3; sourceTree = "<group>"; };
+		035958A72758D3A6002AB745 /* The_Thousand_Year_Wish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = The_Thousand_Year_Wish.mp3; sourceTree = "<group>"; };
+		035958A82758D3A6002AB745 /* The_Divine_Crystal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = The_Divine_Crystal.mp3; sourceTree = "<group>"; };
+		035958A92758D3A6002AB745 /* Confidentially.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Confidentially.mp3; sourceTree = "<group>"; };
+		035958AA2758D3A6002AB745 /* One_Morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = One_Morning.mp3; sourceTree = "<group>"; };
+		035958AB2758D3A6002AB745 /* The_Despair.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = The_Despair.mp3; sourceTree = "<group>"; };
+		035958AC2758D3A6002AB745 /* Surrounded_by_Smiles.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Surrounded_by_Smiles.mp3; sourceTree = "<group>"; };
+		035958AD2758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = City_of_the_Butterflys_Dream.mp3; sourceTree = "<group>"; };
+		035958AE2758D3A7002AB745 /* Sunshine_from_Someday.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sunshine_from_Someday.mp3; sourceTree = "<group>"; };
 		0362619327567CDB00BB3272 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		038E8F0D2756704E002AFCBA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBlockButton.swift; sourceTree = "<group>"; };
 		038F82A527510FE0002AA9D9 /* optionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionButtonView.swift; sourceTree = "<group>"; };
 		038F82A72751137B002AA9D9 /* readAndEditNavLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = readAndEditNavLinks.swift; sourceTree = "<group>"; };
-		0396F6D52757F81F004150FB /* City_of_the_Butterflys_Dream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = City_of_the_Butterflys_Dream.mp3; path = MoodJournal/City_of_the_Butterflys_Dream.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6D62757F81F004150FB /* The_Unforgettable_Light.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = The_Unforgettable_Light.mp3; path = MoodJournal/The_Unforgettable_Light.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6D72757F81F004150FB /* One_Morning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = One_Morning.mp3; path = MoodJournal/One_Morning.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6D82757F81F004150FB /* The_Despair.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = The_Despair.mp3; path = MoodJournal/The_Despair.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6D92757F81F004150FB /* Confidentially.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Confidentially.mp3; path = MoodJournal/Confidentially.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6DA2757F81F004150FB /* The_Divine_Crystal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = The_Divine_Crystal.mp3; path = MoodJournal/The_Divine_Crystal.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6DB2757F81F004150FB /* The_Thousand_Year_Wish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = The_Thousand_Year_Wish.mp3; path = MoodJournal/The_Thousand_Year_Wish.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6DC2757F81F004150FB /* Surrounded_by_Smiles.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Surrounded_by_Smiles.mp3; path = MoodJournal/Surrounded_by_Smiles.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6DD2757F81F004150FB /* Theme_of_Love.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Theme_of_Love.mp3; path = MoodJournal/Theme_of_Love.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6DE2757F81F004150FB /* Joyful_Moments.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Joyful_Moments.mp3; path = MoodJournal/Joyful_Moments.mp3; sourceTree = SOURCE_ROOT; };
-		0396F6DF2757F81F004150FB /* Sunshine_from_Someday.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Sunshine_from_Someday.mp3; path = MoodJournal/Sunshine_from_Someday.mp3; sourceTree = SOURCE_ROOT; };
 		03DBC7D6274D44BC00DF3B12 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		03DBC7D8274D452600DF3B12 /* JournalBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBlockView.swift; sourceTree = "<group>"; };
 		03DBC7DA274D515500DF3B12 /* JournalEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEditView.swift; sourceTree = "<group>"; };
@@ -211,17 +211,17 @@
 		0396F6D42757F805004150FB /* BGM */ = {
 			isa = PBXGroup;
 			children = (
-				0396F6D52757F81F004150FB /* City_of_the_Butterflys_Dream.mp3 */,
-				0396F6D92757F81F004150FB /* Confidentially.mp3 */,
-				0396F6DE2757F81F004150FB /* Joyful_Moments.mp3 */,
-				0396F6D72757F81F004150FB /* One_Morning.mp3 */,
-				0396F6DF2757F81F004150FB /* Sunshine_from_Someday.mp3 */,
-				0396F6DC2757F81F004150FB /* Surrounded_by_Smiles.mp3 */,
-				0396F6D82757F81F004150FB /* The_Despair.mp3 */,
-				0396F6DA2757F81F004150FB /* The_Divine_Crystal.mp3 */,
-				0396F6DB2757F81F004150FB /* The_Thousand_Year_Wish.mp3 */,
-				0396F6D62757F81F004150FB /* The_Unforgettable_Light.mp3 */,
-				0396F6DD2757F81F004150FB /* Theme_of_Love.mp3 */,
+				035958AD2758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 */,
+				035958A92758D3A6002AB745 /* Confidentially.mp3 */,
+				035958A62758D3A6002AB745 /* Joyful_Moments.mp3 */,
+				035958AA2758D3A6002AB745 /* One_Morning.mp3 */,
+				035958AE2758D3A7002AB745 /* Sunshine_from_Someday.mp3 */,
+				035958AC2758D3A6002AB745 /* Surrounded_by_Smiles.mp3 */,
+				035958AB2758D3A6002AB745 /* The_Despair.mp3 */,
+				035958A82758D3A6002AB745 /* The_Divine_Crystal.mp3 */,
+				035958A72758D3A6002AB745 /* The_Thousand_Year_Wish.mp3 */,
+				035958A42758D3A6002AB745 /* The_Unforgettable_Light.mp3 */,
+				035958A52758D3A6002AB745 /* Theme_of_Love.mp3 */,
 			);
 			path = BGM;
 			sourceTree = "<group>";
@@ -324,23 +324,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0396F6E32757F81F004150FB /* The_Despair.mp3 in Resources */,
-				0396F6E22757F81F004150FB /* One_Morning.mp3 in Resources */,
+				035958AF2758D3A7002AB745 /* The_Unforgettable_Light.mp3 in Resources */,
+				035958B02758D3A7002AB745 /* Theme_of_Love.mp3 in Resources */,
+				035958B82758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 in Resources */,
 				03099C352753E38D00BF0E4B /* Xingkai.ttc in Resources */,
+				035958B92758D3A7002AB745 /* Sunshine_from_Someday.mp3 in Resources */,
+				035958B22758D3A7002AB745 /* The_Thousand_Year_Wish.mp3 in Resources */,
+				035958B12758D3A7002AB745 /* Joyful_Moments.mp3 in Resources */,
 				03099C332753E38D00BF0E4B /* Yuanti.ttc in Resources */,
-				0396F6EA2757F81F004150FB /* Sunshine_from_Someday.mp3 in Resources */,
-				0396F6E72757F81F004150FB /* Surrounded_by_Smiles.mp3 in Resources */,
 				03099C372753E38D00BF0E4B /* PingFang.ttc in Resources */,
 				03099C362753E38D00BF0E4B /* Hanzipen.ttc in Resources */,
-				0396F6E12757F81F004150FB /* The_Unforgettable_Light.mp3 in Resources */,
-				0396F6E02757F81F004150FB /* City_of_the_Butterflys_Dream.mp3 in Resources */,
-				0396F6E92757F81F004150FB /* Joyful_Moments.mp3 in Resources */,
-				0396F6E62757F81F004150FB /* The_Thousand_Year_Wish.mp3 in Resources */,
+				035958B62758D3A7002AB745 /* The_Despair.mp3 in Resources */,
+				035958B72758D3A7002AB745 /* Surrounded_by_Smiles.mp3 in Resources */,
+				035958B52758D3A7002AB745 /* One_Morning.mp3 in Resources */,
 				03099C3A2753E38D00BF0E4B /* YuMincho.ttc in Resources */,
-				0396F6E82757F81F004150FB /* Theme_of_Love.mp3 in Resources */,
-				0396F6E52757F81F004150FB /* The_Divine_Crystal.mp3 in Resources */,
-				0396F6E42757F81F004150FB /* Confidentially.mp3 in Resources */,
 				03099C392753E38D00BF0E4B /* Hannotate.ttc in Resources */,
+				035958B32758D3A7002AB745 /* The_Divine_Crystal.mp3 in Resources */,
+				035958B42758D3A7002AB745 /* Confidentially.mp3 in Resources */,
 				03F91DBC2743AE2C001B6860 /* Preview Assets.xcassets in Resources */,
 				03099C342753E38D00BF0E4B /* Klee.ttc in Resources */,
 				03F91DB92743AE2C001B6860 /* Assets.xcassets in Resources */,

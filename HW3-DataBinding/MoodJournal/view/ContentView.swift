@@ -17,42 +17,54 @@ struct ContentView: View {
     }
     
     var body: some View {
-        let columns = [GridItem(.adaptive(minimum: 150, maximum: 400), spacing: 10)]
+        let columns = [GridItem(.adaptive(minimum: 140, maximum: 400), spacing: 10)]
         
         return NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .bottomTrailing) {
-                    VStack {
-                        SearchView(searchViewModel: searchViewModel)
-                            .padding(.bottom)
-                        
-                        ScrollView(.vertical) {
-                            ForEach(
-                                searchViewModel
-                                    .getFilterItems(dict: journalViewModel.journals).keys.sorted(by: journalViewModel.sortTag)
-                                , id: \.self)
-                            { tag in
+                    VStack{
+                        Image(Background.themeList[optionViewModel.background.theme])
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 70)
+                        VStack {
+                            SearchView(
+                                searchViewModel: searchViewModel,
+                                optionViewModel: optionViewModel
+                            )
+                                .padding()
+                            
+                            ScrollView(.vertical) {
+                                ForEach(
+                                    searchViewModel
+                                        .getFilterItems(dict: journalViewModel.journals).keys.sorted(by: journalViewModel.sortTag)
+                                    , id: \.self)
+                                { tag in
 
-                                Section(header: Text(tag)) {
-                                    LazyVGrid(columns: columns) {
-                                        ForEach(
-                                            searchViewModel
-                                                .getFilterItems(dict: journalViewModel.journals)[tag]!.values.sorted())
-                                        { journal in
+                                    Section(header: Text(tag)) {
+                                        LazyVGrid(columns: columns) {
+                                            ForEach(
+                                                searchViewModel
+                                                    .getFilterItems(dict: journalViewModel.journals)[tag]!.values.sorted())
+                                            { journal in
 
-                                            JournalBlockButton(
-                                                journalViewModel: journalViewModel,
-                                                optionViewModel: optionViewModel,
-                                                tag: tag,
-                                                journal: journal
-                                            )
+                                                JournalBlockButton(
+                                                    journalViewModel: journalViewModel,
+                                                    optionViewModel: optionViewModel,
+                                                    tag: tag,
+                                                    journal: journal
+                                                )
 
+                                            }
                                         }
                                     }
-                                }
 
+                                }
                             }
+                            .padding(.horizontal)
                         }
+                        .background(optionViewModel.background.color.brightness(-0.12))
+                        .cornerRadius(20)
                     }
 
                     optionButtonView(
@@ -77,12 +89,7 @@ struct ContentView: View {
                 optionViewModel.playBGM()
                 journalViewModel.clearEmptyJournal()
             }
-            .toolbar(content: {
-                ToolbarItem(placement: .principal) {
-                    Text("我的心情小記")
-                }
-            })
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
         }
     }
 }

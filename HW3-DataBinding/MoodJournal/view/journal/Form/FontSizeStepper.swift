@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FontSizeStepper: View {
     @StateObject var journalViewModel: JournalViewModel
+    @StateObject var optionViewModel: OptionViewModel
     @Binding var currentFontSize: CGFloat
     
     var body: some View {
@@ -33,6 +34,15 @@ struct FontSizeStepper: View {
             }
         )
         
-        return Stepper("字體大小: \(Int(fontSize.wrappedValue))", value: fontSize, in: 10...40)
+        return Stepper(value: fontSize, in: 10...40) {
+            HStack {
+                Text("字體大小")
+                    .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                Text("\(Int(fontSize.wrappedValue))")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
+                    .padding(.leading, 5)
+            }
+        }
     }
 }

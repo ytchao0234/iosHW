@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TitleTextField: View {
     @StateObject var journalViewModel: JournalViewModel
+    @StateObject var optionViewModel: OptionViewModel
     @Binding var currentFontFamily: String
     @Binding var currentFontSize: CGFloat
     
@@ -33,13 +34,26 @@ struct TitleTextField: View {
             }
         )
         
-        return TextField("標題", text: title,
-                         prompt: Text("請輸入標題"))
-            .font(.custom(currentFontFamily, size: currentFontSize))
-            .padding(5)
-            .overlay(
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(Color.secondary, lineWidth: 1)
-            )
+        return ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(optionViewModel.background.color, lineWidth: 5)
+                .background(optionViewModel.background.color.brightness(-0.4))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.secondary, lineWidth: 0.5)
+                )
+            
+            if title.wrappedValue.isEmpty {
+                Text("請輸入標題...")
+                    .foregroundColor(optionViewModel.background.color)
+                    .opacity(0.5)
+                    .padding(5)
+            }
+                
+            TextField("", text: title)
+                .font(.custom(currentFontFamily, size: currentFontSize))
+                .foregroundColor(optionViewModel.background.color)
+                .padding(5)
+        }
     }
 }

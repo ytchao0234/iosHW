@@ -85,6 +85,7 @@ class JournalViewModel: ObservableObject {
                newTag != tag &&
                newTag.count > 0
             {
+                
                 if journals[newTag] == nil {
                    journals[newTag] = [id: journal]
                 } else {
@@ -92,13 +93,16 @@ class JournalViewModel: ObservableObject {
                 }
                 
                 deleteJournal()
+                tag = newTag
                 
                 journals[newTag]![id]!.moodTag = journals.keys.sorted(by: sortTag).firstIndex(where: {$0 == newTag})!
             }
             else if !toAddTag && key != tag {
+                
                 journals[key]![id] = journal
                 
                 deleteJournal()
+                tag = key
                 
                 journals[key]![id]!.moodTag = journals.keys.sorted(by: sortTag).firstIndex(where: {$0 == key})!
             }

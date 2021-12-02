@@ -31,7 +31,7 @@ struct JournalBlockView: View {
             .padding(10)
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 120, maxHeight: 120)
-        .background(optionViewModel.background.color.brightness(-0.12))
+        .background(optionViewModel.background.color.brightness(-0.3))
         .cornerRadius(20)
     }
 }
