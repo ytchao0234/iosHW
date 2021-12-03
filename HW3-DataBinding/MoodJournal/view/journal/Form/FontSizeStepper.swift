@@ -38,6 +38,7 @@ struct FontSizeStepper: View {
             HStack {
                 Text("字體大小")
                     .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                Spacer()
                 Text("\(Int(fontSize.wrappedValue))")
                     .font(.title2)
                     .foregroundColor(.secondary)

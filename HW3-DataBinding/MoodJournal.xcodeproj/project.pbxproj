@@ -38,6 +38,7 @@
 		035958B72758D3A7002AB745 /* Surrounded_by_Smiles.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AC2758D3A6002AB745 /* Surrounded_by_Smiles.mp3 */; };
 		035958B82758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AD2758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 */; };
 		035958B92758D3A7002AB745 /* Sunshine_from_Someday.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 035958AE2758D3A7002AB745 /* Sunshine_from_Someday.mp3 */; };
+		0359FBDB275ABDBC00AA55C6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0359FBDA275ABDBC00AA55C6 /* MapView.swift */; };
 		0362619427567CDB00BB3272 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0362619327567CDB00BB3272 /* Background.swift */; };
 		038E8F0E2756704E002AFCBA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038E8F0D2756704E002AFCBA /* SettingView.swift */; };
 		038F82A427510CD2002AA9D9 /* JournalBlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */; };
@@ -85,6 +86,7 @@
 		035958AC2758D3A6002AB745 /* Surrounded_by_Smiles.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Surrounded_by_Smiles.mp3; sourceTree = "<group>"; };
 		035958AD2758D3A7002AB745 /* City_of_the_Butterflys_Dream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = City_of_the_Butterflys_Dream.mp3; sourceTree = "<group>"; };
 		035958AE2758D3A7002AB745 /* Sunshine_from_Someday.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sunshine_from_Someday.mp3; sourceTree = "<group>"; };
+		0359FBDA275ABDBC00AA55C6 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		0362619327567CDB00BB3272 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		038E8F0D2756704E002AFCBA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		038F82A327510CD2002AA9D9 /* JournalBlockButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBlockButton.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				031E3E09274E4E2A00BF9771 /* JournalReadView.swift */,
 				03DBC7DA274D515500DF3B12 /* JournalEditView.swift */,
 				032DC8E62757B90A0081174F /* Form */,
+				0359FBDA275ABDBC00AA55C6 /* MapView.swift */,
 			);
 			path = journal;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				032DC8D7275793FC0081174F /* JournalViewModel.swift in Sources */,
+				0359FBDB275ABDBC00AA55C6 /* MapView.swift in Sources */,
 				03099C1A27528E7400BF0E4B /* SearchView.swift in Sources */,
 				038F82A427510CD2002AA9D9 /* JournalBlockButton.swift in Sources */,
 				038F82A627510FE0002AA9D9 /* optionButtonView.swift in Sources */,

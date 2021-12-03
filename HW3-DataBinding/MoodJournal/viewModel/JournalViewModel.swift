@@ -37,10 +37,13 @@ class JournalViewModel: ObservableObject {
         if let journalsTag = journals[tag],
            let journal = journalsTag[id]
         {
+            journals[tag]![id]!.time = Date()
+            
             if journal.isEmpty() {
                 deleteJournal()
             }
             else {
+                
                 let key = journals.keys.sorted(by: sortTag)[journals[tag]![id]!.moodTag]
                 
                 if toAddTag && newTag != tag && newTag.count > 0 {

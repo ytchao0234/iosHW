@@ -45,7 +45,22 @@ struct JournalEditView: View {
                         journalViewModel: journalViewModel,
                         optionViewModel: optionViewModel
                     )
-//                                地點
+                    
+                    if let tag = journalViewModel.journals[journalViewModel.tag],
+                       let journal = tag[journalViewModel.id]
+                    {
+                        NavigationLink(destination: {
+                            MapView(journalViewModel: journalViewModel)
+                        }, label: {
+                            HStack {
+                                Text("選擇地點")
+                                    .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                                Spacer()
+                                Text(String(format: "(%.1f, %.1f)", journal.latitude, journal.longitude))
+                                    .foregroundColor(.secondary)
+                            }
+                        })
+                    }
                 }
             }
             .background(optionViewModel.background.color.brightness(-0.12))

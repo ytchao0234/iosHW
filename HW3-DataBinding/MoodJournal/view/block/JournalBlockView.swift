@@ -10,10 +10,10 @@ import SwiftUI
 struct JournalBlockView: View {
     let journal: Journal
     @StateObject var optionViewModel: OptionViewModel
+    
 
     var body: some View {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss E, dd MMM yyyy"
+        Journal.dateFormatter.dateFormat = "HH:mm:ss E, dd MMM yyyy"
         
         return ZStack(alignment: .topLeading) {
             VStack(alignment: .leading) {
@@ -24,7 +24,10 @@ struct JournalBlockView: View {
 
                 Spacer()
 
-                Label(dateFormatter.string(from: journal.time), systemImage: "clock")
+                Label(Journal.dateFormatter.string(from: journal.time), systemImage: "clock")
+                    .font(.caption)
+                    .foregroundColor(.black)
+                Label(String(format: "(%.1f, %.1f)", journal.latitude, journal.longitude), systemImage: "location.circle")
                     .font(.caption)
                     .foregroundColor(.black)
             }

@@ -12,7 +12,9 @@ struct JournalReadView: View {
     @StateObject var optionViewModel: OptionViewModel
     
     var body: some View {
-        GeometryReader { geometry in
+        Journal.dateFormatter.dateFormat = "HH:mm:ss E, dd MMM yyyy"
+        
+        return GeometryReader { geometry in
             VStack {
                 Image(Background.themeList[optionViewModel.background.theme])
                     .resizable()
@@ -23,7 +25,15 @@ struct JournalReadView: View {
                         Text(journal.title)
                             .font(.custom(Journal.fontFamilyList[journal.fontFamily], size: journal.fontSize + 6))
                             .fontWeight(.heavy)
+                            .padding(.bottom, 1)
+                        Label(Journal.dateFormatter.string(from: journal.time), systemImage: "clock")
+                            .font(.caption)
+                            .foregroundColor(.black)
+                        Label(String(format: "(%.1f, %.1f)", journal.latitude, journal.longitude), systemImage: "location.circle")
+                            .font(.caption)
+                            .foregroundColor(.black)
                             .padding(.bottom)
+                        
                         Text(journal.content)
                             .font(.custom(Journal.fontFamilyList[journal.fontFamily], size: journal.fontSize))
                     }
