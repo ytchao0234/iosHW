@@ -34,7 +34,6 @@ struct SearchBarView: View {
                 }
                     
                 TextField("", text: $searchViewModel.searchItem.text)
-                    .lineLimit(1)
                     .foregroundColor(optionViewModel.background.color)
                     .padding(7)
                     .padding(.horizontal, 35)
@@ -53,7 +52,7 @@ struct SearchBarView: View {
                             searchViewModel.searchItem.text = ""
                         }) {
                             Image(systemName: "multiply.circle.fill")
-                                .foregroundColor(.gray)
+                                .foregroundColor(optionViewModel.background.color)
                                 .padding(.trailing)
                         }
                     }

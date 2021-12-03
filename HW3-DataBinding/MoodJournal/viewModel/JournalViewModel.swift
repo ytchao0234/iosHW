@@ -14,9 +14,9 @@ class JournalViewModel: ObservableObject {
     @Published var toEdit = Bool()
     @Published var toRead = Bool()
     @Published var toAddTag = Bool()
+    @Published var newTag = String()
     var tag = String()
     var id = UUID()
-    var newTag = String()
     
     func createJournal() {
         let newJournal = Journal()
@@ -31,6 +31,30 @@ class JournalViewModel: ObservableObject {
         toEdit = true
         tag = "無標籤"
         id = newJournal.id
+    }
+    
+    func updateJournal() {
+        if let journalsTag = journals[tag],
+           let journal = journalsTag[id]
+        {
+            if journal.isEmpty() {
+                deleteJournal()
+            }
+            else {
+                let key = journals.keys.sorted(by: sortTag)[journals[tag]![id]!.moodTag]
+                
+                if toAddTag && newTag != tag && newTag.count > 0 {
+                    setTag(journal, key: newTag)
+                }
+                else if !toAddTag && key != tag {
+                    setTag(journal, key: key)
+                }
+            }
+            
+            toAddTag = false
+            newTag = ""
+            saveJournals()
+        }
     }
     
     func deleteJournal() {
@@ -74,39 +98,17 @@ class JournalViewModel: ObservableObject {
         }
     }
     
-    func setTag() {
-        if let journalsTag = journals[tag],
-           let journal = journalsTag[id],
-           !journal.isEmpty()
-        {
-            let key = journals.keys.sorted(by: sortTag)[journals[tag]![id]!.moodTag]
-            
-            if toAddTag &&
-               newTag != tag &&
-               newTag.count > 0
-            {
-                
-                if journals[newTag] == nil {
-                   journals[newTag] = [id: journal]
-                } else {
-                    journals[newTag]![id] = journal
-                }
-                
-                deleteJournal()
-                tag = newTag
-                
-                journals[newTag]![id]!.moodTag = journals.keys.sorted(by: sortTag).firstIndex(where: {$0 == newTag})!
-            }
-            else if !toAddTag && key != tag {
-                
-                journals[key]![id] = journal
-                
-                deleteJournal()
-                tag = key
-                
-                journals[key]![id]!.moodTag = journals.keys.sorted(by: sortTag).firstIndex(where: {$0 == key})!
-            }
+    func setTag(_ journal: Journal, key: String) {
+        if journals[key] == nil {
+           journals[key] = [id: journal]
+        } else {
+            journals[key]![id] = journal
         }
+        
+        deleteJournal()
+        journals[key]![id]!.moodTag = journals.keys.sorted(by: sortTag).firstIndex(where: {$0 == key})!
+        
+        tag = key
     }
     
     func sortTag(lhs: String, rhs: String) -> Bool {
@@ -119,21 +121,5 @@ class JournalViewModel: ObservableObject {
         else {
             return lhs < rhs
         }
-    }
-    
-    func clearEmptyJournal() {
-        if let journalsTag = journals[tag],
-           let journal = journalsTag[id],
-           journal.isEmpty()
-        {
-            journals[tag]!.removeValue(forKey: id)
-
-            if NSDictionary(dictionary: journals[tag]!)
-                .isEqual(to: [:])
-            {
-                journals.removeValue(forKey: tag)
-            }
-        }
-        
     }
 }

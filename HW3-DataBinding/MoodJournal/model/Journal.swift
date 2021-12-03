@@ -21,6 +21,9 @@ struct Journal: Identifiable, Codable, Comparable {
     static func < (lhs: Journal, rhs: Journal) -> Bool {
         return lhs.time < rhs.time
     }
+    static func > (lhs: Journal, rhs: Journal) -> Bool {
+        return lhs.time > rhs.time
+    }
     
     func isEmpty() -> Bool {
         if self.title == "" && self.content == "" {
@@ -174,7 +177,7 @@ extension Journal {
 
             The rise of the metaverse also presents a tangle of legal and regulatory issues to be resolved. Some of the thorniest issues around the metaverse revolve around users’ personal data and privacy rights.
             """,
-        time: Date(), fontSize: 20, fontFamily: 0, moodTag: 0)
+        time: Date(), fontSize: 20, fontFamily: 0, moodTag: 1)
     static let test4 = Journal(
         title: "日本での生活で一番めんどうくさいことってなに？",
         content:
@@ -200,7 +203,7 @@ extension Journal {
             
             ベトナム在住欧米人——箸を使って食べた時に褒められること
             """,
-        time: Date(), fontSize: 20, fontFamily: 0, moodTag: 0)
+        time: Date(), fontSize: 20, fontFamily: 0, moodTag: 2)
     
     static let defaultDict = ["無標籤": [test1.id: test1, test2.id: test2],
                               "Aaa": [test3.id: test3],

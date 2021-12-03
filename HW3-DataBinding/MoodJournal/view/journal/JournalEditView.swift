@@ -67,10 +67,6 @@ struct JournalEditView: View {
             }
         })
         .navigationBarTitleDisplayMode(.inline)
-        .onDisappear {
-            journalViewModel.setTag()
-            journalViewModel.saveJournals()
-        }
     }
 }
 

@@ -45,7 +45,7 @@ struct ContentView: View {
                                         LazyVGrid(columns: columns) {
                                             ForEach(
                                                 searchViewModel
-                                                    .getFilterItems(dict: journalViewModel.journals)[tag]!.values.sorted())
+                                                    .getFilterItems(dict: journalViewModel.journals)[tag]!.values.sorted(by: >))
                                             { journal in
 
                                                 JournalBlockButton(
@@ -87,7 +87,7 @@ struct ContentView: View {
             .background(optionViewModel.background.color)
             .onAppear {
                 optionViewModel.playBGM()
-                journalViewModel.clearEmptyJournal()
+                journalViewModel.updateJournal()
             }
             .navigationBarHidden(true)
         }
