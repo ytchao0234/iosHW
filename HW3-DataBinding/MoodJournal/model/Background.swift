@@ -14,15 +14,19 @@ struct Background {
     var player = AVQueuePlayer()
     var looper: AVPlayerLooper
     var music = Int()
-    var isPlaying: Bool = true
-    var volume: Float = 1
+    var isPlaying = Bool(true)
+    var volume = Float(1)
+    var playMode = Int()
     
     init() {
-        self.looper = AVPlayerLooper(player: self.player, templateItem: AVPlayerItem(url: Bundle.main.url(forResource: Background.BGMList[self.music], withExtension: "mp3")!))
+        let item = AVPlayerItem(url: Bundle.main.url(forResource: Background.BGMList[self.music], withExtension: "mp3")!)
+        self.looper = AVPlayerLooper(player: self.player, templateItem: item)
+        self.player.insert(item, after: nil)
     }
 }
 extension Background {
     static let themeList: [String] = ["cat", "dog", "rabbit"]
+    static let playModeList: [String] = ["單曲循環", "循環播放", "隨機播放"]
     static let BGMList: [String] = [
         "Sunshine_from_Someday",
         "Surrounded_by_Smiles",

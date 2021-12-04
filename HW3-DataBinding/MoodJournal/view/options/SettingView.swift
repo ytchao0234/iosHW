@@ -43,16 +43,25 @@ struct SettingView: View {
                     }
                     
                     Section(header: Text("音樂")) {
+                        Picker(selection: $optionViewModel.background.playMode, label: Text("")) {
+                            ForEach(Background.playModeList.indices) { index in
+                                Text(Background.playModeList[index])
+                                    .tag(index)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        .modifier(FormFactorModifier(color: optionViewModel.background.color))
+                        
                         Toggle(isOn: $optionViewModel.background.isPlaying) {
                             Text(optionViewModel.background.isPlaying ? "播放音樂" : "暫停音樂")
                                 .modifier(FormFactorModifier(color: optionViewModel.background.color))
                             }
                             .onChange(of: optionViewModel.background.isPlaying) { newValue in
                                 if newValue {
-                                    optionViewModel.playBGM()
+                                    optionViewModel.background.player.play()
                                 }
                                 else {
-                                    optionViewModel.pauseBGM()
+                                    optionViewModel.background.player.pause()
                                 }
                             }
                     
