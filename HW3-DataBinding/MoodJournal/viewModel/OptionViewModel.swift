@@ -17,6 +17,10 @@ class OptionViewModel: ObservableObject {
     
     var timer = Timer()
     
+    init() {
+        playBGM()
+    }
+    
     func playBGM() {
         background.player.play()
         

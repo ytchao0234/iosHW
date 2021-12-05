@@ -34,6 +34,11 @@ struct readAndEditNavLinks: View {
                     label: {
                         EmptyView()
                 })
+                .onChange(of: journalViewModel.toEdit) { newValue in
+                    if newValue == false {
+                        journalViewModel.updateJournal()
+                    }
+                }
             }
         }
     }

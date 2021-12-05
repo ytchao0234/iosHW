@@ -100,7 +100,7 @@ extension Journal {
 
             且不論冥冥中是不是真有上帝、魔鬼與天使，你我不是都穿梭在這三者之間嗎？
             """,
-        time: Date(), latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 0)
+        time: DateComponents(calendar: .current, year: 2021, month: 9, day: 1).date!, latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 0)
     static let test2 = Journal(
         title: "兔子的論文",
         content:
@@ -165,7 +165,7 @@ extension Journal {
 
             引申至上班族為：你做了什麼不重要，重要的是「你的老闆罩不罩你」。
             """,
-        time: Date(), latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 0)
+        time: DateComponents(calendar: .current, year: 2021, month: 10, day: 1).date!, latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 0)
     static let test3 = Journal(
         title: "What is the metaverse?",
         content:
@@ -180,7 +180,7 @@ extension Journal {
 
             The rise of the metaverse also presents a tangle of legal and regulatory issues to be resolved. Some of the thorniest issues around the metaverse revolve around users’ personal data and privacy rights.
             """,
-        time: Date(), latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 1)
+        time: DateComponents(calendar: .current, year: 2021, month: 11, day: 1).date!, latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 1)
     static let test4 = Journal(
         title: "日本での生活で一番めんどうくさいことってなに？",
         content:
@@ -206,7 +206,7 @@ extension Journal {
             
             ベトナム在住欧米人——箸を使って食べた時に褒められること
             """,
-        time: Date(), latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 2)
+        time: DateComponents(calendar: .current, year: 2021, month: 12, day: 1).date!, latitude: 25.15, longitude: 121.75, fontSize: 20, fontFamily: 0, moodTag: 2)
     
     static let defaultDict = ["無標籤": [test1.id: test1, test2.id: test2],
                               "Aaa": [test3.id: test3],

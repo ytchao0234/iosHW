@@ -18,6 +18,10 @@ class JournalViewModel: ObservableObject {
     var tag = String()
     var id = UUID()
     
+    init() {
+//        self.journals = getJournals() ?? [String: [UUID: Journal]]()
+    }
+    
     func createJournal() {
         let newJournal = Journal()
 

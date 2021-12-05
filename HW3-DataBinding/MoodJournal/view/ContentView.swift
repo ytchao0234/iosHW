@@ -85,12 +85,9 @@ struct ContentView: View {
                 ))
             }
             .background(optionViewModel.background.color)
-            .onAppear {
-                optionViewModel.playBGM()
-                journalViewModel.updateJournal()
-            }
             .navigationBarHidden(true)
         }
+        .preferredColorScheme(.light)
     }
 }
 

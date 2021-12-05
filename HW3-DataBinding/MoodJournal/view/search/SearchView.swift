@@ -18,7 +18,7 @@ struct SearchView: View {
                 optionViewModel: optionViewModel
             )
             
-            DisclosureGroup("其他搜尋條件") {
+            DisclosureGroup {
                 Group {
                     DateRangeView(
                         searchViewModel: searchViewModel,
@@ -26,6 +26,9 @@ struct SearchView: View {
                     )
                 }
                 .padding(.horizontal)
+            } label: {
+                Label("其他搜尋條件", systemImage: "slider.horizontal.3")
+                    .foregroundColor(.secondary)
             }
             .padding(.horizontal)
         }

@@ -15,11 +15,13 @@ struct optionButtonView: View {
         Button(action: {
             optionViewModel.showOptions = true
         }, label: {
-            Image(systemName: "ellipsis.circle.fill")
+            Image(systemName: "ellipsis.circle")
                 .resizable()
                 .frame(width: 60, height: 60)
-                .foregroundColor(.purple)
-                .background(Circle().fill(Color.white))
+                .foregroundColor(optionViewModel.background.color)
+                .background(optionViewModel.background.color.contrast(-0.1))
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.secondary))
                 .padding(10)
         })
         .actionSheet(isPresented: $optionViewModel.showOptions) {

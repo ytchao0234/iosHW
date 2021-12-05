@@ -13,6 +13,8 @@ struct JournalEditView: View {
     
     @State var currentFontFamily = String()
     @State var currentFontSize = CGFloat()
+    
+    @FocusState private var isFocused: Bool
 
     var body: some View {
         GeometryReader { geometry in
@@ -33,6 +35,8 @@ struct JournalEditView: View {
                     currentFontFamily: $currentFontFamily,
                     currentFontSize: $currentFontSize
                 )
+                .focused($isFocused)
+                
                 ContentTextEditor(
                     journalViewModel: journalViewModel,
                     optionViewModel: optionViewModel,
@@ -40,6 +44,8 @@ struct JournalEditView: View {
                     currentFontSize: $currentFontSize,
                     geometryHeight: 700
                 )
+                .focused($isFocused)
+                
                 DisclosureGroup("其他") {
                     TagPicker(
                         journalViewModel: journalViewModel,
@@ -75,6 +81,9 @@ struct JournalEditView: View {
                 currentFontFamily = Journal.fontFamilyList[journal.fontFamily]
                 currentFontSize = journal.fontSize
             }
+        }
+        .onTapGesture {
+            isFocused = false
         }
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
