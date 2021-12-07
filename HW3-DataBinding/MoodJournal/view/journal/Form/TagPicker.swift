@@ -10,6 +10,7 @@ import SwiftUI
 struct TagPicker: View {
     @StateObject var journalViewModel: JournalViewModel
     @StateObject var optionViewModel: OptionViewModel
+    @FocusState.Binding var isFocused: Bool
     
     var body: some View {
         let moodTag = Binding (
@@ -60,6 +61,10 @@ struct TagPicker: View {
                     TextField("", text: $journalViewModel.newTag)
                         .foregroundColor(optionViewModel.background.color)
                         .padding(5)
+                        .focused($isFocused)
+                        .onTapGesture {
+                            isFocused = false
+                        }
                 }
             } else {
                 Picker(selection: moodTag, label:

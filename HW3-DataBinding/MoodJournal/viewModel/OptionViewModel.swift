@@ -49,6 +49,7 @@ class OptionViewModel: ObservableObject {
                 
                 let nextItem = AVPlayerItem(url: Bundle.main.url(forResource: Background.BGMList[self.background.music], withExtension: "mp3")!)
                 self.background.player.insert(nextItem, after: nil)
+                
                 self.playBGM()
             }
         )

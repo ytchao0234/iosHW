@@ -9,8 +9,8 @@ import Combine
 import SwiftUI
 
 class JournalViewModel: ObservableObject {
-//    @Published var journals = [String: [UUID: Journal]]()
-    @Published var journals = Journal.defaultDict
+    @Published var journals = [String: [UUID: Journal]]()
+//    @Published var journals = Journal.defaultDict
     @Published var toEdit = Bool()
     @Published var toRead = Bool()
     @Published var toAddTag = Bool()
@@ -19,7 +19,7 @@ class JournalViewModel: ObservableObject {
     var id = UUID()
     
     init() {
-//        self.journals = getJournals() ?? [String: [UUID: Journal]]()
+        self.journals = getJournals() ?? [String: [UUID: Journal]]()
     }
     
     func createJournal() {

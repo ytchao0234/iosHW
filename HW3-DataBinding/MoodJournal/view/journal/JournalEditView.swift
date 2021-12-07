@@ -29,27 +29,32 @@ struct JournalEditView: View {
                     optionViewModel: optionViewModel,
                     currentFontSize: $currentFontSize
                 )
-                TitleTextField(
-                    journalViewModel: journalViewModel,
-                    optionViewModel: optionViewModel,
-                    currentFontFamily: $currentFontFamily,
-                    currentFontSize: $currentFontSize
-                )
+                Group {
+                    TitleTextField(
+                        journalViewModel: journalViewModel,
+                        optionViewModel: optionViewModel,
+                        currentFontFamily: $currentFontFamily,
+                        currentFontSize: $currentFontSize
+                    )
+                    
+                    ContentTextEditor(
+                        journalViewModel: journalViewModel,
+                        optionViewModel: optionViewModel,
+                        currentFontFamily: $currentFontFamily,
+                        currentFontSize: $currentFontSize,
+                        geometryHeight: 700
+                    )
+                }
                 .focused($isFocused)
-                
-                ContentTextEditor(
-                    journalViewModel: journalViewModel,
-                    optionViewModel: optionViewModel,
-                    currentFontFamily: $currentFontFamily,
-                    currentFontSize: $currentFontSize,
-                    geometryHeight: 700
-                )
-                .focused($isFocused)
+                .onTapGesture {
+                    isFocused = false
+                }
                 
                 DisclosureGroup("其他") {
                     TagPicker(
                         journalViewModel: journalViewModel,
-                        optionViewModel: optionViewModel
+                        optionViewModel: optionViewModel,
+                        isFocused: $isFocused
                     )
                     
                     if let tag = journalViewModel.journals[journalViewModel.tag],
@@ -82,9 +87,12 @@ struct JournalEditView: View {
                 currentFontSize = journal.fontSize
             }
         }
-        .onTapGesture {
-            isFocused = false
-        }
+        .gesture(
+            DragGesture()
+                .onEnded({ (value) in
+                    isFocused = false
+                })
+        )
         .toolbar(content: {
             ToolbarItem(placement: .principal) {
                 Text("編輯筆記")
