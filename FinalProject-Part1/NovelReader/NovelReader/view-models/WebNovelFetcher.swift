@@ -139,5 +139,6 @@ class WebNovelFetcher: ObservableObject {
     
     func previewChapterList() {
         self.chapterList = try! self.decoder.decode([[String]].self, from: NSDataAsset(name: "chapterList")!.data)
+        print(self.chapterList)
     }
 }

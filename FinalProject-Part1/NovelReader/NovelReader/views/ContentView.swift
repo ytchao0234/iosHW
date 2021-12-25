@@ -19,7 +19,7 @@ struct ContentView: View {
                 .tabItem {Label("本站", systemImage: "doc")}
         }
         .onAppear {
-            webNovelFetcher.getChapterList()
+            webNovelFetcher.previewChapterList()
         }
     }
 }

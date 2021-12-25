@@ -3,132 +3,129 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		035CCC132776EFC900300CE8 /* NovelReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC122776EFC900300CE8 /* NovelReaderApp.swift */; };
-		035CCC152776EFC900300CE8 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC142776EFC900300CE8 /* CoreDataTestView.swift */; };
-		035CCC172776EFCB00300CE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035CCC162776EFCB00300CE8 /* Assets.xcassets */; };
-		035CCC1A2776EFCB00300CE8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035CCC192776EFCB00300CE8 /* Preview Assets.xcassets */; };
-		035CCC1C2776EFCB00300CE8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC1B2776EFCB00300CE8 /* Persistence.swift */; };
-		035CCC1F2776EFCB00300CE8 /* NovelReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC1D2776EFCB00300CE8 /* NovelReader.xcdatamodeld */; };
-		035CCC262776F0A300300CE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC252776F0A300300CE8 /* ContentView.swift */; };
-		035CCC2B2776F3ED00300CE8 /* KeepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC2A2776F3ED00300CE8 /* KeepView.swift */; };
-		035CCC2D2776F4AE00300CE8 /* KeepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC2C2776F4AE00300CE8 /* KeepViewModel.swift */; };
-		035CCC2F2776F52600300CE8 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC2E2776F52600300CE8 /* Novel.swift */; };
-		035CCC322776F75A00300CE8 /* SwiftDown in Frameworks */ = {isa = PBXBuildFile; productRef = 035CCC312776F75A00300CE8 /* SwiftDown */; };
-		035CCC342776F7EB00300CE8 /* CommantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC332776F7EB00300CE8 /* CommantView.swift */; };
-		035CCC362777265100300CE8 /* WebNovelFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC352777265100300CE8 /* WebNovelFetcher.swift */; };
+		550284C3277759570074A6D6 /* NovelReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284C2277759570074A6D6 /* NovelReaderApp.swift */; };
+		550284C5277759570074A6D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284C4277759570074A6D6 /* ContentView.swift */; };
+		550284C72777595F0074A6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550284C62777595F0074A6D6 /* Assets.xcassets */; };
+		550284CA2777595F0074A6D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550284C92777595F0074A6D6 /* Preview Assets.xcassets */; };
+		550284CC2777595F0074A6D6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284CB2777595F0074A6D6 /* Persistence.swift */; };
+		550284CF2777595F0074A6D6 /* NovelReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 550284CD2777595F0074A6D6 /* NovelReader.xcdatamodeld */; };
+		550284DC277759F10074A6D6 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284DB277759F10074A6D6 /* CoreDataTestView.swift */; };
+		550284E027775AF40074A6D6 /* KeepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284DF27775AF40074A6D6 /* KeepView.swift */; };
+		550284E427775B850074A6D6 /* SwiftDown in Frameworks */ = {isa = PBXBuildFile; productRef = 550284E327775B850074A6D6 /* SwiftDown */; };
+		550284E727775C040074A6D6 /* CommantEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284E627775C040074A6D6 /* CommantEditView.swift */; };
+		550284EB27775CAD0074A6D6 /* WebNovelFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284EA27775CAD0074A6D6 /* WebNovelFetcher.swift */; };
+		550284EE27775DC90074A6D6 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284ED27775DC90074A6D6 /* Novel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		035CCC0F2776EFC900300CE8 /* NovelReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovelReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		035CCC122776EFC900300CE8 /* NovelReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelReaderApp.swift; sourceTree = "<group>"; };
-		035CCC142776EFC900300CE8 /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
-		035CCC162776EFCB00300CE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		035CCC192776EFCB00300CE8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		035CCC1B2776EFCB00300CE8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		035CCC1E2776EFCB00300CE8 /* NovelReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NovelReader.xcdatamodel; sourceTree = "<group>"; };
-		035CCC252776F0A300300CE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		035CCC2A2776F3ED00300CE8 /* KeepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepView.swift; sourceTree = "<group>"; };
-		035CCC2C2776F4AE00300CE8 /* KeepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepViewModel.swift; sourceTree = "<group>"; };
-		035CCC2E2776F52600300CE8 /* Novel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
-		035CCC332776F7EB00300CE8 /* CommantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantView.swift; sourceTree = "<group>"; };
-		035CCC352777265100300CE8 /* WebNovelFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNovelFetcher.swift; sourceTree = "<group>"; };
-		035CCC3727772AD900300CE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		550284BF277759570074A6D6 /* NovelReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovelReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		550284C2277759570074A6D6 /* NovelReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelReaderApp.swift; sourceTree = "<group>"; };
+		550284C4277759570074A6D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		550284C62777595F0074A6D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		550284C92777595F0074A6D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		550284CB2777595F0074A6D6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		550284CE2777595F0074A6D6 /* NovelReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NovelReader.xcdatamodel; sourceTree = "<group>"; };
+		550284D02777595F0074A6D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		550284DB277759F10074A6D6 /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
+		550284DF27775AF40074A6D6 /* KeepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepView.swift; sourceTree = "<group>"; };
+		550284E627775C040074A6D6 /* CommantEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantEditView.swift; sourceTree = "<group>"; };
+		550284EA27775CAD0074A6D6 /* WebNovelFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNovelFetcher.swift; sourceTree = "<group>"; };
+		550284ED27775DC90074A6D6 /* Novel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		035CCC0C2776EFC900300CE8 /* Frameworks */ = {
+		550284BC277759570074A6D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				035CCC322776F75A00300CE8 /* SwiftDown in Frameworks */,
+				550284E427775B850074A6D6 /* SwiftDown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		035CCC062776EFC900300CE8 = {
+		550284B6277759570074A6D6 = {
 			isa = PBXGroup;
 			children = (
-				035CCC112776EFC900300CE8 /* NovelReader */,
-				035CCC102776EFC900300CE8 /* Products */,
+				550284C1277759570074A6D6 /* NovelReader */,
+				550284C0277759570074A6D6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		035CCC102776EFC900300CE8 /* Products */ = {
+		550284C0277759570074A6D6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				035CCC0F2776EFC900300CE8 /* NovelReader.app */,
+				550284BF277759570074A6D6 /* NovelReader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		035CCC112776EFC900300CE8 /* NovelReader */ = {
+		550284C1277759570074A6D6 /* NovelReader */ = {
 			isa = PBXGroup;
 			children = (
-				035CCC3727772AD900300CE8 /* Info.plist */,
-				035CCC122776EFC900300CE8 /* NovelReaderApp.swift */,
-				035CCC272776F35400300CE8 /* view-models */,
-				035CCC282776F37600300CE8 /* views */,
-				035CCC292776F37C00300CE8 /* models */,
-				035CCC162776EFCB00300CE8 /* Assets.xcassets */,
-				035CCC1D2776EFCB00300CE8 /* NovelReader.xcdatamodeld */,
-				035CCC182776EFCB00300CE8 /* Preview Content */,
+				550284D9277759AE0074A6D6 /* view-models */,
+				550284D8277759A90074A6D6 /* models */,
+				550284D7277759A20074A6D6 /* views */,
+				550284C2277759570074A6D6 /* NovelReaderApp.swift */,
+				550284C62777595F0074A6D6 /* Assets.xcassets */,
+				550284D02777595F0074A6D6 /* Info.plist */,
+				550284CD2777595F0074A6D6 /* NovelReader.xcdatamodeld */,
+				550284C82777595F0074A6D6 /* Preview Content */,
 			);
 			path = NovelReader;
 			sourceTree = "<group>";
 		};
-		035CCC182776EFCB00300CE8 /* Preview Content */ = {
+		550284C82777595F0074A6D6 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				035CCC192776EFCB00300CE8 /* Preview Assets.xcassets */,
+				550284C92777595F0074A6D6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		035CCC272776F35400300CE8 /* view-models */ = {
+		550284D7277759A20074A6D6 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				035CCC1B2776EFCB00300CE8 /* Persistence.swift */,
-				035CCC2C2776F4AE00300CE8 /* KeepViewModel.swift */,
-				035CCC352777265100300CE8 /* WebNovelFetcher.swift */,
-			);
-			path = "view-models";
-			sourceTree = "<group>";
-		};
-		035CCC282776F37600300CE8 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				035CCC252776F0A300300CE8 /* ContentView.swift */,
-				035CCC2A2776F3ED00300CE8 /* KeepView.swift */,
-				035CCC142776EFC900300CE8 /* CoreDataTestView.swift */,
-				035CCC332776F7EB00300CE8 /* CommantView.swift */,
+				550284C4277759570074A6D6 /* ContentView.swift */,
+				550284DF27775AF40074A6D6 /* KeepView.swift */,
+				550284DB277759F10074A6D6 /* CoreDataTestView.swift */,
+				550284E627775C040074A6D6 /* CommantEditView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
 		};
-		035CCC292776F37C00300CE8 /* models */ = {
+		550284D8277759A90074A6D6 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				035CCC2E2776F52600300CE8 /* Novel.swift */,
+				550284ED27775DC90074A6D6 /* Novel.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		550284D9277759AE0074A6D6 /* view-models */ = {
+			isa = PBXGroup;
+			children = (
+				550284CB2777595F0074A6D6 /* Persistence.swift */,
+				550284EA27775CAD0074A6D6 /* WebNovelFetcher.swift */,
+			);
+			path = "view-models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		035CCC0E2776EFC900300CE8 /* NovelReader */ = {
+		550284BE277759570074A6D6 /* NovelReader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 035CCC222776EFCB00300CE8 /* Build configuration list for PBXNativeTarget "NovelReader" */;
+			buildConfigurationList = 550284D32777595F0074A6D6 /* Build configuration list for PBXNativeTarget "NovelReader" */;
 			buildPhases = (
-				035CCC0B2776EFC900300CE8 /* Sources */,
-				035CCC0C2776EFC900300CE8 /* Frameworks */,
-				035CCC0D2776EFC900300CE8 /* Resources */,
+				550284BB277759570074A6D6 /* Sources */,
+				550284BC277759570074A6D6 /* Frameworks */,
+				550284BD277759570074A6D6 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -136,88 +133,86 @@
 			);
 			name = NovelReader;
 			packageProductDependencies = (
-				035CCC312776F75A00300CE8 /* SwiftDown */,
+				550284E327775B850074A6D6 /* SwiftDown */,
 			);
 			productName = NovelReader;
-			productReference = 035CCC0F2776EFC900300CE8 /* NovelReader.app */;
+			productReference = 550284BF277759570074A6D6 /* NovelReader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		035CCC072776EFC900300CE8 /* Project object */ = {
+		550284B7277759570074A6D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1310;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					035CCC0E2776EFC900300CE8 = {
-						CreatedOnToolsVersion = 13.1;
+					550284BE277759570074A6D6 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = 035CCC0A2776EFC900300CE8 /* Build configuration list for PBXProject "NovelReader" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = 550284BA277759570074A6D6 /* Build configuration list for PBXProject "NovelReader" */;
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 035CCC062776EFC900300CE8;
+			mainGroup = 550284B6277759570074A6D6;
 			packageReferences = (
-				035CCC302776F75A00300CE8 /* XCRemoteSwiftPackageReference "SwiftDown" */,
+				550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */,
 			);
-			productRefGroup = 035CCC102776EFC900300CE8 /* Products */;
+			productRefGroup = 550284C0277759570074A6D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				035CCC0E2776EFC900300CE8 /* NovelReader */,
+				550284BE277759570074A6D6 /* NovelReader */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		035CCC0D2776EFC900300CE8 /* Resources */ = {
+		550284BD277759570074A6D6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				035CCC1A2776EFCB00300CE8 /* Preview Assets.xcassets in Resources */,
-				035CCC172776EFCB00300CE8 /* Assets.xcassets in Resources */,
+				550284CA2777595F0074A6D6 /* Preview Assets.xcassets in Resources */,
+				550284C72777595F0074A6D6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		035CCC0B2776EFC900300CE8 /* Sources */ = {
+		550284BB277759570074A6D6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				035CCC2D2776F4AE00300CE8 /* KeepViewModel.swift in Sources */,
-				035CCC1C2776EFCB00300CE8 /* Persistence.swift in Sources */,
-				035CCC342776F7EB00300CE8 /* CommantView.swift in Sources */,
-				035CCC362777265100300CE8 /* WebNovelFetcher.swift in Sources */,
-				035CCC2F2776F52600300CE8 /* Novel.swift in Sources */,
-				035CCC262776F0A300300CE8 /* ContentView.swift in Sources */,
-				035CCC152776EFC900300CE8 /* CoreDataTestView.swift in Sources */,
-				035CCC132776EFC900300CE8 /* NovelReaderApp.swift in Sources */,
-				035CCC1F2776EFCB00300CE8 /* NovelReader.xcdatamodeld in Sources */,
-				035CCC2B2776F3ED00300CE8 /* KeepView.swift in Sources */,
+				550284CC2777595F0074A6D6 /* Persistence.swift in Sources */,
+				550284E727775C040074A6D6 /* CommantEditView.swift in Sources */,
+				550284DC277759F10074A6D6 /* CoreDataTestView.swift in Sources */,
+				550284EE27775DC90074A6D6 /* Novel.swift in Sources */,
+				550284EB27775CAD0074A6D6 /* WebNovelFetcher.swift in Sources */,
+				550284C5277759570074A6D6 /* ContentView.swift in Sources */,
+				550284C3277759570074A6D6 /* NovelReaderApp.swift in Sources */,
+				550284CF2777595F0074A6D6 /* NovelReader.xcdatamodeld in Sources */,
+				550284E027775AF40074A6D6 /* KeepView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		035CCC202776EFCB00300CE8 /* Debug */ = {
+		550284D12777595F0074A6D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -262,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,13 +267,13 @@
 			};
 			name = Debug;
 		};
-		035CCC212776EFCB00300CE8 /* Release */ = {
+		550284D22777595F0074A6D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -317,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -327,61 +322,43 @@
 			};
 			name = Release;
 		};
-		035CCC232776EFCB00300CE8 /* Debug */ = {
+		550284D42777595F0074A6D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NovelReader/Preview Content\"";
-				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NovelReader/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ytchao.NovelReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		035CCC242776EFCB00300CE8 /* Release */ = {
+		550284D52777595F0074A6D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NovelReader/Preview Content\"";
-				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NovelReader/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ytchao.NovelReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -390,20 +367,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		035CCC0A2776EFC900300CE8 /* Build configuration list for PBXProject "NovelReader" */ = {
+		550284BA277759570074A6D6 /* Build configuration list for PBXProject "NovelReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				035CCC202776EFCB00300CE8 /* Debug */,
-				035CCC212776EFCB00300CE8 /* Release */,
+				550284D12777595F0074A6D6 /* Debug */,
+				550284D22777595F0074A6D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		035CCC222776EFCB00300CE8 /* Build configuration list for PBXNativeTarget "NovelReader" */ = {
+		550284D32777595F0074A6D6 /* Build configuration list for PBXNativeTarget "NovelReader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				035CCC232776EFCB00300CE8 /* Debug */,
-				035CCC242776EFCB00300CE8 /* Release */,
+				550284D42777595F0074A6D6 /* Debug */,
+				550284D52777595F0074A6D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -411,7 +388,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		035CCC302776F75A00300CE8 /* XCRemoteSwiftPackageReference "SwiftDown" */ = {
+		550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/qeude/SwiftDown.git";
 			requirement = {
@@ -422,25 +399,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		035CCC312776F75A00300CE8 /* SwiftDown */ = {
+		550284E327775B850074A6D6 /* SwiftDown */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 035CCC302776F75A00300CE8 /* XCRemoteSwiftPackageReference "SwiftDown" */;
+			package = 550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */;
 			productName = SwiftDown;
 		};
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		035CCC1D2776EFCB00300CE8 /* NovelReader.xcdatamodeld */ = {
+		550284CD2777595F0074A6D6 /* NovelReader.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				035CCC1E2776EFCB00300CE8 /* NovelReader.xcdatamodel */,
+				550284CE2777595F0074A6D6 /* NovelReader.xcdatamodel */,
 			);
-			currentVersion = 035CCC1E2776EFCB00300CE8 /* NovelReader.xcdatamodel */;
+			currentVersion = 550284CE2777595F0074A6D6 /* NovelReader.xcdatamodel */;
 			path = NovelReader.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 035CCC072776EFC900300CE8 /* Project object */;
+	rootObject = 550284B7277759570074A6D6 /* Project object */;
 }

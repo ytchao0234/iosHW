@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  NovelReader
 //
-//  Created by FanRende on 2021/12/25.
+//  Created by User08 on 2021/12/25.
 //
 
 import SwiftUI
@@ -20,11 +20,7 @@ struct CoreDataTestView: View {
         NavigationView {
             List {
                 ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                 }
                 .onDelete(perform: deleteItems)
             }
@@ -38,7 +34,6 @@ struct CoreDataTestView: View {
                     }
                 }
             }
-            Text("Select an item")
         }
     }
 
