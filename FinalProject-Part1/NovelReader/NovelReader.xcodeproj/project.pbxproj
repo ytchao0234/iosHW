@@ -19,6 +19,7 @@
 		035CCC2F2776F52600300CE8 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC2E2776F52600300CE8 /* Novel.swift */; };
 		035CCC322776F75A00300CE8 /* SwiftDown in Frameworks */ = {isa = PBXBuildFile; productRef = 035CCC312776F75A00300CE8 /* SwiftDown */; };
 		035CCC342776F7EB00300CE8 /* CommantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC332776F7EB00300CE8 /* CommantView.swift */; };
+		035CCC362777265100300CE8 /* WebNovelFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035CCC352777265100300CE8 /* WebNovelFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		035CCC2C2776F4AE00300CE8 /* KeepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepViewModel.swift; sourceTree = "<group>"; };
 		035CCC2E2776F52600300CE8 /* Novel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
 		035CCC332776F7EB00300CE8 /* CommantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantView.swift; sourceTree = "<group>"; };
+		035CCC352777265100300CE8 /* WebNovelFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNovelFetcher.swift; sourceTree = "<group>"; };
+		035CCC3727772AD900300CE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,7 @@
 		035CCC112776EFC900300CE8 /* NovelReader */ = {
 			isa = PBXGroup;
 			children = (
+				035CCC3727772AD900300CE8 /* Info.plist */,
 				035CCC122776EFC900300CE8 /* NovelReaderApp.swift */,
 				035CCC272776F35400300CE8 /* view-models */,
 				035CCC282776F37600300CE8 /* views */,
@@ -91,6 +95,7 @@
 			children = (
 				035CCC1B2776EFCB00300CE8 /* Persistence.swift */,
 				035CCC2C2776F4AE00300CE8 /* KeepViewModel.swift */,
+				035CCC352777265100300CE8 /* WebNovelFetcher.swift */,
 			);
 			path = "view-models";
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				035CCC2D2776F4AE00300CE8 /* KeepViewModel.swift in Sources */,
 				035CCC1C2776EFCB00300CE8 /* Persistence.swift in Sources */,
 				035CCC342776F7EB00300CE8 /* CommantView.swift in Sources */,
+				035CCC362777265100300CE8 /* WebNovelFetcher.swift in Sources */,
 				035CCC2F2776F52600300CE8 /* Novel.swift in Sources */,
 				035CCC262776F0A300300CE8 /* ContentView.swift in Sources */,
 				035CCC152776EFC900300CE8 /* CoreDataTestView.swift in Sources */,
@@ -332,6 +338,7 @@
 				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NovelReader/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -361,6 +368,7 @@
 				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NovelReader/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

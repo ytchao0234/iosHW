@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var webNovelFetcher = WebNovelFetcher()
     var body: some View {
         TabView {
             KeepView()
@@ -16,6 +17,9 @@ struct ContentView: View {
                 .tabItem {Label("網站", systemImage: "doc")}
             Text("本站")
                 .tabItem {Label("本站", systemImage: "doc")}
+        }
+        .onAppear {
+            webNovelFetcher.getChapterList()
         }
     }
 }
