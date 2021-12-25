@@ -12,11 +12,11 @@ struct ContentView: View {
     var body: some View {
         TabView {
             KeepView()
-                .tabItem {Label("收藏", systemImage: "doc")}
-            Text("網站")
-                .tabItem {Label("網站", systemImage: "doc")}
+                .tabItem {Label("收藏", systemImage: "bookmark.fill")}
+            WebView(webNovelFetcher: webNovelFetcher)
+                .tabItem {Label("網站", systemImage: "network")}
             Text("本站")
-                .tabItem {Label("本站", systemImage: "doc")}
+                .tabItem {Label("本站", systemImage: "server.rack")}
         }
         .onAppear {
             webNovelFetcher.previewChapterList()

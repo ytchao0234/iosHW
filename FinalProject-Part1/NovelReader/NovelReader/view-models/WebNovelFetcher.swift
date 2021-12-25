@@ -10,8 +10,10 @@ import SwiftUI
 class WebNovelFetcher: ObservableObject {
     @Published var webList = [String]()
     @Published var classList = [String]()
-    @Published var bookList = [[String: String]]()
+    @Published var bookList = [Book]()
     @Published var chapterList = [[String]]()
+    @Published var contentList = [String]()
+    @Published var chapterNumber = Int()
     let url_getWebList = String("http://192.168.100.187:5000/getWebList")
     let url_getClassList = String("http://192.168.100.187:5000/getClassList")
     let url_getBookList = String("http://192.168.100.187:5000/getBookList")
@@ -86,7 +88,7 @@ class WebNovelFetcher: ObservableObject {
             URLSession.shared.dataTask(with: request) { (data, response, error) in
                 if let data = data {
                     do {
-                        let content = try self.decoder.decode([[String: String]].self, from: data)
+                        let content = try self.decoder.decode([Book].self, from: data)
                         
                         DispatchQueue.main.async {
                             self.bookList = content
@@ -102,7 +104,7 @@ class WebNovelFetcher: ObservableObject {
     }
     
     func previewBookList() {
-        self.bookList = try! self.decoder.decode([[String: String]].self, from: NSDataAsset(name: "bookList")!.data)
+        self.bookList = try! self.decoder.decode([Book].self, from: NSDataAsset(name: "bookList")!.data)
     }
     
     func getChapterList(web: String = "筆趣閣", class_: String = "首頁", bookId: Int = 53) {
@@ -125,6 +127,7 @@ class WebNovelFetcher: ObservableObject {
                         
                         DispatchQueue.main.async {
                             self.chapterList = content
+                            self.chapterList.insert(["簡介"], at: 0)
                         }
                     } catch {
                         print(error)
@@ -139,6 +142,6 @@ class WebNovelFetcher: ObservableObject {
     
     func previewChapterList() {
         self.chapterList = try! self.decoder.decode([[String]].self, from: NSDataAsset(name: "chapterList")!.data)
-        print(self.chapterList)
+        self.chapterList.insert(["簡介"], at: 0)
     }
 }

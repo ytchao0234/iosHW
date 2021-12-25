@@ -19,6 +19,14 @@
 		550284E727775C040074A6D6 /* CommantEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284E627775C040074A6D6 /* CommantEditView.swift */; };
 		550284EB27775CAD0074A6D6 /* WebNovelFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284EA27775CAD0074A6D6 /* WebNovelFetcher.swift */; };
 		550284EE27775DC90074A6D6 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284ED27775DC90074A6D6 /* Novel.swift */; };
+		594861462777687E00D4FA31 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594861452777687E00D4FA31 /* WebView.swift */; };
+		5948614A27776B5400D4FA31 /* ClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948614927776B5400D4FA31 /* ClassView.swift */; };
+		5948614D27776D4F00D4FA31 /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948614C27776D4F00D4FA31 /* BookView.swift */; };
+		59486152277774F800D4FA31 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 59486151277774F800D4FA31 /* Kingfisher */; };
+		59A2B17D2777AD2400D08B3D /* NovelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2B17C2777AD2400D08B3D /* NovelView.swift */; };
+		59A2B1812777AD5700D08B3D /* NovelIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2B1802777AD5700D08B3D /* NovelIntroView.swift */; };
+		59FE1B952777797F007E5F50 /* NovelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE1B942777797F007E5F50 /* NovelContentView.swift */; };
+		59FE1B9827777DB9007E5F50 /* ChapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE1B9727777DB9007E5F50 /* ChapterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +43,13 @@
 		550284E627775C040074A6D6 /* CommantEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantEditView.swift; sourceTree = "<group>"; };
 		550284EA27775CAD0074A6D6 /* WebNovelFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNovelFetcher.swift; sourceTree = "<group>"; };
 		550284ED27775DC90074A6D6 /* Novel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
+		594861452777687E00D4FA31 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		5948614927776B5400D4FA31 /* ClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassView.swift; sourceTree = "<group>"; };
+		5948614C27776D4F00D4FA31 /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		59A2B17C2777AD2400D08B3D /* NovelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelView.swift; sourceTree = "<group>"; };
+		59A2B1802777AD5700D08B3D /* NovelIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIntroView.swift; sourceTree = "<group>"; };
+		59FE1B942777797F007E5F50 /* NovelContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelContentView.swift; sourceTree = "<group>"; };
+		59FE1B9727777DB9007E5F50 /* ChapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59486152277774F800D4FA31 /* Kingfisher in Frameworks */,
 				550284E427775B850074A6D6 /* SwiftDown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,10 +84,11 @@
 		550284C1277759570074A6D6 /* NovelReader */ = {
 			isa = PBXGroup;
 			children = (
+				550284C2277759570074A6D6 /* NovelReaderApp.swift */,
+				550284CB2777595F0074A6D6 /* Persistence.swift */,
 				550284D9277759AE0074A6D6 /* view-models */,
 				550284D8277759A90074A6D6 /* models */,
 				550284D7277759A20074A6D6 /* views */,
-				550284C2277759570074A6D6 /* NovelReaderApp.swift */,
 				550284C62777595F0074A6D6 /* Assets.xcassets */,
 				550284D02777595F0074A6D6 /* Info.plist */,
 				550284CD2777595F0074A6D6 /* NovelReader.xcdatamodeld */,
@@ -93,8 +110,8 @@
 			children = (
 				550284C4277759570074A6D6 /* ContentView.swift */,
 				550284DF27775AF40074A6D6 /* KeepView.swift */,
+				59E7793F2777BE9700697F6F /* Web */,
 				550284DB277759F10074A6D6 /* CoreDataTestView.swift */,
-				550284E627775C040074A6D6 /* CommantEditView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -110,10 +127,24 @@
 		550284D9277759AE0074A6D6 /* view-models */ = {
 			isa = PBXGroup;
 			children = (
-				550284CB2777595F0074A6D6 /* Persistence.swift */,
 				550284EA27775CAD0074A6D6 /* WebNovelFetcher.swift */,
 			);
 			path = "view-models";
+			sourceTree = "<group>";
+		};
+		59E7793F2777BE9700697F6F /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				594861452777687E00D4FA31 /* WebView.swift */,
+				5948614927776B5400D4FA31 /* ClassView.swift */,
+				5948614C27776D4F00D4FA31 /* BookView.swift */,
+				59A2B17C2777AD2400D08B3D /* NovelView.swift */,
+				59A2B1802777AD5700D08B3D /* NovelIntroView.swift */,
+				550284E627775C040074A6D6 /* CommantEditView.swift */,
+				59FE1B942777797F007E5F50 /* NovelContentView.swift */,
+				59FE1B9727777DB9007E5F50 /* ChapterView.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +165,7 @@
 			name = NovelReader;
 			packageProductDependencies = (
 				550284E327775B850074A6D6 /* SwiftDown */,
+				59486151277774F800D4FA31 /* Kingfisher */,
 			);
 			productName = NovelReader;
 			productReference = 550284BF277759570074A6D6 /* NovelReader.app */;
@@ -164,6 +196,7 @@
 			mainGroup = 550284B6277759570074A6D6;
 			packageReferences = (
 				550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */,
+				59486150277774F800D4FA31 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 550284C0277759570074A6D6 /* Products */;
 			projectDirPath = "";
@@ -193,13 +226,20 @@
 			files = (
 				550284CC2777595F0074A6D6 /* Persistence.swift in Sources */,
 				550284E727775C040074A6D6 /* CommantEditView.swift in Sources */,
+				59FE1B9827777DB9007E5F50 /* ChapterView.swift in Sources */,
 				550284DC277759F10074A6D6 /* CoreDataTestView.swift in Sources */,
+				5948614D27776D4F00D4FA31 /* BookView.swift in Sources */,
 				550284EE27775DC90074A6D6 /* Novel.swift in Sources */,
 				550284EB27775CAD0074A6D6 /* WebNovelFetcher.swift in Sources */,
 				550284C5277759570074A6D6 /* ContentView.swift in Sources */,
 				550284C3277759570074A6D6 /* NovelReaderApp.swift in Sources */,
+				59A2B17D2777AD2400D08B3D /* NovelView.swift in Sources */,
+				59A2B1812777AD5700D08B3D /* NovelIntroView.swift in Sources */,
+				594861462777687E00D4FA31 /* WebView.swift in Sources */,
 				550284CF2777595F0074A6D6 /* NovelReader.xcdatamodeld in Sources */,
+				59FE1B952777797F007E5F50 /* NovelContentView.swift in Sources */,
 				550284E027775AF40074A6D6 /* KeepView.swift in Sources */,
+				5948614A27776B5400D4FA31 /* ClassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +436,14 @@
 				minimumVersion = 0.2.0;
 			};
 		};
+		59486150277774F800D4FA31 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -403,6 +451,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */;
 			productName = SwiftDown;
+		};
+		59486151277774F800D4FA31 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59486150277774F800D4FA31 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 
