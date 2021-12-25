@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Down",
+        "repositoryURL": "https://github.com/johnxnguyen/Down.git",
+        "state": {
+          "branch": null,
+          "revision": "f34b166be1f1db4aa8f573067e901d72f2a6be57",
+          "version": "0.11.0"
+        }
+      },
+      {
+        "package": "SwiftDown",
+        "repositoryURL": "https://github.com/qeude/SwiftDown.git",
+        "state": {
+          "branch": null,
+          "revision": "f2879f474d4015548a99686fa97652cf9f3fe1a0",
+          "version": "0.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
