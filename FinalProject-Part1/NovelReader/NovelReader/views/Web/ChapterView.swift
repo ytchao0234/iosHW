@@ -18,29 +18,27 @@ struct ChapterView: View {
         List {
             ForEach(webNovelFetcher.chapterList.indexed(), id: \.1.self) { idx, chapter in
                 if webNovelFetcher.chapterNumber == idx {
-                    Button(action: {
-                        webNovelFetcher.chapterNumber = idx
-                        isOpenView = false
-                    }, label: {
-                        Text(chapter[0])
-                            .lineLimit(1)
-                    })
-                    .listRowBackground(
-                        Color.secondary.opacity(0.3)
-                        .overlay(
-                            EdgeBorder(width: 5, edges: [.leading])
-                                .foregroundColor(Color.accentColor.opacity(0.5))
+                    Text(chapter[0])
+                        .lineLimit(1)
+                        .onTapGesture {
+                            webNovelFetcher.chapterNumber = idx
+                            isOpenView = false
+                        }
+                        .listRowBackground(
+                            Color.secondary.opacity(0.3)
+                            .overlay(
+                                EdgeBorder(width: 5, edges: [.leading])
+                                    .foregroundColor(Color.accentColor.opacity(0.5))
+                            )
                         )
-                    )
                 }
                 else {
-                    Button(action: {
-                        webNovelFetcher.chapterNumber = idx
-                        isOpenView = false
-                    }, label: {
-                        Text(chapter[0])
-                            .lineLimit(1)
-                    })
+                    Text(chapter[0])
+                        .lineLimit(1)
+                        .onTapGesture {
+                            webNovelFetcher.chapterNumber = idx
+                            isOpenView = false
+                        }
                 }
             }
             .padding(10)

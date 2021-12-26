@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct ClassView: View {
     @ObservedObject var webNovelFetcher: WebNovelFetcher
     let web: String
@@ -32,6 +33,7 @@ struct ClassView: View {
     }
 }
 
+@available(iOS 15.0, *)
 struct ClassView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

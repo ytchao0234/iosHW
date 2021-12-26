@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0345267F277890D5003C9577 /* Parma in Frameworks */ = {isa = PBXBuildFile; productRef = 0345267E277890D5003C9577 /* Parma */; };
+		0345268327789AC5003C9577 /* CommantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345268227789AC5003C9577 /* CommantView.swift */; };
+		0345268527789ADA003C9577 /* CommantReadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0345268427789ADA003C9577 /* CommantReadView.swift */; };
+		0360B0A1277862E60080A6CC /* MapboxSpeech in Frameworks */ = {isa = PBXBuildFile; productRef = 0360B0A0277862E60080A6CC /* MapboxSpeech */; };
+		03AF70EE2778A5D600047A0C /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AF70ED2778A5D600047A0C /* RatingView.swift */; };
 		550284C3277759570074A6D6 /* NovelReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284C2277759570074A6D6 /* NovelReaderApp.swift */; };
 		550284C5277759570074A6D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550284C4277759570074A6D6 /* ContentView.swift */; };
 		550284C72777595F0074A6D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550284C62777595F0074A6D6 /* Assets.xcassets */; };
@@ -30,6 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0345268227789AC5003C9577 /* CommantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantView.swift; sourceTree = "<group>"; };
+		0345268427789ADA003C9577 /* CommantReadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommantReadView.swift; sourceTree = "<group>"; };
+		03AF70ED2778A5D600047A0C /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		550284BF277759570074A6D6 /* NovelReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovelReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		550284C2277759570074A6D6 /* NovelReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelReaderApp.swift; sourceTree = "<group>"; };
 		550284C4277759570074A6D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +67,8 @@
 			files = (
 				59486152277774F800D4FA31 /* Kingfisher in Frameworks */,
 				550284E427775B850074A6D6 /* SwiftDown in Frameworks */,
+				0345267F277890D5003C9577 /* Parma in Frameworks */,
+				0360B0A1277862E60080A6CC /* MapboxSpeech in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +150,10 @@
 				5948614C27776D4F00D4FA31 /* BookView.swift */,
 				59A2B17C2777AD2400D08B3D /* NovelView.swift */,
 				59A2B1802777AD5700D08B3D /* NovelIntroView.swift */,
+				0345268227789AC5003C9577 /* CommantView.swift */,
+				03AF70ED2778A5D600047A0C /* RatingView.swift */,
 				550284E627775C040074A6D6 /* CommantEditView.swift */,
+				0345268427789ADA003C9577 /* CommantReadView.swift */,
 				59FE1B942777797F007E5F50 /* NovelContentView.swift */,
 				59FE1B9727777DB9007E5F50 /* ChapterView.swift */,
 			);
@@ -166,6 +179,8 @@
 			packageProductDependencies = (
 				550284E327775B850074A6D6 /* SwiftDown */,
 				59486151277774F800D4FA31 /* Kingfisher */,
+				0360B0A0277862E60080A6CC /* MapboxSpeech */,
+				0345267E277890D5003C9577 /* Parma */,
 			);
 			productName = NovelReader;
 			productReference = 550284BF277759570074A6D6 /* NovelReader.app */;
@@ -197,6 +212,8 @@
 			packageReferences = (
 				550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */,
 				59486150277774F800D4FA31 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0360B09F277862E60080A6CC /* XCRemoteSwiftPackageReference "mapbox-speech-swift" */,
+				0345267D277890D5003C9577 /* XCRemoteSwiftPackageReference "Parma" */,
 			);
 			productRefGroup = 550284C0277759570074A6D6 /* Products */;
 			projectDirPath = "";
@@ -225,12 +242,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				550284CC2777595F0074A6D6 /* Persistence.swift in Sources */,
+				0345268327789AC5003C9577 /* CommantView.swift in Sources */,
 				550284E727775C040074A6D6 /* CommantEditView.swift in Sources */,
 				59FE1B9827777DB9007E5F50 /* ChapterView.swift in Sources */,
 				550284DC277759F10074A6D6 /* CoreDataTestView.swift in Sources */,
 				5948614D27776D4F00D4FA31 /* BookView.swift in Sources */,
 				550284EE27775DC90074A6D6 /* Novel.swift in Sources */,
 				550284EB27775CAD0074A6D6 /* WebNovelFetcher.swift in Sources */,
+				0345268527789ADA003C9577 /* CommantReadView.swift in Sources */,
 				550284C5277759570074A6D6 /* ContentView.swift in Sources */,
 				550284C3277759570074A6D6 /* NovelReaderApp.swift in Sources */,
 				59A2B17D2777AD2400D08B3D /* NovelView.swift in Sources */,
@@ -239,6 +258,7 @@
 				550284CF2777595F0074A6D6 /* NovelReader.xcdatamodeld in Sources */,
 				59FE1B952777797F007E5F50 /* NovelContentView.swift in Sources */,
 				550284E027775AF40074A6D6 /* KeepView.swift in Sources */,
+				03AF70EE2778A5D600047A0C /* RatingView.swift in Sources */,
 				5948614A27776B5400D4FA31 /* ClassView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +389,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NovelReader/Preview Content\"";
+				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NovelReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -390,6 +411,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"NovelReader/Preview Content\"";
+				DEVELOPMENT_TEAM = 963W6A297N;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = NovelReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -428,6 +450,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0345267D277890D5003C9577 /* XCRemoteSwiftPackageReference "Parma" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dasautoooo/Parma.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+		0360B09F277862E60080A6CC /* XCRemoteSwiftPackageReference "mapbox-speech-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-speech-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/qeude/SwiftDown.git";
@@ -447,6 +485,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0345267E277890D5003C9577 /* Parma */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0345267D277890D5003C9577 /* XCRemoteSwiftPackageReference "Parma" */;
+			productName = Parma;
+		};
+		0360B0A0277862E60080A6CC /* MapboxSpeech */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0360B09F277862E60080A6CC /* XCRemoteSwiftPackageReference "mapbox-speech-swift" */;
+			productName = MapboxSpeech;
+		};
 		550284E327775B850074A6D6 /* SwiftDown */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 550284E227775B850074A6D6 /* XCRemoteSwiftPackageReference "SwiftDown" */;

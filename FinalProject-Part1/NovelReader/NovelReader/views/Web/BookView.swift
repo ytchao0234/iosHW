@@ -8,6 +8,7 @@
 import SwiftUI
 import Kingfisher
 
+@available(iOS 15.0, *)
 struct BookView: View {
     @ObservedObject var webNovelFetcher: WebNovelFetcher
     let web: String
@@ -48,6 +49,7 @@ struct BookView: View {
     }
 }
 
+@available(iOS 15.0, *)
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
@@ -62,6 +64,7 @@ struct Book: Codable {
     var author: String
     var intro: String
     var imageLink: String
+//    var state: String
     var chapterCount: Int
 }
 

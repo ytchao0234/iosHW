@@ -2,25 +2,30 @@
 //  CommantEditView.swift
 //  NovelReader
 //
-//  Created by FanRende on 2021/12/25.
+//  Created by FanRende on 2021/12/26.
 //
 
 import SwiftUI
 import SwiftDown
 
+@available(iOS 15.0, *)
 struct CommantEditView: View {
-    @State var text = String("# H1\n[google](https://www.google.com)")
+    @Binding var text: String
+    @FocusState.Binding var focus: Bool
 
     var body: some View {
-        VStack {
+        ZStack(alignment: .topLeading) {
             SwiftDownEditor(text: $text)
                 .insetsSize(20)
-        }
-    }
-}
+                .theme(Theme.BuiltIn.defaultDark.theme())
+                .focused($focus)
 
-struct CommantEditView_Previews: PreviewProvider {
-    static var previews: some View {
-        CommantEditView()
+            if text.isEmpty && !focus {
+                Text("請輸入評論...")
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 26)
+                    .foregroundColor(Color.white.opacity(0.4))
+            }
+        }
     }
 }

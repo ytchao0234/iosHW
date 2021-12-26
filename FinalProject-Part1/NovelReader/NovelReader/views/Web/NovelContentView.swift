@@ -12,8 +12,7 @@ struct NovelContentView: View {
 
     var body: some View {
         ZStack(alignment: .leading) {
-            Color.yellow
-                .ignoresSafeArea()
+            Color.white.ignoresSafeArea()
 
 //            Text(webNovelFetcher.contentList[webNovelFetcher.chapterNumber])
 //                .padding()

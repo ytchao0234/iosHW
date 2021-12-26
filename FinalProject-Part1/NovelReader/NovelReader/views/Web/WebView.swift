@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct WebView: View {
     @ObservedObject var webNovelFetcher: WebNovelFetcher
 
@@ -33,6 +34,7 @@ struct WebView: View {
     }
 }
 
+@available(iOS 15.0, *)
 struct WebView_Previews: PreviewProvider {
     static var previews: some View {
         WebView(webNovelFetcher: WebNovelFetcher())

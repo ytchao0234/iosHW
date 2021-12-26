@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct ContentView: View {
     @StateObject var webNovelFetcher = WebNovelFetcher()
     var body: some View {
@@ -21,9 +22,11 @@ struct ContentView: View {
         .onAppear {
             webNovelFetcher.previewChapterList()
         }
+        .preferredColorScheme(.light)
     }
 }
 
+@available(iOS 15.0, *)
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
