@@ -70,6 +70,8 @@ struct CommantView: View {
                             webNovelFetcher.novelList[web]![class_]![bookId]!.book.rating[0] = (rating + origin_rating[0] * origin_rating[1]) / (origin_rating[1] + 1)
                             webNovelFetcher.novelList[web]![class_]![bookId]!.book.rating[1] = origin_rating[1] + 1
                             
+                            print(webNovelFetcher.novelList[web]![class_]![bookId]!.book.rating[1])
+                            
                             webNovelFetcher.novelList[web]![class_]![bookId]!.commants.append([String(self.rating), commant.wrappedValue])
                             webNovelFetcher.setCommant(bookId: bookId, commants: webNovelFetcher.novelList[web]![class_]![bookId]!.commants)
                             webNovelFetcher.setRating(bookId: bookId, rating: webNovelFetcher.novelList[web]![class_]![bookId]!.book.rating)

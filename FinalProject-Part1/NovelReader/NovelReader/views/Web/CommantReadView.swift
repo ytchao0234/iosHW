@@ -42,21 +42,7 @@ struct MarkdownRender: ParmaRenderable {
     }
     
     func headingBlock(level: HeadingLevel?, view: AnyView) -> AnyView {
-        switch level {
-        case .one, .two:
-            return AnyView(
-                VStack(alignment: .leading, spacing: 2) {
-                    view
-                        .padding(.top, 4)
-                    Rectangle()
-                        .foregroundColor(.pink)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 1, alignment: .center)
-                        .padding(.bottom, 8)
-                }
-            )
-        default:
-            return AnyView(view.padding(.bottom, 4))
-        }
+        return AnyView(view.padding(.bottom, 4))
     }
     
     func paragraph(text: String) -> Text {
@@ -72,19 +58,20 @@ struct MarkdownRender: ParmaRenderable {
     }
     
     func strong(textView: Text) -> Text {
-        textView
+        textView.fontWeight(.heavy)
     }
 
     func emphasis(textView: Text) -> Text {
-        textView
+        textView.italic()
     }
 
     func link(textView: Text, destination: String?) -> Text {
-        textView
+        textView.underline().foregroundColor(.blue)
     }
 
     func code(_ text: String) -> Text {
         Text(text)
+            .font(.system(size: 14, design: .monospaced))
     }
     
     func listItem(view: AnyView) -> AnyView {

@@ -17,7 +17,10 @@ struct NovelIntroView: View {
     @State var openCommantView: Bool = false
 
     var body: some View {
-        let novel = webNovelFetcher.novelList[web]![class_]![bookId]!
+        let novel = Binding { () -> Novel in
+            return webNovelFetcher.novelList[web]![class_]![bookId]!
+        } set: {_,_ in
+        }
 
         return ZStack(alignment: .bottom) {
             Color.white.ignoresSafeArea()
@@ -25,7 +28,7 @@ struct NovelIntroView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 HStack {
                     VStack {
-                        if let image = novel.book.imageLink {
+                        if let image = novel.wrappedValue.book.imageLink {
                             KFImage(URL(string: image)!)
                                 .placeholder({
                                     Image("DefaultImage")
@@ -46,26 +49,26 @@ struct NovelIntroView: View {
                         VStack {
                             HStack {
                                 ForEach(1 ..< RatingView.maximumRating+1) { idx in
-                                    RatingView.starD(for: Double(idx), rating: novel.book.rating[0])
+                                    RatingView.starD(for: Double(idx), rating: novel.wrappedValue.book.rating[0])
                                         .frame(width: 9)
                                 }
                             }
                             .padding(.top, 5)
 
-                            Text(String(format: "%.1f(%d)", novel.book.rating[0], novel.book.rating[1]))
+                            Text(String(format: "%.1f(%.0f)", novel.wrappedValue.book.rating[0], novel.wrappedValue.book.rating[1]))
                                 .font(.caption2)
                         }
                     }
                     .padding(.trailing)
 
                     VStack(alignment: .leading) {
-                        Text(novel.book.book)
+                        Text(novel.wrappedValue.book.book)
                             .font(.title)
                         Spacer()
-                        Text("作者：" + novel.book.author)
+                        Text("作者：" + novel.wrappedValue.book.author)
                             .padding(.top)
-                        Text("章節數：\(novel.book.chapterCount)")
-                        Text("更新狀態：\(novel.book.state)")
+                        Text("章節數：\(novel.wrappedValue.book.chapterCount)")
+                        Text("更新狀態：\(novel.wrappedValue.book.state)")
                     }
                     .padding(.vertical)
                 }
@@ -73,7 +76,7 @@ struct NovelIntroView: View {
 
                 Divider()
 
-                Text(novel.book.intro)
+                Text(novel.wrappedValue.book.intro)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding()
                 
@@ -81,7 +84,7 @@ struct NovelIntroView: View {
 
                 VStack {
                     if webNovelFetcher.novelList[web]![class_]![bookId]!.commants.count > 0 {
-                        ForEach(webNovelFetcher.novelList[web]![class_]![bookId]!.commants, id: \.self) { commant in
+                        ForEach(webNovelFetcher.novelList[web]![class_]![bookId]!.commants.indexed(), id: \.1.self) { idx, commant in
                             
                             let comma = Binding { () -> String in
                                 return commant[1]
@@ -127,8 +130,9 @@ struct NovelIntroView: View {
         .onAppear {
             if let webContent = webNovelFetcher.novelList[web],
                let classContent = webContent[class_],
-               let _ = classContent[bookId] {
+               let novel = classContent[bookId] {
                 webNovelFetcher.getCommant(web: web, class_: class_, bookId: bookId)
+                print(novel.book.rating)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
