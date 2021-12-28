@@ -11,8 +11,8 @@ import SwiftUI
 struct NovelView: View {
     @ObservedObject var webNovelFetcher: WebNovelFetcher
     let web: String
-    let class_: String
-    let bookId: Int
+    let class_: Class
+    let bookId: UUID
     @State var isOpenView = false
     
     var body: some View {
@@ -20,6 +20,7 @@ struct NovelView: View {
             HStack {
                 ChapterView(webNovelFetcher: webNovelFetcher, web: web, class_: class_, bookId: bookId, isOpenView: $isOpenView)
                     .frame(width: 250)
+                    .offset(x: 5)
                 Spacer()
             }
             ZStack(alignment: .leading) {
@@ -27,7 +28,7 @@ struct NovelView: View {
                     NovelIntroView(webNovelFetcher: webNovelFetcher, web: web, class_: class_, bookId: bookId)
                 }
                 else {
-                    NovelContentView(webNovelFetcher: webNovelFetcher)
+                    NovelContentView(webNovelFetcher: webNovelFetcher, web: web, class_: class_, bookId: bookId)
                 }
                 Button(action: {
                     isOpenView.toggle()
@@ -44,12 +45,48 @@ struct NovelView: View {
             .offset(x: isOpenView ? 250 : 0)
             .animation(.linear(duration: 0.2))
         }
-        .navigationTitle(webNovelFetcher.chapterList[webNovelFetcher.chapterNumber][0])
+        .toolbar(content: {
+            ToolbarItem(placement: .principal) {
+                if webNovelFetcher.novelList[web]![class_]![bookId]!.chapter.chapterTitles.isEmpty {
+                    Text(webNovelFetcher.novelList[web]![class_]![bookId]!.book.book)
+                        .font(.caption)
+                }
+                else {
+                    Text(webNovelFetcher.novelList[web]![class_]![bookId]!.chapter.chapterTitles[webNovelFetcher.chapterNumber])
+                        .font(.caption)
+                        .fixedSize()
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    if let webContent = webNovelFetcher.novelList[web],
+                       let classContent = webContent[class_],
+                       let novel = classContent[bookId] {
+                        webNovelFetcher.novelList[web]![class_]![bookId]!.chapter.chapterContents[webNovelFetcher.chapterNumber] = ""
+
+                        webNovelFetcher.getChapterContent(web: web, class_: class_, bookId: bookId, chapterLink: novel.chapter.chapterLinks[webNovelFetcher.chapterNumber])
+                    }
+                }, label: {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                })
+                .alert("獲取資料失敗", isPresented: $webNovelFetcher.fetchFailed, actions: {
+                    Button("確定") {}
+                }, message: {
+                    Text("沒有網路連線")
+                })
+            }
+        })
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-//            if webNovelFetcher.bookList.isEmpty {
-//                webNovelFetcher.previewBookList()
-//            }
+            if let webContent = webNovelFetcher.novelList[web],
+               let classContent = webContent[class_],
+               let novel = classContent[bookId],
+               novel.chapter.chapterTitles.isEmpty {
+                webNovelFetcher.getChapterList(web: web, class_: class_, bookId: bookId)
+            }
+        }
+        .onDisappear {
+            webNovelFetcher.chapterNumber = 0
         }
     }
 }
@@ -58,7 +95,7 @@ struct NovelView: View {
 struct NovelView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            NovelView(webNovelFetcher: WebNovelFetcher(), web: "筆趣閣", class_: "首頁", bookId: 53)
+            NovelView(webNovelFetcher: WebNovelFetcher(), web: "筆趣閣", class_: Class(id: 0, name:"首頁"), bookId: UUID())
         }
     }
 }

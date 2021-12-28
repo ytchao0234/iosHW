@@ -10,18 +10,20 @@ import SwiftUI
 @available(iOS 15.0, *)
 struct ContentView: View {
     @StateObject var webNovelFetcher = WebNovelFetcher()
+    @State var selection = 1
     var body: some View {
-        TabView {
+        TabView(selection: $selection) {
             KeepView()
                 .tabItem {Label("收藏", systemImage: "bookmark.fill")}
+                .tag(0)
             WebView(webNovelFetcher: webNovelFetcher)
                 .tabItem {Label("網站", systemImage: "network")}
+                .tag(1)
             Text("本站")
                 .tabItem {Label("本站", systemImage: "server.rack")}
+                .tag(2)
         }
-        .onAppear {
-            webNovelFetcher.previewChapterList()
-        }
+        .background(Color.white)
         .preferredColorScheme(.light)
     }
 }

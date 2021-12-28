@@ -14,7 +14,7 @@ struct WebView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(webNovelFetcher.webList, id: \.self) { web in
+                ForEach(webNovelFetcher.novelList.keys.sorted(), id: \.self) { web in
                     NavigationLink(
                         destination: ClassView(webNovelFetcher: webNovelFetcher, web: web),
                         label: {
@@ -23,12 +23,29 @@ struct WebView: View {
                 }
                 .frame(height: 50)
             }
-            .navigationTitle("網站列表")
+            .overlay {
+                if webNovelFetcher.novelList.isEmpty {
+                    ProgressView()
+                }
+            }
+            .refreshable {
+                webNovelFetcher.getWebList()
+            }
+            .alert("獲取資料失敗", isPresented: $webNovelFetcher.fetchFailed, actions: {
+                Button("確定") {}
+            }, message: {
+                Text("沒有網路連線")
+            })
+            .toolbar(content: {
+                ToolbarItem(placement: .principal) {
+                    Text("網站列表")
+                }
+            })
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
-            if webNovelFetcher.webList.isEmpty {
-                webNovelFetcher.previewWebList()
+            if webNovelFetcher.novelList.isEmpty {
+                webNovelFetcher.getWebList()
             }
         }
     }

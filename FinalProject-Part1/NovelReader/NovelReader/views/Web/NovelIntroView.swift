@@ -12,16 +12,12 @@ import Kingfisher
 struct NovelIntroView: View {
     @ObservedObject var webNovelFetcher: WebNovelFetcher
     let web: String
-    let class_: String
-    let bookId: Int
-    @State var commantsRating = [3, 2]
-    @State var commants = ["wefrgeragarfadsf\nwefadgtrhqt", "faesggqergfeqrefgergadfhkgjabefkjbsjdfuhkweafs"]
+    let class_: Class
+    let bookId: UUID
     @State var openCommantView: Bool = false
-    @State var commant = String()
 
     var body: some View {
-//        let book = webNovelFetcher.bookList[bookId]
-        let book = webNovelFetcher.bookList[0]
+        let novel = webNovelFetcher.novelList[web]![class_]![bookId]!
 
         return ZStack(alignment: .bottom) {
             Color.white.ignoresSafeArea()
@@ -29,30 +25,47 @@ struct NovelIntroView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 HStack {
                     VStack {
-                        KFImage(URL(string: book.imageLink)!)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 150)
-                        HStack {
-                            ForEach(1 ..< RatingView.maximumRating+1) { idx in
-                                RatingView.starD(for: Double(idx), rating: 2.5)
-                                    .frame(width: 12)
+                        if let image = novel.book.imageLink {
+                            KFImage(URL(string: image)!)
+                                .placeholder({
+                                    Image("DefaultImage")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 99, height: 132)
+                                })
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 99, height: 132)
+                        }
+                        else {
+                            Image("NoImage")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 99, height: 132)
+                        }
+                        VStack {
+                            HStack {
+                                ForEach(1 ..< RatingView.maximumRating+1) { idx in
+                                    RatingView.starD(for: Double(idx), rating: novel.book.rating[0])
+                                        .frame(width: 9)
+                                }
                             }
-                            Text(String(format: "%.1f", 2.5))
+                            .padding(.top, 5)
+
+                            Text(String(format: "%.1f(%d)", novel.book.rating[0], novel.book.rating[1]))
                                 .font(.caption2)
                         }
-                        .padding(.top, 5)
                     }
                     .padding(.trailing)
 
                     VStack(alignment: .leading) {
-                        Text(book.book)
+                        Text(novel.book.book)
                             .font(.title)
                         Spacer()
-                        Text("作者：" + book.author)
+                        Text("作者：" + novel.book.author)
                             .padding(.top)
-                        Text("章節數：\(book.chapterCount)")
-//                        Text("更新狀態：\(book.state)")
+                        Text("章節數：\(novel.book.chapterCount)")
+                        Text("更新狀態：\(novel.book.state)")
                     }
                     .padding(.vertical)
                 }
@@ -60,23 +73,37 @@ struct NovelIntroView: View {
 
                 Divider()
 
-                Text(book.intro)
+                Text(novel.book.intro)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding()
                 
                 Divider()
 
                 VStack {
-                    ForEach(commantsRating.indices) { idx in
-                        HStack {
-                            ForEach(1 ..< RatingView.maximumRating+1) { index in
-                                RatingView.star(for: index, rating: commantsRating[idx])
+                    if webNovelFetcher.novelList[web]![class_]![bookId]!.commants.count > 0 {
+                        ForEach(webNovelFetcher.novelList[web]![class_]![bookId]!.commants, id: \.self) { commant in
+                            
+                            let comma = Binding { () -> String in
+                                return commant[1]
+                            } set: {_,_ in
+                                
                             }
-                            Spacer()
+
+                            HStack {
+                                ForEach(1 ..< RatingView.maximumRating+1) { index in
+                                    RatingView.star(for: index, rating: Int(commant[0])!)
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                            CommantReadView(text: comma)
+                                .frame(width: UIScreen.main.bounds.width * 0.95, alignment: .leading)
                         }
-                        .padding()
-                        CommantReadView(text: $commants[idx])
-                            .frame(width: UIScreen.main.bounds.width * 0.95, alignment: .leading)
+                    }
+                    else {
+                        Text("-- 目前還沒有評論 --")
+                            .foregroundColor(Color.secondary)
+                            .padding(50)
                     }
                 }
             }
@@ -92,14 +119,17 @@ struct NovelIntroView: View {
                     .background(Color.accentColor)
                     .cornerRadius(20)
             })
+            .sheet(isPresented: $openCommantView) {
+                CommantView(webNovelFetcher: webNovelFetcher, web: web, class_: class_, bookId: bookId, open: $openCommantView)
+            }
             .padding(.bottom)
-            .background(
-                NavigationLink(isActive: $openCommantView, destination: {
-                    CommantView(text: $commant)
-                }, label: {
-                    EmptyView()
-                })
-            )
+        }
+        .onAppear {
+            if let webContent = webNovelFetcher.novelList[web],
+               let classContent = webContent[class_],
+               let _ = classContent[bookId] {
+                webNovelFetcher.getCommant(web: web, class_: class_, bookId: bookId)
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -108,6 +138,6 @@ struct NovelIntroView: View {
 @available(iOS 15.0, *)
 struct NovelIntroView_Previews: PreviewProvider {
     static var previews: some View {
-        NovelIntroView(webNovelFetcher: WebNovelFetcher(), web: "筆趣閣", class_: "首頁", bookId: 53)
+        NovelIntroView(webNovelFetcher: WebNovelFetcher(), web: "筆趣閣", class_: Class(id: 0, name: "首頁"), bookId: UUID())
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RatingView: View {
     static let maximumRating = Int(5)
-    @State var rating = Int(3)
+    @Binding var rating: Int
 
     var body: some View {
         HStack {
@@ -64,6 +64,6 @@ struct RatingView: View {
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView()
+        RatingView(rating: .constant(3))
     }
 }

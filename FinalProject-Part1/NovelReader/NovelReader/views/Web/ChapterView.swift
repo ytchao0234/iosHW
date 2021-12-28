@@ -7,54 +7,95 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct ChapterView: View {
     @ObservedObject var webNovelFetcher: WebNovelFetcher
     let web: String
-    let class_: String
-    let bookId: Int
+    let class_: Class
+    let bookId: UUID
     @Binding var isOpenView: Bool
 
     var body: some View {
         List {
-            ForEach(webNovelFetcher.chapterList.indexed(), id: \.1.self) { idx, chapter in
+            Button(action: {
+                webNovelFetcher.getChapterList(web: web, class_: class_, bookId: bookId)
+            }, label: {
+                Label("更新章節列表", systemImage: "arrow.triangle.2.circlepath")
+            })
+            .alert("獲取資料失敗", isPresented: $webNovelFetcher.fetchFailed, actions: {
+                Button("確定") {}
+            }, message: {
+                Text("沒有網路連線")
+            })
+            ForEach(webNovelFetcher.novelList[web]![class_]![bookId]!.chapter.chapterLinks.indexed(), id: \.1.self) { idx, chapter in
                 if webNovelFetcher.chapterNumber == idx {
-                    Text(chapter[0])
-                        .lineLimit(1)
-                        .onTapGesture {
-                            webNovelFetcher.chapterNumber = idx
-                            isOpenView = false
+                    Button(action: {
+                        webNovelFetcher.chapterNumber = idx
+                        isOpenView = false
+                        if let webContent = webNovelFetcher.novelList[web],
+                           let classContent = webContent[class_],
+                           let novel = classContent[bookId],
+                           novel.chapter.chapterContents[webNovelFetcher.chapterNumber].isEmpty {
+                            webNovelFetcher.getChapterContent(web: web, class_: class_, bookId: bookId, chapterLink: novel.chapter.chapterLinks[webNovelFetcher.chapterNumber])
                         }
-                        .listRowBackground(
-                            Color.secondary.opacity(0.3)
-                            .overlay(
-                                EdgeBorder(width: 5, edges: [.leading])
-                                    .foregroundColor(Color.accentColor.opacity(0.5))
-                            )
+                    }, label: {
+                        Text(webNovelFetcher.novelList[web]![class_]![bookId]!.chapter.chapterTitles[idx])
+                            .lineLimit(1)
+                    })
+                    .listRowBackground(
+                        Color.secondary.opacity(0.3)
+                        .overlay(
+                            EdgeBorder(width: 5, edges: [.leading])
+                                .foregroundColor(Color.accentColor.opacity(0.5))
                         )
+                    )
                 }
                 else {
-                    Text(chapter[0])
-                        .lineLimit(1)
-                        .onTapGesture {
-                            webNovelFetcher.chapterNumber = idx
-                            isOpenView = false
+                    Button(action: {
+                        webNovelFetcher.chapterNumber = idx
+                        isOpenView = false
+                        if let webContent = webNovelFetcher.novelList[web],
+                           let classContent = webContent[class_],
+                           let novel = classContent[bookId],
+                           novel.chapter.chapterContents[webNovelFetcher.chapterNumber].isEmpty {
+                            webNovelFetcher.getChapterContent(web: web, class_: class_, bookId: bookId, chapterLink: novel.chapter.chapterLinks[webNovelFetcher.chapterNumber])
                         }
+                    }, label: {
+                        Text(webNovelFetcher.novelList[web]![class_]![bookId]!.chapter.chapterTitles[idx])
+                            .lineLimit(1)
+                    })
+                    .listRowBackground(
+                        Color.secondary.opacity(0.1)
+                    )
                 }
             }
             .padding(10)
         }
+        .overlay {
+            if let webContent = webNovelFetcher.novelList[web],
+               let classContent = webContent[class_],
+               let book = classContent[bookId],
+               book.chapter.chapterTitles.isEmpty {
+                ProgressView()
+            }
+        }
+        .listStyle(PlainListStyle())
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            if webNovelFetcher.chapterList.isEmpty {
-                webNovelFetcher.previewChapterList()
+            if let webContent = webNovelFetcher.novelList[web],
+               let classContent = webContent[class_],
+               let book = classContent[bookId],
+               book.chapter.chapterTitles.isEmpty {
+                webNovelFetcher.getChapterList(web: web, class_: class_, bookId: bookId)
             }
         }
     }
 }
 
+@available(iOS 15.0, *)
 struct ChapterView_Previews: PreviewProvider {
     static var previews: some View {
-        ChapterView(webNovelFetcher: WebNovelFetcher(), web: "筆趣閣", class_: "首頁", bookId: 53, isOpenView: .constant(false))
+        ChapterView(webNovelFetcher: WebNovelFetcher(), web: "筆趣閣", class_: Class(id: 0, name:"首頁"), bookId: UUID(), isOpenView: .constant(false))
             .preferredColorScheme(.dark)
     }
 }
