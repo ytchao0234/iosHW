@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030578AC278C889F006442AD /* WebListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030578AB278C889F006442AD /* WebListsView.swift */; };
 		03349FF427856FFB003DE885 /* NovelReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03349FF327856FFA003DE885 /* NovelReaderApp.swift */; };
 		03349FF627856FFB003DE885 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03349FF527856FFB003DE885 /* CoreDataTestView.swift */; };
 		03349FF827857001003DE885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03349FF727857001003DE885 /* Assets.xcassets */; };
@@ -20,10 +21,10 @@
 		0334A01227858037003DE885 /* LocalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A01127858037003DE885 /* LocalViewModel.swift */; };
 		0334A01427858093003DE885 /* BackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A01327858093003DE885 /* BackgroundViewModel.swift */; };
 		0334A016278580AF003DE885 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A015278580AF003DE885 /* Background.swift */; };
-		0334A01F27858242003DE885 /* SomeRowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A01E27858242003DE885 /* SomeRowsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		030578AB278C889F006442AD /* WebListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebListsView.swift; sourceTree = "<group>"; };
 		03349FF027856FFA003DE885 /* NovelReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovelReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03349FF327856FFA003DE885 /* NovelReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelReaderApp.swift; sourceTree = "<group>"; };
 		03349FF527856FFB003DE885 /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		0334A01127858037003DE885 /* LocalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalViewModel.swift; sourceTree = "<group>"; };
 		0334A01327858093003DE885 /* BackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewModel.swift; sourceTree = "<group>"; };
 		0334A015278580AF003DE885 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		0334A01E27858242003DE885 /* SomeRowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeRowsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				0334A00627857D80003DE885 /* ContentView.swift */,
-				0334A01E27858242003DE885 /* SomeRowsView.swift */,
+				030578AB278C889F006442AD /* WebListsView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -193,12 +193,12 @@
 			files = (
 				0334A016278580AF003DE885 /* Background.swift in Sources */,
 				0334A00C27857DE8003DE885 /* Novel.swift in Sources */,
+				030578AC278C889F006442AD /* WebListsView.swift in Sources */,
 				03349FFD27857001003DE885 /* Persistence.swift in Sources */,
 				0334A01427858093003DE885 /* BackgroundViewModel.swift in Sources */,
 				0334A00E27857E25003DE885 /* WebNovelFetcher.swift in Sources */,
 				0334A00727857D80003DE885 /* ContentView.swift in Sources */,
 				03349FF627856FFB003DE885 /* CoreDataTestView.swift in Sources */,
-				0334A01F27858242003DE885 /* SomeRowsView.swift in Sources */,
 				03349FF427856FFB003DE885 /* NovelReaderApp.swift in Sources */,
 				0334A01227858037003DE885 /* LocalViewModel.swift in Sources */,
 				0334A00027857001003DE885 /* NovelReader.xcdatamodeld in Sources */,

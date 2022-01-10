@@ -1,5 +1,5 @@
 //
-//  SomeRowsView.swift
+//  RowView.swift
 //  NovelReader
 //
 //  Created by FanRende on 2022/1/5.
@@ -7,25 +7,8 @@
 
 import SwiftUI
 
-struct SomeRowsView: View {
-    let list: [Any]
-
-    var body: some View {
-        List {
-            ForEach(list.indices) { index in
-                Row(element: list[index])
-            }
-        }
-    }
-}
-
-struct SomeRowsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SomeRowsView(list: [Class()])
-    }
-}
-
-struct Row: View {
+struct RowView: View {
+    @EnvironmentObject var webNovelFetcher: WebNovelFetcher
     let element: Any
 
     var body: some View {

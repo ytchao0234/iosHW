@@ -9,22 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var webNovelFetcher = WebNovelFetcher()
+    @State private var selection = 1
+
     var body: some View {
-        VStack {
-            Button("Test1"){
-                webNovelFetcher.getBookList(web: "筆趣閣", class_: webNovelFetcher.classList["筆趣閣"]![0])
-            }
-            Button("Test2"){
-                webNovelFetcher.getChapterList(class_: webNovelFetcher.classList["筆趣閣"]![0], novel: webNovelFetcher.novelList[webNovelFetcher.classList["筆趣閣"]![0]]![0])
-            }
-            .padding(.top)
-            Button("Test3"){
-                webNovelFetcher.getChapterContent(web: "筆趣閣", class_: webNovelFetcher.classList["筆趣閣"]![0], novel: webNovelFetcher.novelList[webNovelFetcher.classList["筆趣閣"]![0]]![0], chapterIndex: 0, chapterLink: webNovelFetcher.novelList[webNovelFetcher.classList["筆趣閣"]![0]]![0].chapter.link[0])
-            }
-            .padding(.top)
-        }
-        .onAppear {
-            webNovelFetcher.getClassList(web: "筆趣閣")
+        TabView(selection: $selection) {
+            Text("收藏")
+                .tabItem {Label("收藏", systemImage: "bookmark.fill")}
+                .tag(0)
+            WebListsView()
+                .environmentObject(webNovelFetcher)
+                .tabItem {Label("網站", systemImage: "network")}
+                .tag(1)
+            Text("本站")
+                .tabItem {Label("本站", systemImage: "server.rack")}
+                .tag(2)
         }
     }
 }
