@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct WebListsView: View {
-    @EnvironmentObject var webNovelFetcher: WebNovelFetcher
-
     var body: some View {
         NavigationView {
             WebView()
@@ -125,58 +123,45 @@ struct BookView: View {
     let web: String
     let class_: Class
     let title: String
+    @State var showNovelList = [String: Bool]()
+    @State var novel: Novel? = nil
 
     var body: some View {
-        Group {
-            if let bookList = webNovelFetcher.novelList[class_] {
-                List {
-                    ForEach(bookList.values.sorted(by: <)) { novel in
-                        NavigationLink {
-    //                        NovelView(novel: novel)
-                        } label: {
-                            HStack {
-                                AsyncImage(url: URL(string: novel.book.imageLink)) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 60)
-                                        
-                                } placeholder: {
-                                    Color.yellow
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    Text(novel.book.name)
-                                        .lineLimit(1)
-                                    
-                                    Spacer()
-                                    
-                                    Group {
-                                        Text("\(novel.rating.amount) \(novel.rating.number)")
-                                        Text("\(novel.commant.count)")
-                                        Text("作者\t\t: \(novel.book.author)")
-                                        Text("更新狀態\t: \(novel.book.state)")
-                                    }
-                                    .font(.caption)
-                                }
-                            }
-                            .padding(.vertical, 5)
-                        }
+        List {
+            ForEach(webNovelFetcher.novelList[class_]!.values.sorted(by: <)) { novel in
+                let showNovel = Binding<Bool> {
+                    if let show = showNovelList[novel.id] {
+                        return show
                     }
+                    else {
+                        return false
+                    }
+                } set: {
+                    showNovelList[novel.id] = $0
                 }
-                .overlay {
-                    if bookList.isEmpty {
-                        ProgressView()
-                    }
+
+                Button {
+                    self.novel = novel
+                    self.showNovelList[novel.id] = true
+                } label: {
+                    BookRow(novel: novel)
                 }
                 .onAppear {
-                    if bookList.isEmpty {
-                        webNovelFetcher.getBookList(web: web, class_: class_)
-                    }
+                    self.showNovelList[novel.id] = false
+                }
+                .fullScreenCover(isPresented: showNovel, onDismiss: {}) {
+                    NovelView(novel: novel, showNovel: showNovel)
                 }
             }
-            else {
-                Text("400 Bad Request.\n\(class_.name) is Not Found.")
+        }
+        .overlay {
+            if webNovelFetcher.novelList[class_]!.isEmpty {
+                ProgressView()
+            }
+        }
+        .onAppear {
+            if webNovelFetcher.novelList[class_]!.isEmpty {
+                webNovelFetcher.getBookList(web: web, class_: class_)
             }
         }
         .toolbar(content: {
@@ -185,5 +170,44 @@ struct BookView: View {
             }
         })
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct BookRow: View {
+    let novel: Novel
+    var body: some View {
+        HStack {
+            VStack {
+                AsyncImage(url: URL(string: novel.book.imageLink)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: 60, height: 80)
+                        .background(Color.secondary.opacity(0.2))
+                }
+                
+                RatingView(rating: .constant(novel.rating))
+                    .disabled(true)
+            }
+            .frame(width: 60)
+            
+            VStack(alignment: .leading) {
+                Text(novel.book.name)
+                    .lineLimit(1)
+                
+                Spacer()
+                
+                Group {
+                    Text("作者\t\t: \(novel.book.author)")
+                    Text("更新狀態\t: \(novel.book.state)")
+                }
+                .font(.caption)
+            }
+            .foregroundColor(.white)
+        }
+        .padding(.vertical, 5)
     }
 }

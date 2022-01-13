@@ -9,18 +9,24 @@ import SwiftUI
 
 struct Novel: Identifiable, Comparable {
     var id: String { book.id }
-    var web = String("筆趣閣")
+    var web = String()
     var class_ = Class()
     var book = Book()
     var chapter = Chapter()
     var rating = Rating()
-    var commant = [Commant]()
+    var commants = [Commant]()
+    var commant = Commant()
 
     static func ==(lhs: Novel, rhs: Novel) -> Bool {
         return lhs.id == rhs.id
     }
     static func <(lhs: Novel, rhs: Novel) -> Bool {
-        return lhs.rating.amount < rhs.rating.amount
+        if abs(lhs.rating.amount - rhs.rating.amount) < 0.01 {
+            return lhs.book.state > rhs.book.state
+        }
+        else {
+            return lhs.rating.amount > rhs.rating.amount
+        }
     }
 }
 
@@ -91,9 +97,39 @@ struct Rating: Codable {
     var number = Int()
 }
 
-struct Commant: Codable {
+extension Rating {
+    static var maximum = Double(5)
+}
+
+struct Commant: Identifiable, Codable {
+    var id: String = "\(UUID())"
     var rating = Int()
-    var content = String("評論內容")
+    var content = String()
+
+    init() {}
+
+    init(from decoder: Decoder) {
+        let container = try! decoder.container(keyedBy: CodingKeys.self)
+        
+        if let decId = try? container.decode(String.self, forKey: .id) {
+            self.id = decId
+        }
+        else {
+            self.id = "\(UUID())"
+        }
+        if let decRating = try? container.decode(Int.self, forKey: .rating) {
+            self.rating = decRating
+        }
+        else {
+            self.rating = Int()
+        }
+        if let decContent = try? container.decode(String.self, forKey: .content) {
+            self.content = decContent
+        }
+        else {
+            self.content = String()
+        }
+    }
 }
 
 struct BookAndRatingAndCommant: Codable {

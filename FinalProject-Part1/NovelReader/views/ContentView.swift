@@ -11,6 +11,10 @@ struct ContentView: View {
     @StateObject var webNovelFetcher = WebNovelFetcher()
     @State private var selection = 1
 
+    init() {
+        UITableView.appearance().showsVerticalScrollIndicator = false
+    }
+
     var body: some View {
         TabView(selection: $selection) {
             Text("收藏")

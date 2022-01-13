@@ -11,6 +11,7 @@ class WebNovelFetcher: ObservableObject {
     @Published var webList = [String]()
     @Published var classList = [String: [Class]]()
     @Published var novelList = [Class: [String: Novel]]()
+    @Published var flattenNovelList = [String: Novel]()
     @Published var searchList = [String: Novel]()
     @Published var fetchFailed = Bool(false)
     var flattenClassList = [Class]()
@@ -134,9 +135,12 @@ class WebNovelFetcher: ObservableObject {
                         let content = try self.decoder.decode([BookAndRatingAndCommant].self, from: data)
                         DispatchQueue.main.async {
                             self.novelList[class_] = Dictionary(uniqueKeysWithValues: content.map {
-                                let novel = Novel(web: web, class_: class_, book: $0.book, rating: $0.rating, commant: $0.commant)
+                                let novel = Novel(web: web, class_: class_, book: $0.book, rating: $0.rating, commants: $0.commant)
                                 return (novel.id, novel)
                             })
+                            self.flattenNovelList.merge(self.novelList[class_]!) { this, other in
+                                return this
+                            }
                             print("ok")
                         }
                     } catch {
@@ -169,6 +173,7 @@ class WebNovelFetcher: ObservableObject {
                             if let bookList = self.novelList[novel.class_],
                                bookList[novel.id] != nil {
                                 self.novelList[novel.class_]![novel.id]!.chapter = content
+                                self.flattenNovelList[novel.id]!.chapter = content
                                 print("ok")
                             }
                         }
@@ -205,6 +210,7 @@ class WebNovelFetcher: ObservableObject {
                             if let bookList = self.novelList[novel.class_],
                                bookList[novel.id] != nil {
                                 self.novelList[novel.class_]![novel.id]!.chapter.content[novel.chapter.index] = content
+                                self.flattenNovelList[novel.id]!.chapter.content[novel.chapter.index] = content
                                 print("ok")
                             }
                         }
@@ -224,8 +230,9 @@ class WebNovelFetcher: ObservableObject {
             let params: [String: Any] = [
                 "book": ["web": novel.web, "name": novel.book.name, "author": novel.book.author],
                 "rating": ["amount": novel.rating.amount, "number": novel.rating.number],
-                "commant": novel.commant.map { ["rating": $0.rating, "content": $0.content] },
+                "commant": novel.commants.map { ["rating": $0.rating, "content": $0.content] },
             ]
+            print(params)
             request.httpBody = try! JSONSerialization.data(withJSONObject: params)
 
             URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -236,8 +243,7 @@ class WebNovelFetcher: ObservableObject {
                     return
                 }
                 DispatchQueue.main.async {
-                    if let bookList = self.novelList[novel.class_],
-                       bookList[novel.id] != nil {
+                    if self.flattenNovelList[novel.id] != nil {
                         print("ok")
                     }
                 }
