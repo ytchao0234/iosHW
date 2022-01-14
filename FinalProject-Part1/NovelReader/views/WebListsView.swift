@@ -174,6 +174,7 @@ struct BookView: View {
 }
 
 struct BookRow: View {
+    @EnvironmentObject var backgroundViewModel: BackgroundViewModel
     let novel: Novel
     var body: some View {
         HStack {
@@ -188,11 +189,17 @@ struct BookRow: View {
                         .frame(width: 60, height: 80)
                         .background(Color.secondary.opacity(0.2))
                 }
+                .frame(width: 60)
                 
-                RatingView(rating: .constant(novel.rating))
-                    .disabled(true)
+                HStack {
+                    RatingView(rating: .constant(novel.rating))
+                        .disabled(true)
+                    Text(String(format: "%.1f", novel.rating.amount))
+                        .font(.custom("", size: 8))
+                        .foregroundColor(Color("fontColor"))
+                }
             }
-            .frame(width: 60)
+            .frame(width: 80)
             
             VStack(alignment: .leading) {
                 Text(novel.book.name)
@@ -206,7 +213,8 @@ struct BookRow: View {
                 }
                 .font(.caption)
             }
-            .foregroundColor(.white)
+            .foregroundColor(Color("fontColor"))
+            .padding(.leading, 10)
         }
         .padding(.vertical, 5)
     }

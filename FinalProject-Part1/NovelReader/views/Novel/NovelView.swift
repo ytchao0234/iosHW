@@ -9,9 +9,11 @@ import SwiftUI
 
 struct NovelView: View {
     @EnvironmentObject var webNovelFetcher: WebNovelFetcher
+    @EnvironmentObject var backgroundViewModel: BackgroundViewModel
     let novel: Novel
     @Binding var showNovel: Bool
     @State var showMenu: Bool = false
+    @State var showSetting: Bool = false
 
     var body: some View {
         let selection = Binding<Int> {
@@ -29,16 +31,44 @@ struct NovelView: View {
 
         return GeometryReader { geometry in
             ZStack(alignment: .leading) {
-                NovelMenuView(novel: novel)
+                NovelMenuView(novel: novel, showMenu: $showMenu)
                     .frame(width: geometry.size.width * 0.6)
-                Group {
+                VStack {
+                    Group {
+                        if selection.wrappedValue > 0 {
+                            Text(webNovelFetcher.flattenNovelList[novel.id]!.chapter.title[selection.wrappedValue-1])
+                        }
+                        else {
+                            Text("簡介")
+                        }
+                    }
+                    .font(.caption2)
+                    .padding(.vertical, 5)
                     if webNovelFetcher.flattenNovelList[novel.id]!.chapter.count > 0 {
                         TabView(selection: selection) {
-                            NovelIntroView(novel: webNovelFetcher.flattenNovelList[novel.id]!, width: geometry.size.width, height: geometry.size.height)
+                            NovelIntroView(novel: webNovelFetcher.flattenNovelList[novel.id]!, width: geometry.size.width, height: geometry.size.height, showSetting: $showSetting)
                                 .tag(0)
+                                .gesture(showMenu || showSetting ? DragGesture()
+                                            .onChanged({ _ in
+                                    if showMenu {
+                                        showMenu = false
+                                    }
+                                    else {
+                                        showSetting.toggle()
+                                    }
+                                }) : nil)
                             ForEach(1..<webNovelFetcher.flattenNovelList[novel.id]!.chapter.count+1) { index in
                                 NovelContentView(novel: novel, index: index-1, width: geometry.size.width)
                                     .tag(index)
+                                    .gesture(showMenu || showSetting ? DragGesture()
+                                                .onChanged({ _ in
+                                        if showMenu {
+                                            showMenu = false
+                                        }
+                                        else {
+                                            showSetting.toggle()
+                                        }
+                                    }) : nil)
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
@@ -48,11 +78,24 @@ struct NovelView: View {
                             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
                     }
                 }
+                .background(backgroundViewModel.background.color)
                 .offset(x: showMenu ? geometry.size.width * 0.6: 0)
                 .animation(.linear(duration: 0.2), value: showMenu)
-                NovelSettingView(novel: webNovelFetcher.flattenNovelList[novel.id]!, width: geometry.size.width, height: geometry.size.height, showNovel: $showNovel, showMenu: $showMenu)
+                .onTapGesture {
+                    if showMenu {
+                        showMenu = false
+                    }
+                    else {
+                        showSetting.toggle()
+                    }
+                }
+                
+                if showSetting {
+                    NovelSettingView(novel: webNovelFetcher.flattenNovelList[novel.id]!, width: geometry.size.width, height: geometry.size.height, showNovel: $showNovel, showMenu: $showMenu, showSetting: $showSetting)
+                }
             }
         }
+        .preferredColorScheme(backgroundViewModel.background.preferredColorScheme)
         .onAppear {
             if webNovelFetcher.flattenNovelList[novel.id]!.chapter.count == 0 {
                 webNovelFetcher.getChapterList(novel: novel)
@@ -74,12 +117,13 @@ struct NovelSettingView: View {
     let height: Double
     @Binding var showNovel: Bool
     @Binding var showMenu: Bool
+    @Binding var showSetting: Bool
 
     var body: some View {
         ZStack {
             VStack {
                 ZStack(alignment: .bottom) {
-                    Color.black.brightness(0.15)
+                    Color.secondary.brightness(-0.7)
                         .frame(height: height * 0.1)
                     
                     HStack {
@@ -100,6 +144,10 @@ struct NovelSettingView: View {
                 HStack {
                     Button {
                         showMenu.toggle()
+                        
+                        if showMenu {
+                            showSetting = false
+                        }
                     } label: {
 //                        ZStack {
                             Image(systemName: "list.bullet")
@@ -108,7 +156,7 @@ struct NovelSettingView: View {
                                 .foregroundColor(.white.opacity(0.7))
                                 .padding(5)
                                 .frame(width: 30, height: 60)
-                                .background(Color.black.brightness(0.15).clipShape(HalfCircle()))
+                                .background(Color.secondary.brightness(-0.7).clipShape(HalfCircle()))
 //                        }
                     }
                     .offset(x: showMenu ? width * 0.6: 0)
@@ -116,7 +164,7 @@ struct NovelSettingView: View {
                     Spacer()
                 }
                 Spacer()
-                Color.black.brightness(0.15)
+                Color.secondary.brightness(-0.7)
                     .frame(height: height * 0.1)
             }
         }

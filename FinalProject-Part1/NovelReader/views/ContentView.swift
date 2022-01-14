@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var webNovelFetcher = WebNovelFetcher()
+    @StateObject var backgroundViewModel = BackgroundViewModel()
     @State private var selection = 1
 
     init() {
@@ -28,6 +29,7 @@ struct ContentView: View {
                 .tabItem {Label("本站", systemImage: "server.rack")}
                 .tag(2)
         }
+        .environmentObject(backgroundViewModel)
     }
 }
 

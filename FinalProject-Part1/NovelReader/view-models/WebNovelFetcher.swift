@@ -101,7 +101,10 @@ class WebNovelFetcher: ObservableObject {
                         DispatchQueue.main.async {
                             self.classList[web] = content
                             self.makeFlattenClassList(web: web)
-                            self.novelList = Dictionary(uniqueKeysWithValues: self.flattenClassList.map {($0, [:])})
+                            let newList = Dictionary(uniqueKeysWithValues: self.flattenClassList.map {($0, [String: Novel]())})
+                            self.novelList.merge(newList) { this, other in
+                                return this
+                            }
                             print("ok")
                         }
                     } catch {

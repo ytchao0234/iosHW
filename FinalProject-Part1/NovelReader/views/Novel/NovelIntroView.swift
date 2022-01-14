@@ -13,12 +13,13 @@ struct NovelIntroView: View {
     let novel: Novel
     let width: Double
     let height: Double
+    @Binding var showSetting: Bool
     @State var openCommantView: Bool = false
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView(.vertical, showsIndicators: false) {
-                IntroBlockView(novel: novel, imageWidth: width*0.3, imageHeight: height*0.3)
+                IntroBlockView(novel: novel, imageWidth: width*0.3, imageHeight: height*0.3, showSetting: $showSetting)
                 CommantListView(novel: novel)
             }
             Button {
@@ -34,6 +35,7 @@ struct NovelIntroView: View {
                                 .scaleEffect(0.5)
                                 .foregroundColor(.white))
             }
+            .padding()
             .sheet(isPresented: $openCommantView) {
                 CommantEditView(novel: novel, width: width, toOpen: $openCommantView)
             }
@@ -44,21 +46,23 @@ struct NovelIntroView: View {
 }
 
 struct IntroBlockView: View {
+    @EnvironmentObject var backgroundViewModel: BackgroundViewModel
     let novel: Novel
     let imageWidth: Double
     let imageHeight: Double
+    @Binding var showSetting: Bool
 
     var body: some View {
         VStack {
             HStack {
                 ImageAndRating(novel: novel, imageWidth: imageWidth, imageHeight: imageHeight)
 
-                InfoView(novel: novel)
+                InfoView(novel: novel, showSetting: $showSetting)
                     .padding(.leading)
             }
             
             Divider()
-                .brightness(0.8)
+                .brightness(backgroundViewModel.background.preferredColorScheme == .light ? -0.8 : 0.8)
             
             if novel.book.intro.count > 0 {
                 Text(novel.book.intro)
@@ -106,6 +110,7 @@ struct ImageAndRating: View {
 struct InfoView: View {
     @EnvironmentObject var webNovelFetcher: WebNovelFetcher
     let novel: Novel
+    @Binding var showSetting: Bool
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -119,9 +124,11 @@ struct InfoView: View {
                 Text("更新狀態\t: \(novel.book.state)")
                 Text("章節數\t: \(novel.chapter.count)")
                 Button {
+                    showSetting.toggle()
                     webNovelFetcher.flattenNovelList[novel.id]!.chapter.index = 1
                 } label: {
                     Label("開始閱讀", systemImage: "book")
+                        .foregroundColor(.white)
                         .padding(5)
                         .background(Color.accentColor)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -129,12 +136,12 @@ struct InfoView: View {
             }
             .font(.caption)
         }
-        .foregroundColor(.white)
     }
 }
 
 struct CommantListView: View {
     @EnvironmentObject var webNovelFetcher: WebNovelFetcher
+    @EnvironmentObject var backgroundViewModel: BackgroundViewModel
     let novel: Novel
 
     var body: some View {
@@ -142,7 +149,7 @@ struct CommantListView: View {
             LazyVStack(alignment: .leading) {
                 ForEach(webNovelFetcher.flattenNovelList[novel.id]!.commants) { commant in
                     Divider()
-                        .brightness(0.8)
+                        .brightness(backgroundViewModel.background.preferredColorScheme == .light ? -0.8 : 0.8)
 
                     VStack(alignment: .leading) {
                         RatingView(rating: .constant(Rating(amount: Double(commant.rating), number: 1)))
@@ -155,7 +162,7 @@ struct CommantListView: View {
             }
         } else {
             Divider()
-                .brightness(0.8)
+                .brightness(backgroundViewModel.background.preferredColorScheme == .light ? -0.8 : 0.8)
 
             Text("-- 還沒有評論 --")
                 .foregroundColor(.secondary.opacity(0.7))
