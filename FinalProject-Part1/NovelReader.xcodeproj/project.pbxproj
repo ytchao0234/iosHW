@@ -12,6 +12,7 @@
 		03288B9C278ECBCA0011F531 /* NovelIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03288B9B278ECBCA0011F531 /* NovelIntroView.swift */; };
 		03288B9F278ECFA20011F531 /* SwiftDown in Frameworks */ = {isa = PBXBuildFile; productRef = 03288B9E278ECFA20011F531 /* SwiftDown */; };
 		03288BA127901CF80011F531 /* NovelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03288BA027901CF80011F531 /* NovelContentView.swift */; };
+		03288BA32795BE080011F531 /* FindBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03288BA22795BE080011F531 /* FindBookView.swift */; };
 		03349FF427856FFB003DE885 /* NovelReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03349FF327856FFA003DE885 /* NovelReaderApp.swift */; };
 		03349FF627856FFB003DE885 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03349FF527856FFB003DE885 /* CoreDataTestView.swift */; };
 		03349FF827857001003DE885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03349FF727857001003DE885 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		03288B99278ECB9C0011F531 /* NovelMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelMenuView.swift; sourceTree = "<group>"; };
 		03288B9B278ECBCA0011F531 /* NovelIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIntroView.swift; sourceTree = "<group>"; };
 		03288BA027901CF80011F531 /* NovelContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelContentView.swift; sourceTree = "<group>"; };
+		03288BA22795BE080011F531 /* FindBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBookView.swift; sourceTree = "<group>"; };
 		03349FF027856FFA003DE885 /* NovelReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovelReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03349FF327856FFA003DE885 /* NovelReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelReaderApp.swift; sourceTree = "<group>"; };
 		03349FF527856FFB003DE885 /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				030578AB278C889F006442AD /* WebListsView.swift */,
 				03F82305278DB0FD00D31254 /* RatingView.swift */,
 				03288B98278ECB7D0011F531 /* Novel */,
+				03288BA22795BE080011F531 /* FindBookView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				0334A00E27857E25003DE885 /* WebNovelFetcher.swift in Sources */,
 				0334A00727857D80003DE885 /* ContentView.swift in Sources */,
 				03F82306278DB0FD00D31254 /* RatingView.swift in Sources */,
+				03288BA32795BE080011F531 /* FindBookView.swift in Sources */,
 				03288BA127901CF80011F531 /* NovelContentView.swift in Sources */,
 				03349FF627856FFB003DE885 /* CoreDataTestView.swift in Sources */,
 				03F82308278DBBA400D31254 /* NovelView.swift in Sources */,

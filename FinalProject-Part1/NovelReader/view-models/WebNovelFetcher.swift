@@ -12,8 +12,10 @@ class WebNovelFetcher: ObservableObject {
     @Published var classList = [String: [Class]]()
     @Published var novelList = [Class: [String: Novel]]()
     @Published var flattenNovelList = [String: Novel]()
-    @Published var searchList = [String: Novel]()
+    @Published var searchList = [String: [String: Novel]]()
     @Published var fetchFailed = Bool(false)
+    @Published var isSearching1 = [String: Bool]()
+    @Published var isSearching2 = [String: Bool]()
     var flattenClassList = [Class]()
 
     enum URLString: String {
@@ -48,6 +50,8 @@ class WebNovelFetcher: ObservableObject {
                         DispatchQueue.main.async {
                             self.webList = content
                             self.classList = Dictionary(uniqueKeysWithValues: content.map {($0, [])})
+                            self.isSearching1 = Dictionary(uniqueKeysWithValues: content.map {($0, false)})
+                            self.isSearching2 = Dictionary(uniqueKeysWithValues: content.map {($0, false)})
                         }
                     } catch {
                         print("ERROR::getWebList::\(error)")
@@ -173,11 +177,9 @@ class WebNovelFetcher: ObservableObject {
                     do {
                         let content = try self.decoder.decode(Chapter.self, from: data)
                         DispatchQueue.main.async {
-                            if let bookList = self.novelList[novel.class_],
-                               bookList[novel.id] != nil {
-                                self.novelList[novel.class_]![novel.id]!.chapter = content
+                            if self.flattenNovelList[novel.id] != nil {
                                 self.flattenNovelList[novel.id]!.chapter = content
-                                print("ok")
+                                print("\(novel.book.name): ok: \(novel.chapter.count)")
                             }
                         }
                     } catch {
@@ -210,9 +212,7 @@ class WebNovelFetcher: ObservableObject {
                     do {
                         let content = try self.decoder.decode(String.self, from: data)
                         DispatchQueue.main.async {
-                            if let bookList = self.novelList[novel.class_],
-                               bookList[novel.id] != nil {
-                                self.novelList[novel.class_]![novel.id]!.chapter.content[novel.chapter.index] = content
+                            if self.flattenNovelList[novel.id] != nil {
                                 self.flattenNovelList[novel.id]!.chapter.content[novel.chapter.index] = content
                                 print("ok")
                             }
@@ -255,6 +255,7 @@ class WebNovelFetcher: ObservableObject {
     }
     
     func searchBook(web: String, text: String) {
+        self.isSearching1[web] = true
         if let url = URL(string: URLString.searchBook1.rawValue) {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -274,15 +275,19 @@ class WebNovelFetcher: ObservableObject {
                 }
                 if let data = data {
                     do {
-                        let content = try self.decoder.decode([[String: Book]].self, from: data)
+                        let content = try self.decoder.decode([BookAndRatingAndCommant].self, from: data)
                         DispatchQueue.main.async {
-                            self.searchList = Dictionary(uniqueKeysWithValues: content.map {
-                                let novel = Novel(web: web, class_: self.classList[web]![0], book: $0["book"]!)
+                            self.searchList[web] = Dictionary(uniqueKeysWithValues: content.map {
+                                let novel = Novel(web: web, book: $0.book, rating: $0.rating, commants: $0.commant)
                                 return (novel.id, novel)
                             })
-                            print("ok")
+                            self.flattenNovelList.merge(self.searchList[web]!) { this, other in
+                                return this
+                            }
+                            print("\(web): ok")
+                            self.isSearching1[web] = false
+                            self.searchBook2(web: web, text: text)
                         }
-                        self.searchBook2(web: web, text: text)
                     } catch {
                         print("ERROR::searchBook1::\(error)")
                     }
@@ -292,6 +297,7 @@ class WebNovelFetcher: ObservableObject {
     }
     
     func searchBook2(web: String, text: String) {
+        self.isSearching2[web] = true
         if let url = URL(string: URLString.searchBook2.rawValue) {
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -301,23 +307,31 @@ class WebNovelFetcher: ObservableObject {
                 "searchText": text,
             ]
             request.httpBody = try! self.encoder.encode(params)
+            
+            let sessionConfig = URLSessionConfiguration.default
+            sessionConfig.timeoutIntervalForRequest = 180.0
+            sessionConfig.timeoutIntervalForResource = 180.0
 
-            URLSession.shared.dataTask(with: request) { (data, response, error) in
+            URLSession(configuration: sessionConfig).dataTask(with: request) { (data, response, error) in
                 guard error == nil else {
                     DispatchQueue.main.async {
                         self.fetchFailed = true
                     }
                     return
                 }
-                if let data = data {
+                if let data = data, self.searchList[web] != nil {
                     do {
-                        let content = try self.decoder.decode([[String: Book]].self, from: data)
+                        let content = try self.decoder.decode([BookAndRatingAndCommant].self, from: data)
                         DispatchQueue.main.async {
-                            self.searchList = Dictionary(uniqueKeysWithValues: content.map {
-                                let novel = Novel(web: web, class_: self.classList[web]![0], book: $0["book"]!)
+                            self.searchList[web] = Dictionary(uniqueKeysWithValues: content.map {
+                                let novel = Novel(web: web, book: $0.book, rating: $0.rating, commants: $0.commant)
                                 return (novel.id, novel)
                             })
-                            print("ok")
+                            self.flattenNovelList.merge(self.searchList[web]!) { this, other in
+                                return this
+                            }
+                            print("\(web): ok")
+                            self.isSearching2[web] = false
                         }
                     } catch {
                         print("ERROR::searchBook2::\(error)")

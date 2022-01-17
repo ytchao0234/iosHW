@@ -17,10 +17,22 @@ struct WebListsView: View {
 
 struct WebView: View {
     @EnvironmentObject var webNovelFetcher: WebNovelFetcher
+    @State private var searchText: String = ""
+    
+    var listContent: [String] {
+        if searchText.isEmpty {
+            return webNovelFetcher.webList
+        }
+        else {
+            return webNovelFetcher.webList.filter {
+                $0.contains(searchText)
+            }
+        }
+    }
 
     var body: some View {
         List {
-            ForEach(webNovelFetcher.webList, id: \.self) { web in
+            ForEach(listContent, id: \.self) { web in
                 NavigationLink {
                     ClassView(web: web, title: web)
                 } label: {
@@ -28,6 +40,7 @@ struct WebView: View {
                 }
             }
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .overlay {
             if webNovelFetcher.webList.isEmpty {
                 ProgressView()
@@ -52,61 +65,63 @@ struct ClassView: View {
     let web: String
     var list: [Class]? = nil
     var title: String
+    @State private var searchText: String = ""
+    
+    var classList: [Class] {
+        if let list = list {
+            return list
+        }
+        else if let list = webNovelFetcher.classList[web] {
+            return list
+        }
+        else {
+            return [Class]()
+        }
+    }
+    
+    var listContent: [Class] {
+        if searchText.isEmpty {
+            return classList
+        }
+        else {
+            return classList.filter {
+                $0.name.contains(searchText)
+            }
+        }
+    }
 
     var body: some View {
-        Group {
-            if let classList = list {
-                List {
-                    ForEach(classList, id: \.self) { class_ in
-                        NavigationLink {
-                            if class_.child.isEmpty {
-                                BookView(web: web, class_: class_, title: "\(title) - \(class_.name)")
-                            }
-                            else {
-                                ClassView(web: web, list: class_.child, title: "\(title) - \(class_.name)")
-                            }
-                        } label: {
+        List {
+            ForEach(listContent, id: \.self) { class_ in
+                if class_.child.isEmpty {
+                    NavigationLink {
+                        BookView(web: web, class_: class_, title: "\(title) - \(class_.name)")
+                    } label: {
+                        Text(class_.name)
+                    }
+                }
+                else {
+                    NavigationLink {
+                        ClassView(web: web, list: class_.child, title: "\(title) - \(class_.name)")
+                    } label: {
+                        HStack {
                             Text(class_.name)
+                            Spacer()
+                            Image(systemName: "list.bullet")
                         }
                     }
                 }
             }
-            else if let classList = webNovelFetcher.classList[web] {
-                List {
-                    ForEach(classList, id: \.self) { class_ in
-                        if class_.child.isEmpty {
-                            NavigationLink {
-                                BookView(web: web, class_: class_, title: "\(title) - \(class_.name)")
-                            } label: {
-                                Text(class_.name)
-                            }
-                        }
-                        else {
-                            NavigationLink {
-                                ClassView(web: web, list: class_.child, title: "\(web) - \(class_.name)")
-                            } label: {
-                                HStack {
-                                    Text(class_.name)
-                                    Spacer()
-                                    Image(systemName: "list.bullet")
-                                }
-                            }
-                        }
-                    }
-                }
-                .overlay {
-                    if classList.isEmpty {
-                        ProgressView()
-                    }
-                }
-                .onAppear {
-                    if classList.isEmpty {
-                        webNovelFetcher.getClassList(web: web)
-                    }
-                }
+        }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .overlay {
+            if classList.isEmpty {
+                ProgressView()
             }
-            else {
-                Text("400 Bad Request.\n\(web) is Not Found.")
+        }
+        .onAppear {
+            if classList.isEmpty {
+                webNovelFetcher.getClassList(web: web)
             }
         }
         .toolbar(content: {
@@ -125,10 +140,27 @@ struct BookView: View {
     let title: String
     @State var showNovelList = [String: Bool]()
     @State var novel: Novel? = nil
+    @State private var searchText: String = ""
+    
+    var listContent: [Novel] {
+        if let list = webNovelFetcher.novelList[class_] {
+            if searchText.isEmpty {
+                return list.values.sorted(by: <)
+            }
+            else {
+                return list.values.sorted(by: <).filter {
+                    $0.book.name.contains(searchText)
+                }
+            }
+        }
+        else {
+            return [Novel]()
+        }
+    }
 
     var body: some View {
         List {
-            ForEach(webNovelFetcher.novelList[class_]!.values.sorted(by: <)) { novel in
+            ForEach(listContent) { novel in
                 let showNovel = Binding<Bool> {
                     if let show = showNovelList[novel.id] {
                         return show
@@ -154,6 +186,7 @@ struct BookView: View {
                 }
             }
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
         .overlay {
             if webNovelFetcher.novelList[class_]!.isEmpty {
                 ProgressView()
