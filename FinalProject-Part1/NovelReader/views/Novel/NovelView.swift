@@ -146,6 +146,7 @@ struct NovelSettingView: View {
     @Binding var showMenu: Bool
     @Binding var showSetting: Bool
     @Binding var keep: Bool
+    @State private var share: Bool = false
 
     var body: some View {
         ZStack {
@@ -184,6 +185,19 @@ struct NovelSettingView: View {
                             .frame(width: 20, height: 20)
                             .padding()
                         }
+                        Button {
+                            share = true
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.secondary)
+                                .frame(width: 20, height: 20)
+                                .padding()
+                        }
+                        .sheet(isPresented: $share, onDismiss: {}, content: {
+                            ShareView(novel: novel)
+                        })
                     }
                 }
                 Spacer()

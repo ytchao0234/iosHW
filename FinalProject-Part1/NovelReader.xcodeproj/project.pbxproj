@@ -32,6 +32,7 @@
 		039DFAA827971A37002162E0 /* NovelReaderWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 039DFA9A27971A33002162E0 /* NovelReaderWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		039DFAB527971D5F002162E0 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DFAB427971D5F002162E0 /* Novel.swift */; };
 		039DFAB627971D5F002162E0 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DFAB427971D5F002162E0 /* Novel.swift */; };
+		03DF94E327975AA7000BDC26 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03DF94E227975AA7000BDC26 /* ShareView.swift */; };
 		03F82306278DB0FD00D31254 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F82305278DB0FD00D31254 /* RatingView.swift */; };
 		03F82308278DBBA400D31254 /* NovelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F82307278DBBA400D31254 /* NovelView.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		039DFAA327971A37002162E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		039DFAA527971A37002162E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		039DFAB427971D5F002162E0 /* Novel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
+		03DF94E227975AA7000BDC26 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		03F82305278DB0FD00D31254 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		03F82307278DBBA400D31254 /* NovelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				03288BA42795F3860011F531 /* KeepView.swift */,
 				03288B98278ECB7D0011F531 /* Novel */,
 				03288BA22795BE080011F531 /* FindBookView.swift */,
+				03DF94E227975AA7000BDC26 /* ShareView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				03349FF427856FFB003DE885 /* NovelReaderApp.swift in Sources */,
 				039DFAB527971D5F002162E0 /* Novel.swift in Sources */,
 				0334A00027857001003DE885 /* NovelReader.xcdatamodeld in Sources */,
+				03DF94E327975AA7000BDC26 /* ShareView.swift in Sources */,
 				0334A01027857E42003DE885 /* KeepViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
