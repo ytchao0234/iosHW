@@ -33,5 +33,12 @@ struct NovelContentView: View {
                 webNovelFetcher.getChapterContent(novel: novel)
             }
         }
+        .onChange(of: webNovelFetcher.flattenNovelList[novel.id]?.chapter.content[index]) { newValue in
+            if var novel = webNovelFetcher.flattenNovelList[novel.id],
+               novel.chapter.content[index].isEmpty {
+                novel.chapter.index = index
+                webNovelFetcher.getChapterContent(novel: novel)
+            }
+        }
     }
 }

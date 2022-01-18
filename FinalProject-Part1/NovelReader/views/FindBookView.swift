@@ -86,7 +86,6 @@ struct FindBookInOneWeb: View {
         }
         .onChange(of: submit) { toSearch in
             if toSearch && !text.isEmpty {
-                print(web)
                 if webNovelFetcher.searchList[web] != nil {
                     webNovelFetcher.searchList[web]!.removeAll()
                 }

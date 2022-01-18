@@ -111,7 +111,6 @@ class WebNovelFetcher: ObservableObject {
                             self.novelList.merge(newList) { this, other in
                                 return this
                             }
-                            print("ok")
                         }
                     } catch {
                         print("ERROR::getClassList::\(error)")
@@ -150,7 +149,6 @@ class WebNovelFetcher: ObservableObject {
                             self.flattenNovelList.merge(self.novelList[class_]!) { this, other in
                                 return this
                             }
-                            print("ok")
                         }
                     } catch {
                         print("ERROR::getBookList::\(error)")
@@ -186,7 +184,6 @@ class WebNovelFetcher: ObservableObject {
                             if keep {
                                 self.flattenNovelList[novel.id]!.keep = true
                             }
-                            print("ok")
                         }
                     } catch {
                         print("ERROR::getBook::\(error)")
@@ -216,8 +213,10 @@ class WebNovelFetcher: ObservableObject {
                         let content = try self.decoder.decode(Chapter.self, from: data)
                         DispatchQueue.main.async {
                             if self.flattenNovelList[novel.id] != nil {
-                                self.flattenNovelList[novel.id]!.chapter = content
-                                print("\(novel.book.name): ok: \(novel.chapter.count)")
+                                self.flattenNovelList[novel.id]!.chapter.count = content.count
+                                self.flattenNovelList[novel.id]!.chapter.title = content.title
+                                self.flattenNovelList[novel.id]!.chapter.link = content.link
+                                self.flattenNovelList[novel.id]!.chapter.content = content.content
                             }
                         }
                     } catch {
@@ -252,7 +251,6 @@ class WebNovelFetcher: ObservableObject {
                         DispatchQueue.main.async {
                             if self.flattenNovelList[novel.id] != nil {
                                 self.flattenNovelList[novel.id]!.chapter.content[novel.chapter.index] = content
-                                print("ok")
                             }
                         }
                     } catch {
@@ -273,7 +271,6 @@ class WebNovelFetcher: ObservableObject {
                 "rating": ["amount": novel.rating.amount, "number": novel.rating.number],
                 "commant": novel.commants.map { ["rating": $0.rating, "content": $0.content] },
             ]
-            print(params)
             request.httpBody = try! JSONSerialization.data(withJSONObject: params)
 
             URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -282,11 +279,6 @@ class WebNovelFetcher: ObservableObject {
                         self.fetchFailed = true
                     }
                     return
-                }
-                DispatchQueue.main.async {
-                    if self.flattenNovelList[novel.id] != nil {
-                        print("ok")
-                    }
                 }
             }.resume()
         }
@@ -324,7 +316,6 @@ class WebNovelFetcher: ObservableObject {
                                 novel.web = novel.web.isEmpty ? other.web : novel.web
                                 return this
                             }
-                            print("\(web): ok")
                             self.isSearching1[web] = false
                             self.searchBook2(web: web, text: text)
                         }
@@ -372,7 +363,6 @@ class WebNovelFetcher: ObservableObject {
                                 novel.web = novel.web.isEmpty ? other.web : novel.web
                                 return this
                             }
-                            print("\(web): ok")
                             self.isSearching2[web] = false
                         }
                     } catch {

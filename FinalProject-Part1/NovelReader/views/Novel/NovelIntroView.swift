@@ -155,7 +155,7 @@ struct CommantListView: View {
                         RatingView(rating: .constant(Rating(amount: Double(commant.rating), number: 1)))
                             .disabled(true)
                             .frame(width: 60)
-                        Text(commant.content)
+                        Text(LocalizedStringKey(commant.content))
                     }
                     .padding(.vertical)
                 }

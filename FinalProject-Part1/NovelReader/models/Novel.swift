@@ -107,6 +107,8 @@ struct Chapter: Codable {
         title = [String]()
         link = [String]()
         content = [String]()
+        index = Int()
+        keep = [Int]()
     }
 
     init(from decoder: Decoder) {
