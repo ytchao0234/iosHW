@@ -84,7 +84,7 @@ struct Book: Identifiable, Codable {
     var imageLink: String
     var state: String
     
-    init(id: String = "\(UUID())", name: String = "小說書名", author: String = "作者", intro: String = "小說簡介", imageLink: String = "封面連結", state: String = "最後更新日期, [連載狀態]") {
+    init(id: String = "\(UUID())", name: String = "小說書名", author: String = "作者", intro: String = "小說簡介", imageLink: String = "封面連結", state: String = "更新及連載狀態") {
         self.id = id
         self.name = name
         self.author = author

@@ -27,7 +27,7 @@ struct KeepView: View {
     @State private var searchText_keep: String = ""
     @State private var edit_current: Bool = false
     @State private var edit_keep: Bool = false
-
+    @State private var widgetNovelId: String? = nil
     
     var body: some View {
         NavigationView {
@@ -97,6 +97,14 @@ struct KeepView: View {
                         Text("-- 暫無收藏 --")
                             .foregroundColor(.secondary.opacity(0.7))
                     }
+                }
+            }
+            .onOpenURL { url in
+                self.widgetNovelId = "\(url)"
+
+                addWidgetNovel()
+                if webNovelFetcher.flattenNovelList[widgetNovelId!] == nil {
+                    webNovelFetcher.getBook(id: widgetNovelId!, readTime: Date())
                 }
             }
             .onAppear {
@@ -173,6 +181,27 @@ struct KeepView: View {
             } catch {
                 let nsError = error as NSError
                 fatalError("ERROR::deleteCurrent: \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
+    
+    func addWidgetNovel() {
+        withAnimation {
+            if let novelId = widgetNovelId {
+                if let index = current.firstIndex(where: { $0.id == novelId }) {
+                    current[index].readTime = Date()
+                } else {
+                    let newItem = Novel_Current(context: viewContext)
+                    newItem.id = novelId
+                    newItem.readTime = Date()
+                }
+
+                do {
+                    try viewContext.save()
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("ERROR::deleteCurrent: \(nsError), \(nsError.userInfo)")
+                }
             }
         }
     }
