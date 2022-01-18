@@ -13,34 +13,30 @@ struct NovelMenuView: View {
     @Binding var showMenu: Bool
 
     var body: some View {
-        List {
-            if webNovelFetcher.flattenNovelList[novel.id]!.chapter.count > 0 {
-                Button {
-                    showMenu = false
-                    webNovelFetcher.flattenNovelList[novel.id]!.chapter.index = 0
-                } label: {
-                    Text("簡介")
-                        .font(.caption)
-                        .foregroundColor(.white.opacity(0.7))
-                }
-                .listRowBackground(
-                    ZStack {
+        VStack {
+            Button {
+                webNovelFetcher.getChapterList(novel: novel)
+            } label: {
+                Label("更新目錄", systemImage: "arrow.triangle.2.circlepath")
+                    .foregroundColor(.orange.opacity(0.5))
+                    .font(.caption)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                    .padding(.trailing)
+                    .padding(.vertical)
+                    .overlay {
                         Rectangle()
-                            .stroke(.secondary, lineWidth: 0.3)
-                        LeadingBorder(width: 5)
-                            .foregroundColor(.accentColor)
-                            .opacity(webNovelFetcher.flattenNovelList[novel.id]!.chapter.index == 0 ? 1 : 0)
+                            .stroke(.orange.opacity(0.5), lineWidth: 1.2)
                     }
-                )
-
-                ForEach(1 ..< webNovelFetcher.flattenNovelList[novel.id]!.chapter.count + 1) { index in
+            }
+            
+            List {
+                if webNovelFetcher.flattenNovelList[novel.id]!.chapter.count > 0 {
                     Button {
                         showMenu = false
-                        webNovelFetcher.flattenNovelList[novel.id]!.chapter.index = index
+                        webNovelFetcher.flattenNovelList[novel.id]!.chapter.index = 0
                     } label: {
-                        Text( webNovelFetcher.flattenNovelList[novel.id]!.chapter.title[index-1])
+                        Text("簡介")
                             .font(.caption)
-                            .lineLimit(1)
                             .foregroundColor(.white.opacity(0.7))
                     }
                     .listRowBackground(
@@ -49,20 +45,41 @@ struct NovelMenuView: View {
                                 .stroke(.secondary, lineWidth: 0.3)
                             LeadingBorder(width: 5)
                                 .foregroundColor(.accentColor)
-                                .opacity(webNovelFetcher.flattenNovelList[novel.id]!.chapter.index == index ? 1 : 0)
+                                .opacity(webNovelFetcher.flattenNovelList[novel.id]!.chapter.index == 0 ? 1 : 0)
                         }
                     )
+                    
+                    ForEach(1 ..< webNovelFetcher.flattenNovelList[novel.id]!.chapter.count + 1) { index in
+                        Button {
+                            showMenu = false
+                            webNovelFetcher.flattenNovelList[novel.id]!.chapter.index = index
+                        } label: {
+                            Text( webNovelFetcher.flattenNovelList[novel.id]!.chapter.title[index-1])
+                                .font(.caption)
+                                .lineLimit(1)
+                                .foregroundColor(.white.opacity(0.7))
+                        }
+                        .listRowBackground(
+                            ZStack {
+                                Rectangle()
+                                    .stroke(.secondary, lineWidth: 0.3)
+                                LeadingBorder(width: 5)
+                                    .foregroundColor(.accentColor)
+                                    .opacity(webNovelFetcher.flattenNovelList[novel.id]!.chapter.index == index ? 1 : 0)
+                            }
+                        )
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .overlay {
+                if webNovelFetcher.flattenNovelList[novel.id]!.chapter.count == 0 {
+                    ProgressView()
                 }
             }
         }
-        .listStyle(.plain)
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .background(Color.secondary.brightness(-0.7))
-        .overlay {
-            if webNovelFetcher.flattenNovelList[novel.id]!.chapter.count == 0 {
-                ProgressView()
-            }
-        }
     }
 }
 

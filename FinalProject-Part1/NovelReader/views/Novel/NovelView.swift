@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct NovelView: View {
+    @EnvironmentObject var keepViewModel: KeepViewModel
     @EnvironmentObject var webNovelFetcher: WebNovelFetcher
     @EnvironmentObject var backgroundViewModel: BackgroundViewModel
     let novel: Novel
     @Binding var showNovel: Bool
     @State var showMenu: Bool = false
     @State var showSetting: Bool = false
+    @State var keep: Bool = false
 
     var body: some View {
         let selection = Binding<Int> {
@@ -91,14 +93,38 @@ struct NovelView: View {
                 }
                 
                 if showSetting {
-                    NovelSettingView(novel: webNovelFetcher.flattenNovelList[novel.id]!, width: geometry.size.width, height: geometry.size.height, showNovel: $showNovel, showMenu: $showMenu, showSetting: $showSetting)
+                    NovelSettingView(novel: webNovelFetcher.flattenNovelList[novel.id]!, width: geometry.size.width, height: geometry.size.height, showNovel: $showNovel, showMenu: $showMenu, showSetting: $showSetting, keep: $keep)
                 }
             }
         }
         .preferredColorScheme(backgroundViewModel.background.preferredColorScheme)
+        .alert("獲取資料失敗", isPresented: $webNovelFetcher.fetchFailed, actions: {
+            Button("確定") {}
+        }, message: {
+            Text("請檢查網路連線")
+        })
         .onAppear {
+            self.keep = webNovelFetcher.flattenNovelList[novel.id]!.keep
+            if keep {
+                keepViewModel.keep = webNovelFetcher.flattenNovelList[novel.id]!
+            }
             if webNovelFetcher.flattenNovelList[novel.id]!.chapter.count == 0 {
                 webNovelFetcher.getChapterList(novel: novel)
+            }
+            if webNovelFetcher.flattenNovelList[novel.id]!.chapter.index == 0 {
+                self.showSetting = true
+            }
+        }
+        .onDisappear() {
+            webNovelFetcher.flattenNovelList[novel.id]!.readTime = Date()
+            keepViewModel.current = webNovelFetcher.flattenNovelList[novel.id]!
+            
+            webNovelFetcher.flattenNovelList[novel.id]!.keep = self.keep
+            if keep {
+                keepViewModel.keep = webNovelFetcher.flattenNovelList[novel.id]!
+            } else {
+                keepViewModel.lastKeep = keepViewModel.keep
+                keepViewModel.keep = nil
             }
         }
     }
@@ -112,12 +138,14 @@ struct NovelView_Previews: PreviewProvider {
 
 struct NovelSettingView: View {
     @EnvironmentObject var webNovelFetcher: WebNovelFetcher
+    @EnvironmentObject var keepViewModel: KeepViewModel
     let novel: Novel
     let width: Double
     let height: Double
     @Binding var showNovel: Bool
     @Binding var showMenu: Bool
     @Binding var showSetting: Bool
+    @Binding var keep: Bool
 
     var body: some View {
         ZStack {
@@ -138,6 +166,24 @@ struct NovelSettingView: View {
                                 .padding()
                         }
                         Spacer()
+                        Button {
+                            keep.toggle()
+                        } label: {
+                            Group {
+                                if keep {
+                                    Image(systemName: "bookmark.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                } else {
+                                    Image(systemName: "bookmark")
+                                        .resizable()
+                                        .scaledToFit()
+                                }
+                            }
+                            .foregroundColor(.yellow)
+                            .frame(width: 20, height: 20)
+                            .padding()
+                        }
                     }
                 }
                 Spacer()
@@ -149,15 +195,13 @@ struct NovelSettingView: View {
                             showSetting = false
                         }
                     } label: {
-//                        ZStack {
-                            Image(systemName: "list.bullet")
-                                .resizable()
-                                .scaledToFit()
-                                .foregroundColor(.white.opacity(0.7))
-                                .padding(5)
-                                .frame(width: 30, height: 60)
-                                .background(Color.secondary.brightness(-0.7).clipShape(HalfCircle()))
-//                        }
+                        Image(systemName: "list.bullet")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.white.opacity(0.7))
+                            .padding(5)
+                            .frame(width: 30, height: 60)
+                            .background(Color.secondary.brightness(-0.7).clipShape(HalfCircle()))
                     }
                     .offset(x: showMenu ? width * 0.6: 0)
                     .animation(.linear(duration: 0.2), value: showMenu)

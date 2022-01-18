@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 class WebNovelFetcher: ObservableObject {
     @Published var webList = [String]()
@@ -22,6 +23,7 @@ class WebNovelFetcher: ObservableObject {
         case getWebList          = "http://192.168.100.187:5000/getWebList"
         case getClassList        = "http://192.168.100.187:5000/getClassList"
         case getBookList         = "http://192.168.100.187:5000/getBookList"
+        case getBook             = "http://192.168.100.187:5000/getBook"
         case getChapterList      = "http://192.168.100.187:5000/getChapterList"
         case getChapterContent   = "http://192.168.100.187:5000/getChapterContent"
         case setRatingAndCommant = "http://192.168.100.187:5000/setRatingAndCommant"
@@ -139,7 +141,7 @@ class WebNovelFetcher: ObservableObject {
                 }
                 if let data = data {
                     do {
-                        let content = try self.decoder.decode([BookAndRatingAndCommant].self, from: data)
+                        let content = try self.decoder.decode([Web_Class_Book_Rating_Commant].self, from: data)
                         DispatchQueue.main.async {
                             self.novelList[class_] = Dictionary(uniqueKeysWithValues: content.map {
                                 let novel = Novel(web: web, class_: class_, book: $0.book, rating: $0.rating, commants: $0.commant)
@@ -152,6 +154,42 @@ class WebNovelFetcher: ObservableObject {
                         }
                     } catch {
                         print("ERROR::getBookList::\(error)")
+                    }
+                }
+            }.resume()
+        }
+    }
+    
+    func getBook(id: String, readTime: Date?, keep: Bool = false) {
+        if let url = URL(string: URLString.getBook.rawValue) {
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            let params = id
+            request.httpBody = try! self.encoder.encode(params)
+            
+            URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard error == nil else {
+                    DispatchQueue.main.async {
+                        self.fetchFailed = true
+                    }
+                    return
+                }
+                if let data = data {
+                    do {
+                        let content = try self.decoder.decode(Web_Class_Book_Rating_Commant.self, from: data)
+                        DispatchQueue.main.async {
+                            let novel = Novel(readTime: readTime, web: content.web, class_: content.class_, book: content.book, rating: content.rating, commants: content.commant)
+                            self.flattenNovelList.merge([novel.id: novel]) { this, other in
+                                return this
+                            }
+                            if keep {
+                                self.flattenNovelList[novel.id]!.keep = true
+                            }
+                            print("ok")
+                        }
+                    } catch {
+                        print("ERROR::getBook::\(error)")
                     }
                 }
             }.resume()
@@ -275,13 +313,15 @@ class WebNovelFetcher: ObservableObject {
                 }
                 if let data = data {
                     do {
-                        let content = try self.decoder.decode([BookAndRatingAndCommant].self, from: data)
+                        let content = try self.decoder.decode([Web_Class_Book_Rating_Commant].self, from: data)
                         DispatchQueue.main.async {
                             self.searchList[web] = Dictionary(uniqueKeysWithValues: content.map {
-                                let novel = Novel(web: web, book: $0.book, rating: $0.rating, commants: $0.commant)
+                                let novel = Novel(web: web, class_: $0.class_, book: $0.book, rating: $0.rating, commants: $0.commant)
                                 return (novel.id, novel)
                             })
                             self.flattenNovelList.merge(self.searchList[web]!) { this, other in
+                                var novel = this
+                                novel.web = novel.web.isEmpty ? other.web : novel.web
                                 return this
                             }
                             print("\(web): ok")
@@ -321,13 +361,15 @@ class WebNovelFetcher: ObservableObject {
                 }
                 if let data = data, self.searchList[web] != nil {
                     do {
-                        let content = try self.decoder.decode([BookAndRatingAndCommant].self, from: data)
+                        let content = try self.decoder.decode([Web_Class_Book_Rating_Commant].self, from: data)
                         DispatchQueue.main.async {
                             self.searchList[web] = Dictionary(uniqueKeysWithValues: content.map {
-                                let novel = Novel(web: web, book: $0.book, rating: $0.rating, commants: $0.commant)
+                                let novel = Novel(web: web, class_: $0.class_, book: $0.book, rating: $0.rating, commants: $0.commant)
                                 return (novel.id, novel)
                             })
                             self.flattenNovelList.merge(self.searchList[web]!) { this, other in
+                                var novel = this
+                                novel.web = novel.web.isEmpty ? other.web : novel.web
                                 return this
                             }
                             print("\(web): ok")

@@ -90,7 +90,7 @@ struct ImageAndRating: View {
                     .scaledToFit()
             } placeholder: {
                 ProgressView()
-                    .frame(width: imageWidth*0.7, height: imageHeight*0.7)
+                    .frame(width: imageWidth, height: imageHeight*0.7)
                     .background(Color.secondary.opacity(0.2))
             }
             Spacer()

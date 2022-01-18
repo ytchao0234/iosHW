@@ -41,6 +41,14 @@ struct WebView: View {
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .refreshable {
+            webNovelFetcher.getWebList()
+        }
+        .alert("獲取資料失敗", isPresented: $webNovelFetcher.fetchFailed, actions: {
+            Button("確定") {}
+        }, message: {
+            Text("請檢查網路連線")
+        })
         .overlay {
             if webNovelFetcher.webList.isEmpty {
                 ProgressView()
@@ -95,7 +103,7 @@ struct ClassView: View {
             ForEach(listContent, id: \.self) { class_ in
                 if class_.child.isEmpty {
                     NavigationLink {
-                        BookView(web: web, class_: class_, title: "\(title) - \(class_.name)")
+                        BookView_(web: web, class_: class_, title: "\(title) - \(class_.name)")
                     } label: {
                         Text(class_.name)
                     }
@@ -114,6 +122,14 @@ struct ClassView: View {
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .refreshable {
+            webNovelFetcher.getClassList(web: web)
+        }
+        .alert("獲取資料失敗", isPresented: $webNovelFetcher.fetchFailed, actions: {
+            Button("確定") {}
+        }, message: {
+            Text("請檢查網路連線")
+        })
         .overlay {
             if classList.isEmpty {
                 ProgressView()
@@ -133,13 +149,12 @@ struct ClassView: View {
     }
 }
 
-struct BookView: View {
+struct BookView_: View {
     @EnvironmentObject var webNovelFetcher: WebNovelFetcher
     let web: String
     let class_: Class
     let title: String
     @State var showNovelList = [String: Bool]()
-    @State var novel: Novel? = nil
     @State private var searchText: String = ""
     
     var listContent: [Novel] {
@@ -161,32 +176,18 @@ struct BookView: View {
     var body: some View {
         List {
             ForEach(listContent) { novel in
-                let showNovel = Binding<Bool> {
-                    if let show = showNovelList[novel.id] {
-                        return show
-                    }
-                    else {
-                        return false
-                    }
-                } set: {
-                    showNovelList[novel.id] = $0
-                }
-
-                Button {
-                    self.novel = novel
-                    self.showNovelList[novel.id] = true
-                } label: {
-                    BookRow(novel: novel)
-                }
-                .onAppear {
-                    self.showNovelList[novel.id] = false
-                }
-                .fullScreenCover(isPresented: showNovel, onDismiss: {}) {
-                    NovelView(novel: novel, showNovel: showNovel)
-                }
+                BookRow(novel: novel, showNovelList: self.$showNovelList)
             }
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+        .refreshable {
+            webNovelFetcher.getBookList(web: web, class_: class_)
+        }
+        .alert("獲取資料失敗", isPresented: $webNovelFetcher.fetchFailed, actions: {
+            Button("確定") {}
+        }, message: {
+            Text("請檢查網路連線")
+        })
         .overlay {
             if webNovelFetcher.novelList[class_]!.isEmpty {
                 ProgressView()
@@ -207,6 +208,36 @@ struct BookView: View {
 }
 
 struct BookRow: View {
+    let novel: Novel
+    @Binding var showNovelList: [String: Bool]
+
+    var body: some View {
+        let showNovel = Binding<Bool> {
+            if let show = showNovelList[novel.id] {
+                return show
+            }
+            else {
+                return false
+            }
+        } set: {
+            showNovelList[novel.id] = $0
+        }
+
+        Button {
+            self.showNovelList[novel.id] = true
+        } label: {
+            BookRowView(novel: novel)
+        }
+        .onAppear {
+            self.showNovelList[novel.id] = false
+        }
+        .fullScreenCover(isPresented: showNovel, onDismiss: {}) {
+            NovelView(novel: novel, showNovel: showNovel)
+        }
+    }
+}
+
+struct BookRowView: View {
     @EnvironmentObject var backgroundViewModel: BackgroundViewModel
     let novel: Novel
     var body: some View {

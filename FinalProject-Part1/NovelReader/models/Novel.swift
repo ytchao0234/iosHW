@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct Novel: Identifiable, Comparable {
+struct Novel: Identifiable, Comparable, Codable {
     var id: String { book.id }
+    var readTime: Date? = nil
+    var keep = Bool()
     var web = String()
     var class_ = Class()
     var book = Book()
@@ -16,6 +18,30 @@ struct Novel: Identifiable, Comparable {
     var rating = Rating()
     var commants = [Commant]()
     var commant = Commant()
+    
+    init(readTime: Date? = nil, keep: Bool = Bool(), web: String = String(), class_: Class = Class(), book: Book = Book(), chapter: Chapter = Chapter(), rating: Rating = Rating(), commants: [Commant] = [Commant](), commant: Commant = Commant()) {
+        self.readTime = readTime
+        self.keep = keep
+        self.web = web
+        self.class_ = class_
+        self.book = book
+        self.chapter = chapter
+        self.rating = rating
+        self.commants = commants
+        self.commant = commant
+    }
+    
+    init(from decoder: Decoder) {
+        let container = try! decoder.container(keyedBy: CodingKeys.self)
+        readTime = try? container.decode(Date.self, forKey: .readTime)
+        web = try! container.decode(String.self, forKey: .web)
+        class_ = try! container.decode(Class.self, forKey: .class_)
+        book = try! container.decode(Book.self, forKey: .book)
+        chapter = try! container.decode(Chapter.self, forKey: .chapter)
+        rating = try! container.decode(Rating.self, forKey: .rating)
+        commants = try! container.decode([Commant].self, forKey: .commants)
+        commant = try! container.decode(Commant.self, forKey: .commant)
+    }
 
     static func ==(lhs: Novel, rhs: Novel) -> Bool {
         return lhs.id == rhs.id
@@ -38,7 +64,7 @@ struct Class: Identifiable, Codable, Hashable {
 
     init() {
         order = Int()
-        name = "首頁"
+        name = ""
         child = [Class]()
     }
     
@@ -57,14 +83,14 @@ struct Book: Identifiable, Codable {
     var intro: String
     var imageLink: String
     var state: String
-
-    init() {
-        id = "\(UUID())"
-        name = "小說書名"
-        author = "作者"
-        intro = "小說簡介"
-        imageLink = "封面連結"
-        state = "最後更新日期, [連載狀態]"
+    
+    init(id: String = "\(UUID())", name: String = "小說書名", author: String = "作者", intro: String = "小說簡介", imageLink: String = "封面連結", state: String = "最後更新日期, [連載狀態]") {
+        self.id = id
+        self.name = name
+        self.author = author
+        self.intro = intro
+        self.imageLink = imageLink
+        self.state = state
     }
 }
 
@@ -132,13 +158,17 @@ struct Commant: Identifiable, Codable {
     }
 }
 
-struct BookAndRatingAndCommant: Codable {
+struct Web_Class_Book_Rating_Commant: Codable {
+    var web: String
+    var class_: Class
     var book: Book
     var rating: Rating
     var commant: [Commant]
 
     init(from decoder: Decoder) {
         let container = try! decoder.container(keyedBy: CodingKeys.self)
+        web = try! container.decode(String.self, forKey: .web)
+        class_ = try! container.decode(Class.self, forKey: .class_)
         book = try! container.decode(Book.self, forKey: .book)
         if let rating = try? container.decode(Rating.self, forKey: .rating) {
             self.rating = rating

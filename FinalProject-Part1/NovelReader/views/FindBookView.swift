@@ -37,6 +37,7 @@ struct FindBookView: View {
                 }
             }
             .onDisappear {
+                self.searchText = ""
                 webNovelFetcher.searchList.removeAll()
             }
             .toolbar(content: {
@@ -56,7 +57,6 @@ struct FindBookInOneWeb: View {
     @Binding var submit: Bool
     @State private var expand: Bool = true
     @State var showNovelList = [String: Bool]()
-    @State var novel: Novel? = nil
 
     var listContent: [Novel] {
         if let list = webNovelFetcher.searchList[web] {
@@ -76,29 +76,7 @@ struct FindBookInOneWeb: View {
     var body: some View {
         DisclosureGroup("\(web) (\(getBookCount(for: web)))", isExpanded: $expand) {
             ForEach(listContent) { novel in
-                let showNovel = Binding<Bool> {
-                    if let show = showNovelList[novel.id] {
-                        return show
-                    }
-                    else {
-                        return false
-                    }
-                } set: {
-                    showNovelList[novel.id] = $0
-                }
-
-                Button {
-                    self.novel = novel
-                    self.showNovelList[novel.id] = true
-                } label: {
-                    BookRow(novel: novel)
-                }
-                .onAppear {
-                    self.showNovelList[novel.id] = false
-                }
-                .fullScreenCover(isPresented: showNovel, onDismiss: {}) {
-                    NovelView(novel: novel, showNovel: showNovel)
-                }
+                BookRow(novel: novel, showNovelList: self.$showNovelList)
             }
         }
         .overlay {

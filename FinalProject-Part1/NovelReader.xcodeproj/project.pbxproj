@@ -13,6 +13,7 @@
 		03288B9F278ECFA20011F531 /* SwiftDown in Frameworks */ = {isa = PBXBuildFile; productRef = 03288B9E278ECFA20011F531 /* SwiftDown */; };
 		03288BA127901CF80011F531 /* NovelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03288BA027901CF80011F531 /* NovelContentView.swift */; };
 		03288BA32795BE080011F531 /* FindBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03288BA22795BE080011F531 /* FindBookView.swift */; };
+		03288BA52795F3860011F531 /* KeepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03288BA42795F3860011F531 /* KeepView.swift */; };
 		03349FF427856FFB003DE885 /* NovelReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03349FF327856FFA003DE885 /* NovelReaderApp.swift */; };
 		03349FF627856FFB003DE885 /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03349FF527856FFB003DE885 /* CoreDataTestView.swift */; };
 		03349FF827857001003DE885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03349FF727857001003DE885 /* Assets.xcassets */; };
@@ -20,15 +21,44 @@
 		03349FFD27857001003DE885 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03349FFC27857001003DE885 /* Persistence.swift */; };
 		0334A00027857001003DE885 /* NovelReader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03349FFE27857001003DE885 /* NovelReader.xcdatamodeld */; };
 		0334A00727857D80003DE885 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A00627857D80003DE885 /* ContentView.swift */; };
-		0334A00C27857DE8003DE885 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A00B27857DE8003DE885 /* Novel.swift */; };
 		0334A00E27857E25003DE885 /* WebNovelFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A00D27857E25003DE885 /* WebNovelFetcher.swift */; };
 		0334A01027857E42003DE885 /* KeepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A00F27857E42003DE885 /* KeepViewModel.swift */; };
-		0334A01227858037003DE885 /* LocalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A01127858037003DE885 /* LocalViewModel.swift */; };
 		0334A01427858093003DE885 /* BackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A01327858093003DE885 /* BackgroundViewModel.swift */; };
 		0334A016278580AF003DE885 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A015278580AF003DE885 /* Background.swift */; };
+		039DFA9D27971A33002162E0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039DFA9C27971A33002162E0 /* WidgetKit.framework */; };
+		039DFA9F27971A33002162E0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039DFA9E27971A33002162E0 /* SwiftUI.framework */; };
+		039DFAA227971A33002162E0 /* NovelReaderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DFAA127971A33002162E0 /* NovelReaderWidget.swift */; };
+		039DFAA427971A37002162E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 039DFAA327971A37002162E0 /* Assets.xcassets */; };
+		039DFAA827971A37002162E0 /* NovelReaderWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 039DFA9A27971A33002162E0 /* NovelReaderWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		039DFAB527971D5F002162E0 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DFAB427971D5F002162E0 /* Novel.swift */; };
+		039DFAB627971D5F002162E0 /* Novel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DFAB427971D5F002162E0 /* Novel.swift */; };
 		03F82306278DB0FD00D31254 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F82305278DB0FD00D31254 /* RatingView.swift */; };
 		03F82308278DBBA400D31254 /* NovelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F82307278DBBA400D31254 /* NovelView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		039DFAA627971A37002162E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03349FE827856FFA003DE885 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 039DFA9927971A33002162E0;
+			remoteInfo = NovelReaderWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		039DFAAC27971A37002162E0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				039DFAA827971A37002162E0 /* NovelReaderWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		030578AB278C889F006442AD /* WebListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebListsView.swift; sourceTree = "<group>"; };
@@ -36,6 +66,7 @@
 		03288B9B278ECBCA0011F531 /* NovelIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelIntroView.swift; sourceTree = "<group>"; };
 		03288BA027901CF80011F531 /* NovelContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelContentView.swift; sourceTree = "<group>"; };
 		03288BA22795BE080011F531 /* FindBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBookView.swift; sourceTree = "<group>"; };
+		03288BA42795F3860011F531 /* KeepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepView.swift; sourceTree = "<group>"; };
 		03349FF027856FFA003DE885 /* NovelReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovelReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03349FF327856FFA003DE885 /* NovelReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelReaderApp.swift; sourceTree = "<group>"; };
 		03349FF527856FFB003DE885 /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
@@ -44,12 +75,17 @@
 		03349FFC27857001003DE885 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		03349FFF27857001003DE885 /* NovelReader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NovelReader.xcdatamodel; sourceTree = "<group>"; };
 		0334A00627857D80003DE885 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0334A00B27857DE8003DE885 /* Novel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
 		0334A00D27857E25003DE885 /* WebNovelFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNovelFetcher.swift; sourceTree = "<group>"; };
 		0334A00F27857E42003DE885 /* KeepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepViewModel.swift; sourceTree = "<group>"; };
-		0334A01127858037003DE885 /* LocalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalViewModel.swift; sourceTree = "<group>"; };
 		0334A01327858093003DE885 /* BackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewModel.swift; sourceTree = "<group>"; };
 		0334A015278580AF003DE885 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		039DFA9A27971A33002162E0 /* NovelReaderWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NovelReaderWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		039DFA9C27971A33002162E0 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		039DFA9E27971A33002162E0 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		039DFAA127971A33002162E0 /* NovelReaderWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelReaderWidget.swift; sourceTree = "<group>"; };
+		039DFAA327971A37002162E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		039DFAA527971A37002162E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		039DFAB427971D5F002162E0 /* Novel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Novel.swift; sourceTree = "<group>"; };
 		03F82305278DB0FD00D31254 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		03F82307278DBBA400D31254 /* NovelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +96,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				03288B9F278ECFA20011F531 /* SwiftDown in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		039DFA9727971A33002162E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				039DFA9F27971A33002162E0 /* SwiftUI.framework in Frameworks */,
+				039DFA9D27971A33002162E0 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				03349FF227856FFA003DE885 /* NovelReader */,
+				039DFAA027971A33002162E0 /* NovelReaderWidget */,
+				039DFA9B27971A33002162E0 /* Frameworks */,
 				03349FF127856FFA003DE885 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				03349FF027856FFA003DE885 /* NovelReader.app */,
+				039DFA9A27971A33002162E0 /* NovelReaderWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,7 +170,6 @@
 			children = (
 				0334A00D27857E25003DE885 /* WebNovelFetcher.swift */,
 				0334A00F27857E42003DE885 /* KeepViewModel.swift */,
-				0334A01127858037003DE885 /* LocalViewModel.swift */,
 				0334A01327858093003DE885 /* BackgroundViewModel.swift */,
 			);
 			path = "view-models";
@@ -131,7 +178,7 @@
 		0334A00927857DA5003DE885 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				0334A00B27857DE8003DE885 /* Novel.swift */,
+				039DFAB427971D5F002162E0 /* Novel.swift */,
 				0334A015278580AF003DE885 /* Background.swift */,
 			);
 			path = models;
@@ -143,10 +190,30 @@
 				0334A00627857D80003DE885 /* ContentView.swift */,
 				030578AB278C889F006442AD /* WebListsView.swift */,
 				03F82305278DB0FD00D31254 /* RatingView.swift */,
+				03288BA42795F3860011F531 /* KeepView.swift */,
 				03288B98278ECB7D0011F531 /* Novel */,
 				03288BA22795BE080011F531 /* FindBookView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		039DFA9B27971A33002162E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				039DFA9C27971A33002162E0 /* WidgetKit.framework */,
+				039DFA9E27971A33002162E0 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		039DFAA027971A33002162E0 /* NovelReaderWidget */ = {
+			isa = PBXGroup;
+			children = (
+				039DFAA127971A33002162E0 /* NovelReaderWidget.swift */,
+				039DFAA327971A37002162E0 /* Assets.xcassets */,
+				039DFAA527971A37002162E0 /* Info.plist */,
+			);
+			path = NovelReaderWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +226,12 @@
 				03349FEC27856FFA003DE885 /* Sources */,
 				03349FED27856FFA003DE885 /* Frameworks */,
 				03349FEE27856FFA003DE885 /* Resources */,
+				039DFAAC27971A37002162E0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				039DFAA727971A37002162E0 /* PBXTargetDependency */,
 			);
 			name = NovelReader;
 			packageProductDependencies = (
@@ -172,6 +241,23 @@
 			productReference = 03349FF027856FFA003DE885 /* NovelReader.app */;
 			productType = "com.apple.product-type.application";
 		};
+		039DFA9927971A33002162E0 /* NovelReaderWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 039DFAA927971A37002162E0 /* Build configuration list for PBXNativeTarget "NovelReaderWidgetExtension" */;
+			buildPhases = (
+				039DFA9627971A33002162E0 /* Sources */,
+				039DFA9727971A33002162E0 /* Frameworks */,
+				039DFA9827971A33002162E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NovelReaderWidgetExtension;
+			productName = NovelReaderWidgetExtension;
+			productReference = 039DFA9A27971A33002162E0 /* NovelReaderWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -179,11 +265,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					03349FEF27856FFA003DE885 = {
 						CreatedOnToolsVersion = 13.1;
+					};
+					039DFA9927971A33002162E0 = {
+						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
@@ -204,6 +293,7 @@
 			projectRoot = "";
 			targets = (
 				03349FEF27856FFA003DE885 /* NovelReader */,
+				039DFA9927971A33002162E0 /* NovelReaderWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -218,6 +308,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		039DFA9827971A33002162E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				039DFAA427971A37002162E0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -226,12 +324,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0334A016278580AF003DE885 /* Background.swift in Sources */,
-				0334A00C27857DE8003DE885 /* Novel.swift in Sources */,
 				030578AC278C889F006442AD /* WebListsView.swift in Sources */,
 				03349FFD27857001003DE885 /* Persistence.swift in Sources */,
 				0334A01427858093003DE885 /* BackgroundViewModel.swift in Sources */,
 				0334A00E27857E25003DE885 /* WebNovelFetcher.swift in Sources */,
 				0334A00727857D80003DE885 /* ContentView.swift in Sources */,
+				03288BA52795F3860011F531 /* KeepView.swift in Sources */,
 				03F82306278DB0FD00D31254 /* RatingView.swift in Sources */,
 				03288BA32795BE080011F531 /* FindBookView.swift in Sources */,
 				03288BA127901CF80011F531 /* NovelContentView.swift in Sources */,
@@ -240,13 +338,30 @@
 				03288B9C278ECBCA0011F531 /* NovelIntroView.swift in Sources */,
 				03288B9A278ECB9C0011F531 /* NovelMenuView.swift in Sources */,
 				03349FF427856FFB003DE885 /* NovelReaderApp.swift in Sources */,
-				0334A01227858037003DE885 /* LocalViewModel.swift in Sources */,
+				039DFAB527971D5F002162E0 /* Novel.swift in Sources */,
 				0334A00027857001003DE885 /* NovelReader.xcdatamodeld in Sources */,
 				0334A01027857E42003DE885 /* KeepViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		039DFA9627971A33002162E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				039DFAA227971A33002162E0 /* NovelReaderWidget.swift in Sources */,
+				039DFAB627971D5F002162E0 /* Novel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		039DFAA727971A37002162E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 039DFA9927971A33002162E0 /* NovelReaderWidgetExtension */;
+			targetProxy = 039DFAA627971A37002162E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0334A00127857001003DE885 /* Debug */ = {
@@ -368,6 +483,7 @@
 		0334A00427857001003DE885 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -397,6 +513,7 @@
 		0334A00527857001003DE885 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -423,6 +540,62 @@
 			};
 			name = Release;
 		};
+		039DFAAA27971A37002162E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 963W6A297N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NovelReaderWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NovelReaderWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ytchao.NovelReader.NovelReaderWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		039DFAAB27971A37002162E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 963W6A297N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NovelReaderWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NovelReaderWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ytchao.NovelReader.NovelReaderWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -440,6 +613,15 @@
 			buildConfigurations = (
 				0334A00427857001003DE885 /* Debug */,
 				0334A00527857001003DE885 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		039DFAA927971A37002162E0 /* Build configuration list for PBXNativeTarget "NovelReaderWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				039DFAAA27971A37002162E0 /* Debug */,
+				039DFAAB27971A37002162E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

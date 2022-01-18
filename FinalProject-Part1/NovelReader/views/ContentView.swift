@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var keepViewModel = KeepViewModel()
     @StateObject var webNovelFetcher = WebNovelFetcher()
     @StateObject var backgroundViewModel = BackgroundViewModel()
-    @State private var selection = 1
+    @State private var selection = 0
 
     init() {
         UITableView.appearance().showsVerticalScrollIndicator = false
@@ -18,7 +19,7 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $selection) {
-            Text("收藏")
+            KeepView()
                 .tabItem {Label("收藏", systemImage: "bookmark.fill")}
                 .tag(0)
             WebListsView()
@@ -28,6 +29,7 @@ struct ContentView: View {
                 .tabItem {Label("找書", systemImage: "books.vertical")}
                 .tag(2)
         }
+        .environmentObject(keepViewModel)
         .environmentObject(webNovelFetcher)
         .environmentObject(backgroundViewModel)
     }
