@@ -1,0 +1,54 @@
+{
+    "book": {
+        "author": "錦衣需夜行",
+        "id": "893097b6-7204-11ec-af86-704d7b8712e2",
+        "imageLink": "https://www.mayiwxw.com/files/article/image/90/90296/90296s.jpg",
+        "intro": "　　槍之道，在一往無前，在戰意無雙！心誠於槍，槍合於道，道合於天，是為槍神！\n　　我有一把無雙神槍：一槍可挑落萬千星河！",
+        "link": "https://www.mayiwxw.com/90_90296/index.html",
+        "name": "十方至尊",
+        "state": "2022-01-10, [連載中]"
+    },
+    "class": {
+        "child": [],
+        "id": 0,
+        "link": "https://www.mayiwxw.com/",
+        "name": "首頁"
+    },
+    "class_": {
+        "child": [],
+        "id": 0,
+        "link": "https://www.mayiwxw.com/",
+        "name": "首頁"
+    },
+    "commant": [
+        {
+            "content": "好棒！",
+            "rating": 4
+        },
+        {
+            "content": "耶",
+            "rating": 3
+        },
+        {
+            "content": "呦！",
+            "rating": 4
+        },
+        {
+            "content": "哈",
+            "rating": 5
+        },
+        {
+            "content": "欸",
+            "rating": 5
+        },
+        {
+            "content": "嗯",
+            "rating": 1
+        }
+    ],
+    "rating": {
+        "amount": 3.6666666666666665,
+        "number": 6
+    },
+    "web": "筆趣閣"
+}

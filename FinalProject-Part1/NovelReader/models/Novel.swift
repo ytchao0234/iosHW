@@ -64,7 +64,7 @@ struct Class: Identifiable, Codable, Hashable {
 
     init() {
         order = Int()
-        name = ""
+        name = "首頁"
         child = [Class]()
     }
     

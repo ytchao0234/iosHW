@@ -119,13 +119,14 @@ struct NovelView: View {
             webNovelFetcher.flattenNovelList[novel.id]!.readTime = Date()
             keepViewModel.current = webNovelFetcher.flattenNovelList[novel.id]!
             
-            webNovelFetcher.flattenNovelList[novel.id]!.keep = self.keep
-            if keep {
+            if keep && webNovelFetcher.flattenNovelList[novel.id]!.keep == false {
                 keepViewModel.keep = webNovelFetcher.flattenNovelList[novel.id]!
-            } else {
+            } else if !keep && webNovelFetcher.flattenNovelList[novel.id]!.keep == true {
                 keepViewModel.lastKeep = keepViewModel.keep
                 keepViewModel.keep = nil
             }
+
+            webNovelFetcher.flattenNovelList[novel.id]!.keep = self.keep
         }
     }
 }
@@ -181,7 +182,7 @@ struct NovelSettingView: View {
                                         .scaledToFit()
                                 }
                             }
-                            .foregroundColor(.yellow)
+                            .foregroundColor(.accentColor)
                             .frame(width: 20, height: 20)
                             .padding()
                         }
@@ -191,7 +192,7 @@ struct NovelSettingView: View {
                             Image(systemName: "square.and.arrow.up")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.accentColor)
                                 .frame(width: 20, height: 20)
                                 .padding()
                         }

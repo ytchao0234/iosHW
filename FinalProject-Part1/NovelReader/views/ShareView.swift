@@ -7,11 +7,12 @@
 
 import UIKit
 import SwiftUI
+import LinkPresentation
 
 struct ShareView: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIActivityViewController
     let novel: Novel
-    var item: String {
+    var text: String {
         """
         書名：\(novel.book.name)
         作者：\(novel.book.author)
@@ -22,9 +23,13 @@ struct ShareView: UIViewControllerRepresentable {
         \(novel.book.intro)
         """
     }
+    
+    var image: UIImage {
+        UIImage(data: try! Data(contentsOf: URL(string: novel.book.imageLink)!))!
+    }
 
     func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: [item], applicationActivities: nil)
+        let controller = UIActivityViewController(activityItems: [text, image], applicationActivities: nil)
         return controller
     }
 

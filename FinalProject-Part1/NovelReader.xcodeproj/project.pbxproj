@@ -25,6 +25,7 @@
 		0334A01027857E42003DE885 /* KeepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A00F27857E42003DE885 /* KeepViewModel.swift */; };
 		0334A01427858093003DE885 /* BackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A01327858093003DE885 /* BackgroundViewModel.swift */; };
 		0334A016278580AF003DE885 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334A015278580AF003DE885 /* Background.swift */; };
+		03700D0127A111D4006D25A8 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 03700D0027A111D4006D25A8 /* Swifter */; };
 		039DFA9D27971A33002162E0 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039DFA9C27971A33002162E0 /* WidgetKit.framework */; };
 		039DFA9F27971A33002162E0 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 039DFA9E27971A33002162E0 /* SwiftUI.framework */; };
 		039DFAA227971A33002162E0 /* NovelReaderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039DFAA127971A33002162E0 /* NovelReaderWidget.swift */; };
@@ -98,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03288B9F278ECFA20011F531 /* SwiftDown in Frameworks */,
+				03700D0127A111D4006D25A8 /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +241,7 @@
 			name = NovelReader;
 			packageProductDependencies = (
 				03288B9E278ECFA20011F531 /* SwiftDown */,
+				03700D0027A111D4006D25A8 /* Swifter */,
 			);
 			productName = NovelReader;
 			productReference = 03349FF027856FFA003DE885 /* NovelReader.app */;
@@ -290,6 +293,7 @@
 			mainGroup = 03349FE727856FFA003DE885;
 			packageReferences = (
 				03288B9D278ECFA10011F531 /* XCRemoteSwiftPackageReference "SwiftDown" */,
+				03700CFF27A111D4006D25A8 /* XCRemoteSwiftPackageReference "swifter" */,
 			);
 			productRefGroup = 03349FF127856FFA003DE885 /* Products */;
 			projectDirPath = "";
@@ -641,6 +645,14 @@
 				kind = branch;
 			};
 		};
+		03700CFF27A111D4006D25A8 /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -648,6 +660,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 03288B9D278ECFA10011F531 /* XCRemoteSwiftPackageReference "SwiftDown" */;
 			productName = SwiftDown;
+		};
+		03700D0027A111D4006D25A8 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03700CFF27A111D4006D25A8 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
 		};
 /* End XCSwiftPackageProductDependency section */
 

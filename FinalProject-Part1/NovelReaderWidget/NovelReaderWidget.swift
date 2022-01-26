@@ -25,7 +25,7 @@ struct Provider: TimelineProvider {
         let currentDate = Date()
         let recommendList = getRecommendList()
         for offset in 0 ..< recommendList.count {
-            let entryDate = Calendar.current.date(byAdding: .second, value: offset * 10, to: currentDate)!
+            let entryDate = Calendar.current.date(byAdding: .second, value: offset * 3, to: currentDate)!
             var uiImage: UIImage? = nil
             if let url = URL(string: recommendList[offset].imageLink) {
                 if let data = try? Data(contentsOf: url) {

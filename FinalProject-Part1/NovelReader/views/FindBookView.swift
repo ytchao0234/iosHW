@@ -95,14 +95,13 @@ struct FindBookInOneWeb: View {
     }
     
     func getBookCount(for web: String) -> String {
-        if let list = webNovelFetcher.searchList[web],
-           let isSearching1 = webNovelFetcher.isSearching1[web],
+        if let isSearching1 = webNovelFetcher.isSearching1[web],
            !isSearching1 {
             if let isSearching2 = webNovelFetcher.isSearching2[web], isSearching2 {
-                return "\(list.values.count)..."
+                return "\(listContent.count)..."
             }
             else {
-                return "\(list.values.count)"
+                return "\(listContent.count)"
             }
         }
         else {

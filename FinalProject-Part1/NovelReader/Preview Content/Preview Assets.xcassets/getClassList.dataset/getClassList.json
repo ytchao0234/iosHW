@@ -1,0 +1,171 @@
+[
+    {
+        "child": [],
+        "id": 0,
+        "link": "https://www.69shu.com/update",
+        "name": "首頁"
+    },
+    {
+        "child": [
+            {
+                "child": [],
+                "id": 15,
+                "link": "https://www.69shu.com/fulltop/0.htm",
+                "name": "全部分類"
+            },
+            {
+                "child": [],
+                "id": 16,
+                "link": "https://www.69shu.com/fulltop/3.htm",
+                "name": "言情小說"
+            },
+            {
+                "child": [],
+                "id": 17,
+                "link": "https://www.69shu.com/fulltop/1.htm",
+                "name": "玄幻魔法"
+            },
+            {
+                "child": [],
+                "id": 18,
+                "link": "https://www.69shu.com/fulltop/2.htm",
+                "name": "修真武俠"
+            },
+            {
+                "child": [],
+                "id": 19,
+                "link": "https://www.69shu.com/fulltop/11.htm",
+                "name": "穿越時空"
+            },
+            {
+                "child": [],
+                "id": 20,
+                "link": "https://www.69shu.com/fulltop/9.htm",
+                "name": "都市小說"
+            },
+            {
+                "child": [],
+                "id": 21,
+                "link": "https://www.69shu.com/fulltop/4.htm",
+                "name": "歷史軍事"
+            },
+            {
+                "child": [],
+                "id": 22,
+                "link": "https://www.69shu.com/fulltop/5.htm",
+                "name": "遊戲競技"
+            },
+            {
+                "child": [],
+                "id": 23,
+                "link": "https://www.69shu.com/fulltop/6.htm",
+                "name": "科幻空間"
+            },
+            {
+                "child": [],
+                "id": 24,
+                "link": "https://www.69shu.com/fulltop/7.htm",
+                "name": "懸疑驚悚"
+            },
+            {
+                "child": [],
+                "id": 25,
+                "link": "https://www.69shu.com/fulltop/8.htm",
+                "name": "同人小說"
+            },
+            {
+                "child": [],
+                "id": 26,
+                "link": "https://www.69shu.com/fulltop/10.htm",
+                "name": "官場職場"
+            },
+            {
+                "child": [],
+                "id": 27,
+                "link": "https://www.69shu.com/fulltop/12.htm",
+                "name": "青春校園"
+            }
+        ],
+        "id": 1,
+        "link": "https://www.69shu.com/wanben",
+        "name": "完本"
+    },
+    {
+        "child": [],
+        "id": 2,
+        "link": "https://www.69shu.com/top/0.htm",
+        "name": "全部分類"
+    },
+    {
+        "child": [],
+        "id": 3,
+        "link": "https://www.69shu.com/top/3.htm",
+        "name": "言情小說"
+    },
+    {
+        "child": [],
+        "id": 4,
+        "link": "https://www.69shu.com/top/1.htm",
+        "name": "玄幻魔法"
+    },
+    {
+        "child": [],
+        "id": 5,
+        "link": "https://www.69shu.com/top/2.htm",
+        "name": "修真武俠"
+    },
+    {
+        "child": [],
+        "id": 6,
+        "link": "https://www.69shu.com/top/11.htm",
+        "name": "穿越時空"
+    },
+    {
+        "child": [],
+        "id": 7,
+        "link": "https://www.69shu.com/top/9.htm",
+        "name": "都市小說"
+    },
+    {
+        "child": [],
+        "id": 8,
+        "link": "https://www.69shu.com/top/4.htm",
+        "name": "歷史軍事"
+    },
+    {
+        "child": [],
+        "id": 9,
+        "link": "https://www.69shu.com/top/5.htm",
+        "name": "遊戲競技"
+    },
+    {
+        "child": [],
+        "id": 10,
+        "link": "https://www.69shu.com/top/6.htm",
+        "name": "科幻空間"
+    },
+    {
+        "child": [],
+        "id": 11,
+        "link": "https://www.69shu.com/top/7.htm",
+        "name": "懸疑驚悚"
+    },
+    {
+        "child": [],
+        "id": 12,
+        "link": "https://www.69shu.com/top/8.htm",
+        "name": "同人小說"
+    },
+    {
+        "child": [],
+        "id": 13,
+        "link": "https://www.69shu.com/top/10.htm",
+        "name": "官場職場"
+    },
+    {
+        "child": [],
+        "id": 14,
+        "link": "https://www.69shu.com/top/12.htm",
+        "name": "青春校園"
+    }
+]

@@ -117,24 +117,28 @@ struct InfoView: View {
             Text(novel.book.name)
                 .font(.title)
 
-            Spacer()
-
             Group {
                 Text("作者\t\t: \(novel.book.author)")
+                    .padding(.top, 5)
                 Text("更新狀態\t: \(novel.book.state)")
                 Text("章節數\t: \(novel.chapter.count)")
-                Button {
-                    showSetting.toggle()
-                    webNovelFetcher.flattenNovelList[novel.id]!.chapter.index = 1
-                } label: {
-                    Label("開始閱讀", systemImage: "book")
-                        .foregroundColor(.white)
-                        .padding(5)
-                        .background(Color.accentColor)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                }
             }
             .font(.caption)
+            .foregroundColor(.secondary)
+            
+            Spacer()
+            Button {
+                showSetting.toggle()
+                webNovelFetcher.flattenNovelList[novel.id]!.chapter.index = 1
+            } label: {
+                Label("開始閱讀", systemImage: "book")
+                    .font(.caption)
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background(Color.accentColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+            .padding(.bottom, 5)
         }
     }
 }
